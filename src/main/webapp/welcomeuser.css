@@ -1,0 +1,94 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial,Helvetica,sans-serif;	
+}
+body{
+	background: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(255,255,255,0.1);	
+}
+.atag {
+	color: black;
+	background-color: rgba(255,255,255,0.5);
+	text-decoration: none;
+	border: 1px solid black;
+	font-size: 50px;
+	border-radius: 5px;
+	border: none;
+}
+.atag:hover{
+	box-shadow: 0 0 20px white;
+	transition-duration: 0.2s;
+	background-color: orange;
+}
+
+/*Withdraw*/
+#withdraw {
+	position: absolute;
+	top: 150px;
+	right: 0px;
+}
+
+/*Deposit*/
+#deposit {
+	position: absolute;
+	top: 280px;
+	right: 0px;
+}
+
+/*balance*/
+#balance {
+	position: absolute;
+	top: 380px;
+	right: 0px;
+}
+
+/*mini statement*/
+#ministatement {
+	position: absolute;
+	top: 490px;
+	right: 0px;
+}
+
+/*pin change*/
+#pinchange {
+	position: absolute;
+	top: 280px;
+	left: 0px;
+}
+
+/*user details*/
+#userdetails {
+	position: absolute;
+	top: 380px;
+	left: 0px;
+}
+
+/*money transfer*/
+#moneytransfer {
+	position: absolute;
+	top: 490px;
+	left: 0px;
+}
+
+/*logout*/
+#logout {
+	position: absolute;
+	top: 150px;
+	left: 0px;
+}
+/*marquee*/
+#welmar {
+	color: white;
+	font-size: 50px;
+}
+ #bgBlur{
+	position: absolute;
+	background-color: rgba(11, 11, 11, 0.5);
+	height: 625px;
+	width: 1366px;
+} 
+
