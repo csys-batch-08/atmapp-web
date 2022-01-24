@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.atm.controller.*"%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,21 +102,16 @@ button:hover{
 </style>
 </head>
 <body bgcolor="blue">
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if (session.getAttribute("admin") != null) {
-		String admin = session.getAttribute("admin").toString();
-	} else {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+	<c:if test="${admin == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
 	<fieldset>
 		<h2>Remove User : </h2>
 		<form action="removeaccserv" method="post">
 			<label class="form-label">Enter User : </label><br> <input type="text"
 				name="remusername" class="form-control" pattern="[A-Z][a-zA-Z]{3,20}"
-				title="Start with A-Z and use A-Z or a-z or 0-9 minimum 3 character maximum 20 character"> </br><label class="form-label">Enter user id :</label><br> <input type="text"
-				name="remuserid" class="form-control" pattern="[0-9]{1,5}" title="Enter Valid User Id">
+				title="Start with A-Z and use A-Z or a-z or 0-9 minimum 3 character maximum 20 character"> </br><label class="form-label" required>Enter user id :</label><br> <input type="text"
+				name="remuserid" class="form-control" pattern="[0-9]{1,5}" title="Enter Valid User Id" required>
 			<button type="submit" class="btn btn-primary">Remove</button>
 
 		</form>

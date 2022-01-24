@@ -3,11 +3,11 @@ package com.atm.models;
 public class UserProfileModel {
 	private int id;
 	private String username;
-	private Long user_acc_no;
+	private Long useraccno;
 	private int balance;
-	private Long mob_no;
-	private int user_pin;
-	private String acc_created_at;
+	private Long mobno;
+	private int userpin;
+	private String acccreatedat;
 
 	public int getId() {
 		return id;
@@ -25,12 +25,12 @@ public class UserProfileModel {
 		this.username = username;
 	}
 
-	public Long getUser_acc_no() {
-		return user_acc_no;
+	public Long getUseraccno() {
+		return useraccno;
 	}
 
-	public void setUser_acc_no(Long user_acc_no) {
-		this.user_acc_no = user_acc_no;
+	public void setUseraccno(Long user_acc_no) {
+		this.useraccno = user_acc_no;
 	}
 
 	public int getBalance() {
@@ -41,40 +41,40 @@ public class UserProfileModel {
 		this.balance = balance;
 	}
 
-	public Long getMob_no() {
-		return mob_no;
+	public Long getMobno() {
+		return mobno;
 	}
 
-	public void setMob_no(Long mob_no) {
-		this.mob_no = mob_no;
+	public void setMobno(Long mob_no) {
+		this.mobno = mob_no;
 	}
 
-	public int getUser_pin() {
-		return user_pin;
+	public int getUserpin() {
+		return userpin;
 	}
 
-	public void setUser_pin(int user_pin) {
-		this.user_pin = user_pin;
+	public void setUserpin(int user_pin) {
+		this.userpin = user_pin;
 	}
 
-	public String getAcc_created_at() {
-		return acc_created_at;
+	public String getAcccreatedat() {
+		return acccreatedat;
 	}
 
-	public void setAcc_created_at(String acc_created_at) {
-		this.acc_created_at = acc_created_at;
+	public void setAcccreatedat(String acccreatedat) {
+		this.acccreatedat = acccreatedat;
 	}
 
-	public UserProfileModel(int id, String username, Long user_acc_no, int balance, Long mob_no, int user_pin,
-			String acc_created_at) {
+	public UserProfileModel(int id, String username, Long useraccno, int balance, Long mobno, int userpin,
+			String acccreatedat) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.user_acc_no = user_acc_no;
+		this.useraccno = useraccno;
 		this.balance = balance;
-		this.mob_no = mob_no;
-		this.user_pin = user_pin;
-		this.acc_created_at = acc_created_at;
+		this.mobno = mobno;
+		this.userpin = userpin;
+		this.acccreatedat = acccreatedat;
 	}
 
 	public UserProfileModel(String username, int balance) {
@@ -88,42 +88,42 @@ public class UserProfileModel {
 		this.username = username;
 	}
 
-	public UserProfileModel(String username, Long user_acc_no, Long mob_no, int user_pin) {
+	public UserProfileModel(String username, Long useraccno, Long mobno, int userpin) {
 
 		this.username = username;
-		this.user_acc_no = user_acc_no;
-		this.mob_no = mob_no;
-		this.user_pin = user_pin;
+		this.useraccno = useraccno;
+		this.mobno = mobno;
+		this.userpin = userpin;
 	}
-	public UserProfileModel(int user_pin,String username) {
+	public UserProfileModel(int userpin,String username) {
 
 		this.username = username;
-		this.user_pin = user_pin;
+		this.userpin = userpin;
 	}
-	public UserProfileModel(Long acc_no) {
+	public UserProfileModel(Long accno) {
 
-		this.user_acc_no = acc_no;
+		this.useraccno = accno;
 	}
-	public UserProfileModel(Long acc_no,int id) {
+	public UserProfileModel(Long accno,int id) {
 
-		this.user_acc_no = acc_no;
+		this.useraccno = accno;
 		this.id = id;
 	}
 	public UserProfileModel(Long mob_no,String s) {
 
-		this.mob_no = mob_no;
+		this.mobno = mob_no;
 	}
-	public UserProfileModel(String username, Long user_acc_no) {
+	public UserProfileModel(String username, Long useracno) {
 
 		this.username = username;
-		this.user_acc_no = user_acc_no;
+		this.useraccno = useracno;
 	}
 	
 
 	@Override
 	public String toString() {
-		return "Userprofilepojo [id=" + id + ", username=" + username + ", user_acc_no=" + user_acc_no + ", balance="
-				+ balance + ", mob_no=" + mob_no + ", user_pin=" + user_pin + ", acc_created_at=" + acc_created_at
+		return "Userprofilepojo [id=" + id + ", username=" + username + ", user_acc_no=" + useraccno + ", balance="
+				+ balance + ", mob_no=" + mobno + ", user_pin=" + userpin + ", acc_created_at=" + acccreatedat
 				+ "]";
 	}
 

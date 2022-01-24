@@ -1,6 +1,7 @@
 package com.atm.dao;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import com.atm.models.UserProfileModel;
 
@@ -15,7 +16,7 @@ public interface UserprofileDao {
 	public Long getaccno(UserProfileModel userprofilepojo) throws Exception;
 
 	// get user details:
-	public ResultSet getuserdetails(UserProfileModel userprofilepojo) throws Exception;
+	public List<UserProfileModel> getuserdetails(UserProfileModel userprofilepojo) throws Exception;
 
 	// insert user profile details:
 	public int insuserprofile(UserProfileModel userprofilepojo) throws Exception;

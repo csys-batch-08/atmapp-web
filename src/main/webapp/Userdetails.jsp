@@ -1,10 +1,7 @@
-<%@page import="com.atm.daoimpl.UserProfileImpl"%>
-<%@page import="com.atm.models.UserProfileModel"%>
-
-<%@page import="java.sql.ResultSet"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +10,10 @@
 <title>User Details</title>
 <style>
 #userdetailfield {
-	width: 500px;
+	width: 700px;
 }
 
-label {
+h1 {
 	color: #F5DF4D;
 	font-size: 50px;
 }
@@ -28,44 +25,21 @@ legend {
 </style>
 </head>
 <body bgcolor="#2F4F4F">
-	<%!String user;
-	
-	UserProfileImpl userprofiledao = new UserProfileImpl();
-	int id;
-	String uname;
-	Long accno;
-	int bal;
-	Long mobno;%>
+	<c:if test="${user == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
 
 
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-		if (session.getAttribute("user") == null) {
-			response.sendRedirect("index.jsp");
-		} else {
-			user = session.getAttribute("user").toString();
-		}
-	%>
-
-	<%
-	UserProfileModel userprofilepojo = new UserProfileModel(user);
-		ResultSet rs = userprofiledao.getuserdetails(userprofilepojo);
-		while (rs.next()) {
-			id = rs.getInt(1);
-			uname = rs.getString(2);
-			accno = rs.getLong(3);
-			bal = rs.getInt(4);
-			mobno = rs.getLong(5);
-		}
-	%>
+<c:forEach items="${userprofilelistobjuser}" var = "u">
 	<fieldset id="userdetailfield">
 		<legend>User Details</legend>
-
-		<label>UserName : <%=" " + uname%></label><br> <br> <label>User
-			Account No : <%=" " + accno%></label><br> <br> <label>Balance
-			: <%=" " + bal%></label><br> <br> <label>Mobile No : <%=" " + mobno%></label><br>
+		 <h1>UserName : ${u.username}</h1><br>
+		<h1>User Account No : ${u.useraccno}</h1><br>
+		<h1>Balance : ${u.balance}</h1><br>
+		<h1>Mobile No : ${u.mobno}</h1><br>
 		<br>
 	</fieldset>
+	</c:forEach>
 <h1 id = "timehead">00:00</h1>
 </body>
 

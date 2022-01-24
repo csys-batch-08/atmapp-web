@@ -2,6 +2,7 @@ package com.atm.controller;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.util.List;
 
 import com.atm.daoimpl.DepositImpl;
 import com.atm.daoimpl.LoginDetailsImpl;
@@ -38,7 +39,6 @@ public class RemoveUserController extends HttpServlet {
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		RemovedUsersImpl removedusersimpl = new RemovedUsersImpl();
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
-		HttpSession session = req.getSession();
 		String user = req.getParameter("remusername");
 		int id = Integer.parseInt(req.getParameter("remuserid"));
 		Long accno = -1l;
@@ -46,7 +46,6 @@ public class RemoveUserController extends HttpServlet {
 			UserProfileModel userprofilemodel = new UserProfileModel(user);
 			accno = userprofileimpl.getaccno(userprofilemodel);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
@@ -60,15 +59,15 @@ public class RemoveUserController extends HttpServlet {
 					int deprem = depositimpl.removedep(depositmodel);
 					if (deprem >= 0) {
 						UserProfileModel userprofilemodel = new UserProfileModel(user);
-						ResultSet resultSet = userprofileimpl.getuserdetails(userprofilemodel);
-						while (resultSet.next()) {
-							int lastbalance = resultSet.getInt(4);
-							Long mobno = resultSet.getLong(5);
-							int userpin = resultSet.getInt(6);
+						List<UserProfileModel> userProfileModels = userprofileimpl.getuserdetails(userprofilemodel);
+						
+							int lastbalance = userProfileModels.get(0).getBalance();
+							Long mobno = userProfileModels.get(0).getMobno();
+							int userpin = userProfileModels.get(0).getUserpin();
 							RemovedUsersModel removedusersmodel = new RemovedUsersModel(accno, user, lastbalance, mobno,
 									userpin);
 							removedusersimpl.insremoveusers(removedusersmodel);
-						}
+						
 					}
 					UserProfileModel userprofilemodel = new UserProfileModel(accno, id);
 					int userprofrem = userprofileimpl.removeuserprof(userprofilemodel);
@@ -96,7 +95,6 @@ public class RemoveUserController extends HttpServlet {
 		} catch (InvalidUsernameAdminException e) {
 			resp.sendRedirect(e.getMessage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

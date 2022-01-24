@@ -1,9 +1,7 @@
-<%@page import="com.atm.daoimpl.RemovedUsersImpl"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.atm.models.*"%>
-<%@page import="com.atm.models.RemovedUsersModel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,20 +25,13 @@ font-size:30px;
 </style>
 </head>
 <body bgcolor="#2F4F4F">
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if (session.getAttribute("admin") != null) {
-		String admin = session.getAttribute("admin").toString();
-	} else {
-		response.sendRedirect("index.jsp");
-	}
-	%>
-	<%!ResultSet rs;%>
-	<%
-	RemovedUsersImpl removedusersdao = new RemovedUsersImpl();
-			rs = removedusersdao.fetchremoveusers();
-	%>
+<c:if test="${admin == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
+	
+	
 	<table style="width: 80%; margin-left: 100px;">
+	<thead>
 		<tr>
 			<th>Id</th>
 			<th>UserAccount Number</th>
@@ -48,26 +39,20 @@ font-size:30px;
 			<th>LastBalance</th>
 			<th>Mobile no</th>
 			<th>UserPin</th>
-
 			<th>Account removed At</th>
 		</tr>
-		<%
-		while (rs.next()) {
-		%>
-
-
+		</thead>
+		<c:forEach items="${removeduserslist}" var = "r">
 		<tr>
-			<td><%=rs.getString(1)%></td>
-			<td><%=rs.getString(2)%></td>
-			<td><%=rs.getString(3)%></td>
-			<td><%=rs.getString(4)%></td>
-			<td><%=rs.getString(5)%></td>
-			<td><%=rs.getString(6)%></td>
-			<td><%=rs.getString(7)%></td>
-		</tr>
-		<%
-		}
-		%>
+		<td>${r.id}</td>
+		<td>${r.useraccno}</td>
+		<td>${r.username}</td>
+		<td>${r.lastbalance}</td>
+		<td>${r.mobno}</td>
+		<td>${r.userpin}</td>
+		<td>${r.accremovedat}</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>
