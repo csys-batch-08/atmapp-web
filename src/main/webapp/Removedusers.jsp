@@ -3,7 +3,7 @@
 	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang = "eng">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
@@ -42,15 +42,15 @@ font-size:30px;
 			<th>Account removed At</th>
 		</tr>
 		</thead>
-		<c:forEach items="${removeduserslist}" var = "r">
+		<c:forEach items="${removeduserslist}" var = "removedUsers">
 		<tr>
-		<td>${r.id}</td>
-		<td>${r.useraccno}</td>
-		<td>${r.username}</td>
-		<td>${r.lastbalance}</td>
-		<td>${r.mobno}</td>
-		<td>${r.userpin}</td>
-		<td>${r.accremovedat}</td>
+		<td>${removedUsers.id}</td>
+		<td>${removedUsers.useraccno}</td>
+		<td>${removedUsers.username}</td>
+		<td>${removedUsers.lastbalance}</td>
+		<td>${removedUsers.mobno}</td>
+		<td>${removedUsers.userpin}</td>
+		<td>${removedUsers.accremovedat}</td>
 			</tr>
 		</c:forEach>
 	</table>

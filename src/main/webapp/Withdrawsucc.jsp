@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,23 +47,14 @@ background-size: cover;
 </style>
 </head>
 <body bgcolor="blue">
-	<%!String user;%>
-
-	<%
-	if (session.getAttribute("user") == null) {
-		response.sendRedirect("index.jsp");
-	} else {
-		user = session.getAttribute("user").toString();
-	}
-	%>
-	<%
-	int succamount = (int) session.getAttribute("withamount");
-	int succbal = (int) session.getAttribute("withbal");
-	%>
-	<label id="withsucclab">You have successfully withdrawed amount
-		<%=succamount%></label>
+	<c:if test="${user == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
+	
+	<label id="withsucclab">You have successfully withdraw amount
+		${withamount}</label>
 	<h1 id="succhead">
-		BALANCE:<%=succbal%></h1>
+		BALANCE:${withbal}</h1>
 	
 <h1 id = "timehead">00:00</h1>
 </body>
@@ -85,7 +78,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("Logout.jsp");
+			window.location.assign("Welcomepage.jsp");
 		}
 	},1000);
 	

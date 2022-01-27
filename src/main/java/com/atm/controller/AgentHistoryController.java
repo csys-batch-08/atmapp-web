@@ -3,31 +3,32 @@ package com.atm.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import com.atm.daoimpl.AtmMoneyManagementImpl;
 import com.atm.models.AtmMoneyManagementModel;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
 
 @WebServlet("/agenthistoryservlet")
 public class AgentHistoryController extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+
 @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 	AtmMoneyManagementImpl atmMoneyManagementimpl = new AtmMoneyManagementImpl();
 			try {
-				List<AtmMoneyManagementModel> atmMoneyManagementModels = atmMoneyManagementimpl.history();
+				List<AtmMoneyManagementModel> atmMoneyManagementModels = atmMoneyManagementimpl.showRefillHistory();
 				req.setAttribute("agenthistoryobj", atmMoneyManagementModels);
 				RequestDispatcher requestDispatcher = req.getRequestDispatcher("Historyagent.jsp");
 				requestDispatcher.forward(req, resp);
 			} catch (Exception e) {
 				
 				e.printStackTrace();
-			}
-	
+			}	
 }
 }

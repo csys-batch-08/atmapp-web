@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import com.atm.dao.AtmMoneyManagementDao;
@@ -15,7 +17,7 @@ import com.atm.util.ConnectionUtil;
 
 public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 //Deposit money:
-	public int depositmoney(AtmMoneyManagementModel atmMoneyManagement) throws SQLException{
+	public int depositAtmMoney(AtmMoneyManagementModel atmMoneyManagement) throws SQLException{
 		
 		String query = "insert into atm_money_management(money_deposited,money_balance,agent_name) values(?,?,?)";
 		String query1 = "commit";
@@ -45,17 +47,18 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	}
 	
 	//History Agent:
-	public List<AtmMoneyManagementModel> history() throws SQLException {
+	public List<AtmMoneyManagementModel> showRefillHistory() throws SQLException {
 		List<AtmMoneyManagementModel> atmMoneyManagementModels = new ArrayList<>();
 		Connection con = null;
 		Statement statement = null;
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "select id,money_deposited,money_balance,substr(deposited_at,1,14),agent_name from atm_money_management order by id desc";
+			String query = "select id,money_deposited,money_balance,deposited_at,agent_name from atm_money_management order by id desc";
 			statement = con.createStatement();
 			ResultSet res = statement.executeQuery(query);
 					while(res.next()) {
-						atmMoneyManagementModels.add(new AtmMoneyManagementModel(res.getInt(1),res.getLong(2),res.getLong(3),res.getString(4),res.getString(5)));
+						atmMoneyManagementModels.add(new AtmMoneyManagementModel(res.getInt(1),res.getLong(2),res.getLong(3),(res.getTimestamp(4)).toLocalDateTime().format(dateTimeFormatter),res.getString(5)));
 					}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,7 +77,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	}
 	
 	//previous balance:
-	public Long previousbal() throws SQLException {
+	public Long atmPreviousBalance() throws SQLException {
 		Connection con = null;
 		Statement statement = null;
 		try {
@@ -103,7 +106,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	}
 	
 	//update balance:
-	public int updatebal(AtmMoneyManagementModel atmMoneyManagement) throws SQLException {
+	public int updateNewAtmBalance(AtmMoneyManagementModel atmMoneyManagement) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int res = -1;
@@ -127,11 +130,8 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 				con.close();
 			}
 			
-		}
-		
-				return res;
-		
-		
+		}	
+				return res;	
 
 	}
 				

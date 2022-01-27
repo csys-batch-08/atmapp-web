@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import com.atm.dao.LoginDetailsDao;
@@ -16,7 +18,7 @@ import com.atm.util.ConnectionUtil;
 
 public class LoginDetailsImpl implements LoginDetailsDao {
 	// Remove Account:
-	public int removelogindetail(LoginDetailsModel loginpojo) throws SQLException {
+	public int removeLoginDetails(LoginDetailsModel loginpojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int res = -1;
@@ -46,7 +48,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 	}
 
 	// Insert Data in to login table:
-	public int insertdata(LoginDetailsModel loginpojo) throws SQLException {
+	public int insertLoginDetails(LoginDetailsModel loginpojo) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -76,18 +78,19 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 	}
 	
 	//fetch login details:
-	public List<LoginDetailsModel> fetchlogin()throws SQLException {
+	public List<LoginDetailsModel> fetchLoginDetails()throws SQLException {
 		Connection con = null;
 		Statement statement = null;
-		List<LoginDetailsModel> loginDetailsModels = new ArrayList<>();;
+		List<LoginDetailsModel> loginDetailsModels = new ArrayList<>();
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 		try {
 			con = ConnectionUtil.getConnection();
-		String query = "select id,username,substr(logged_at,1,14),role from login order by logged_at desc";
+		String query = "select id,username,logged_at,role from login order by logged_at desc";
 		statement = con.createStatement();
 		ResultSet rSet = statement.executeQuery(query);
 		
 		while(rSet.next()) {
-			loginDetailsModels.add(new LoginDetailsModel(rSet.getInt(1), rSet.getString(2), rSet.getString(3), rSet.getString(4)));
+			loginDetailsModels.add(new LoginDetailsModel(rSet.getInt(1), rSet.getString(2), (rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter), rSet.getString(4)));
 		}
 		} catch (Exception e) {
 			e.printStackTrace();

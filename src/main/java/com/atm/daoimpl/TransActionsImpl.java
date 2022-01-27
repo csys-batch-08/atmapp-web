@@ -42,7 +42,7 @@ public class TransActionsImpl {
 }
 		
 		// Remove account:
-		public int transactionsremove(TransActionsModel transActionsModel) throws SQLException {
+		public int removeTransActions(TransActionsModel transActionsModel) throws SQLException {
 			Connection con = null;
 			int res = -1;
 			PreparedStatement statement = null;
@@ -67,83 +67,135 @@ public class TransActionsImpl {
 			return res;
 		}
 		
-		
-		//check withdraw limit:
-		public int checkwithdrawlimit(TransActionsModel transActionsModel) throws Exception {
-			Connection con = ConnectionUtil.getConnection();
-	        String sysdatequery = "select current_timestamp from dual";
-	        String sysdString = null;
-	        Statement statement = con.createStatement();
-	        ResultSet rSet = statement.executeQuery(sysdatequery);
-	        while(rSet.next()) {
-	        	sysdString = rSet.getString(1);
-	        	
-	        }
-	        System.out.println(sysdString);
-	        sysdString = sysdString.substring(2, 10);
-	        System.out.println(sysdString);
-	        String yearString = sysdString.substring(0,2);
-	        System.out.println(yearString);
-	        String monthString = sysdString.substring(3,5);
-	        System.out.println(monthString);
-	        String dayString = sysdString.substring(6,8);
-	        System.out.println(dayString);
-	        String finaldateString = dayString + "-" +monthString + "-" + yearString;
-	        System.out.println(finaldateString);
-	        
-	        
-			String query = "select sum(abs(transaction_amount)) from transactions where transaction_at like '"+finaldateString+"%' and user_acc_no in ? and transaction_type = 'withdraw'";
-			PreparedStatement preparedStatement = con.prepareStatement(query);
-	
-			preparedStatement.setLong(1,  transActionsModel.getUserAccnoLong());
-			ResultSet rSet2 = preparedStatement.executeQuery();
-			int total = -1;
-			while(rSet2.next()) {
-	        	total = rSet2.getInt(1);
-	        	System.out.println(total);
-	        	return total;
-	        }
-			
-			return total;
-		}
-		
-		//check deposit limit:
-		
-				public int checkDepositLimit(TransActionsModel transActionsModel) throws Exception {
-					Connection con = ConnectionUtil.getConnection();
-			        String sysdatequery = "select current_timestamp from dual";
-			        String sysdString = null;
-			        Statement statement = con.createStatement();
+		public String withdrawCurrentTimeStamp() throws SQLException{
+			Connection con = null;
+			String sysdString = null;
+	        String finaldateString = null;
+	        Statement statement = null;
+			try {
+				con = ConnectionUtil.getConnection();
+				 String sysdatequery = "select current_timestamp from dual";  
+			        statement
+			        = con.createStatement();
 			        ResultSet rSet = statement.executeQuery(sysdatequery);
 			        while(rSet.next()) {
 			        	sysdString = rSet.getString(1);
 			        	
 			        }
-			        System.out.println(sysdString);
-			        sysdString = sysdString.substring(2, 10);
-			        System.out.println(sysdString);
-			        String yearString = sysdString.substring(0,2);
-			        System.out.println(yearString);
-			        String monthString = sysdString.substring(3,5);
-			        System.out.println(monthString);
-			        String dayString = sysdString.substring(6,8);
-			        System.out.println(dayString);
-			        String finaldateString = dayString + "-" +monthString + "-" + yearString;
-			        System.out.println(finaldateString);
-			        
-			        
-					String query = "select sum(abs(transaction_amount)) from transactions where transaction_at like '"+finaldateString+"%' and user_acc_no in ? and transaction_type = 'deposit'";
-					PreparedStatement preparedStatement = con.prepareStatement(query);
-			
-					preparedStatement.setLong(1,  transActionsModel.getUserAccnoLong());
+			        if(sysdString != null) {
+			        sysdString = sysdString.substring(2, 10);	      
+			        String yearString = sysdString.substring(0,2);	       
+			        String monthString = sysdString.substring(3,5);	       
+			        String dayString = sysdString.substring(6,8);	      
+			        finaldateString = dayString + "-" +monthString + "-" + yearString;
+			        }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(statement != null) {
+					statement.close();
+					}
+					if(con != null) {
+						con.close();
+					}
+				}
+	       
+	        return finaldateString;
+		}
+		//check withdraw limit:
+		public int checkwithdrawlimit(TransActionsModel transActionsModel) throws SQLException {
+			Connection con = null;
+			int total = -1;
+			PreparedStatement preparedStatement = null;
+			 String finaldateString = withdrawCurrentTimeStamp() + "%"; 
+			try {
+				con = ConnectionUtil.getConnection();
+
+					String query = "select sum(abs(transaction_amount)) from transactions where transaction_at like ? and user_acc_no in ? and transaction_type = 'withdraw'";
+					preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, finaldateString);
+					preparedStatement.setLong(2,  transActionsModel.getUserAccnoLong());
 					ResultSet rSet2 = preparedStatement.executeQuery();
-					int total = -1;
+					total = -1;
 					while(rSet2.next()) {
 			        	total = rSet2.getInt(1);
-			        	System.out.println(total);
 			        	return total;
 			        }
-					
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(preparedStatement != null) {
+					preparedStatement.close();
+					}
+					if(con != null) {
+						con.close();
+					}
+				}		
+			return total;
+		}
+		
+		public String depositCurrentTimeStamp() throws SQLException{
+			Connection con = null;
+			String finaldateString = null;
+			Statement statement = null;
+			try {
+				con = ConnectionUtil.getConnection();
+				 String sysdatequery = "select current_timestamp from dual";
+			        String sysdString = null;
+			        statement  = con.createStatement();
+			        ResultSet rSet = statement.executeQuery(sysdatequery);
+			        while(rSet.next()) {
+			        	sysdString = rSet.getString(1);			        	
+			        }
+			        if(sysdString != null) {
+			        sysdString = sysdString.substring(2, 10);			        
+			        String yearString = sysdString.substring(0,2);			       
+			        String monthString = sysdString.substring(3,5);			       
+			        String dayString = sysdString.substring(6,8);
+			         finaldateString = dayString + "-" +monthString + "-" + yearString;
+			        }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(statement != null) {
+					statement.close();
+					}
+					if(con != null) {
+						con.close();
+					}
+				}
+	       return finaldateString;
+		}
+		
+		
+		//check deposit limit:
+		
+				public int checkDepositLimit(TransActionsModel transActionsModel) throws SQLException {
+					Connection con = null;
+					PreparedStatement preparedStatement = null;
+					int total = -1;
+					 String finaldateString = depositCurrentTimeStamp() + "%";
+					try {
+						con = ConnectionUtil.getConnection();			        
+						String query = "select sum(abs(transaction_amount)) from transactions where transaction_at like ? and user_acc_no in ? and transaction_type = 'deposit'";
+						preparedStatement = con.prepareStatement(query);	
+						preparedStatement.setString(1, finaldateString);
+						preparedStatement.setLong(2,  transActionsModel.getUserAccnoLong());
+						ResultSet rSet2 = preparedStatement.executeQuery();
+						if(rSet2.next()) {
+				        	total = rSet2.getInt(1);
+				        	return total;
+				        }
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						if(preparedStatement != null) {
+							preparedStatement.close();
+							}
+							if(con != null) {
+								con.close();
+							}
+						}					
 					return total;
 				}
 }

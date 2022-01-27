@@ -2,35 +2,35 @@ package com.atm.controller;
 
 import java.io.IOException;
 
-import com.atm.daoimpl.UserProfileImpl;
-import com.atm.daoimpl.UsernamePasswordImpl;
-import com.atm.models.UserProfileModel;
-import com.atm.models.UsernamePasswordModel;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import com.atm.daoimpl.UserProfileImpl;
+import com.atm.models.UserProfileModel;
+
 
 @WebServlet("/pinchangeserv")
-public class PinChangeController extends HttpServlet {
+public class PinChangeController extends HttpServlet {	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		UserProfileImpl userProfileImpl = new UserProfileImpl();
-		
+		UserProfileImpl userProfileImpl = new UserProfileImpl();		
 		int pin = Integer.parseInt(req.getParameter("pininp"));
 		HttpSession session = req.getSession();
 		String user = session.getAttribute("user").toString();
-		int i = -1;
+		int pinChanged = -1;
 		try {
 			UserProfileModel userProfileModel = new UserProfileModel(pin,user);
-			i = userProfileImpl.updatepin(userProfileModel);
+			pinChanged = userProfileImpl.updatepin(userProfileModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (i > 0) {
+		if (pinChanged > 0) {
 			resp.sendRedirect("Pinchangesucc.jsp");
 		} else {
 			resp.getWriter().println("Something went wrong try again!!!");

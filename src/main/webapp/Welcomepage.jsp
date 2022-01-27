@@ -1,28 +1,17 @@
-<%@page import="com.atm.exception.NotLoggedInException"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.atm.controller.*"%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="eng">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
-<%!String user;%>
-
-<%
-response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-try {
-	if (session.getAttribute("user") == null) {
-		throw new NotLoggedInException();
-	} else {
-		user = session.getAttribute("user").toString();
-	}
-} catch (NotLoggedInException e) {
-	response.sendRedirect(e.getMessage());
-}
-%>
 <div id="bgBlur"></div>
-
-<title>Welcome <%=user%></title>
+<c:if test="${user == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
+<title>Welcome ${user}</title>
 <link rel="stylesheet" href="welcomeuser.css">
 <style>
 #invalpin {
@@ -47,16 +36,9 @@ a:hover {
 </style>
 </head>
 <body>
-	<%
-	if (session.getAttribute("invalidhomepin") != null) {
-	%>
+	<c:if test="${invalidhomepin != null}">
 	<h1 id="invalpin">Invalid Pin</h1>
-	<%
-	session.removeAttribute("invalidhomepin");
-	%>
-	<%
-	}
-	%>
+	</c:if>
 	<marquee id="welmar" scrollamount="20">STATE BANK OF INDIA</marquee>
 	<hr>
 	<a href="Withdraw.jsp" id="withdraw" class="atag">Withdraw</a>

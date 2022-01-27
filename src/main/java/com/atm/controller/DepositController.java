@@ -2,23 +2,24 @@ package com.atm.controller;
 
 import java.io.IOException;
 
-import com.atm.daoimpl.DepositImpl;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.atm.daoimpl.TransActionsImpl;
 import com.atm.daoimpl.UserProfileImpl;
 import com.atm.exception.DepositLimitExceedException;
-import com.atm.models.DepositModel;
+
 import com.atm.models.TransActionsModel;
 import com.atm.models.UserProfileModel;
-import com.atm.models.WithdrawModel;
 
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/depserv")
 public class DepositController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		TransActionsModel transActionsModel = new TransActionsModel();
@@ -26,10 +27,8 @@ public class DepositController extends HttpServlet {
 		HttpSession session = req.getSession();
 		String uname = session.getAttribute("user").toString();
 		int eamount = (int) session.getAttribute("depamount");
-
 		UserProfileModel userprofilemodelaccno = new UserProfileModel(uname);
 		Long accno;
-
 		try {
 //get acc no:
 			accno = userprofileimpl.getaccno(userprofilemodelaccno);
@@ -51,14 +50,11 @@ public class DepositController extends HttpServlet {
 							int newbal = bal + eamount;
 							UserProfileModel userprofilemodel2 = new UserProfileModel(uname, newbal);
 							// update New Balance:
-							int updatebal = userprofileimpl.insbal(userprofilemodel2);
-							if (updatebal > 0) {
+							userprofileimpl.insbal(userprofilemodel2);
 								// Get User Account Number:
 								UserProfileModel userprofilemodel3 = new UserProfileModel(uname);
 								Long acc = userprofileimpl.getaccno(userprofilemodel3);
-								if (acc > 0) {
 									// Insert data in Deposit table:
-									
 									transActionsModel.setUserAccnoLong(acc);
 									transActionsModel.setTransActionAmount(eamount);
 									transActionsModel.setTransActionType("deposit");
@@ -66,12 +62,6 @@ public class DepositController extends HttpServlet {
 									session.setAttribute("depsuccamount", eamount);
 									session.setAttribute("depsuccbal", newbal);
 									res.sendRedirect("Depsucc.jsp");
-								} else {
-									res.getWriter().println("Cant Get User Account No!!");
-								}
-							} else {
-								res.getWriter().println("Something Went Wrong!!");
-							}
 						} else {
 							throw new DepositLimitExceedException();
 						}
@@ -90,13 +80,10 @@ public class DepositController extends HttpServlet {
 			} else {
 				res.sendRedirect("DepositEnteredLimit.jsp");
 			}
-
 		} catch (DepositLimitExceedException e) {
 			res.sendRedirect(e.getMessage());
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
-
 	}
 }

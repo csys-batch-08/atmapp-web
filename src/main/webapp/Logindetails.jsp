@@ -45,12 +45,12 @@ margin-left: 100px;
 			<th>Role</th>
 		</tr>
 		
-		<c:forEach items="${logindetailsobj}" var="l">
+		<c:forEach items="${logindetailsobj}" var="loginDetails">
 		<tr>
-			<td>${l.id}</td>
-			<td>${l.username}</td>
-			<td>${l.loggedat}</td>
-			<td>${l.role}</td>
+			<td>${loginDetails.id}</td>
+			<td>${loginDetails.username}</td>
+			<td>${loginDetails.loggedat}</td>
+			<td>${loginDetails.role}</td>
 		</tr>
 		</c:forEach>
 	</table>

@@ -42,7 +42,7 @@ font-size:80px;
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 <!-- amount exceed than 20000 -->
-<h1 id = "remainingDeposit">Your Remaining Withdraw Limit is ${remainingDeposit}</h1>
+<h1 id = "remainingDeposit">Your Remaining deposit Limit is ${remainingDeposit}</h1>
 	<h1 id="timehead">00:00</h1>
 </body>
 

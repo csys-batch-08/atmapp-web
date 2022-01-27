@@ -79,7 +79,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("Logout.jsp");
+			window.location.assign("Welcomepage.jsp");
 		}
 	},1000);
 	

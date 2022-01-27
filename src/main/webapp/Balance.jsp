@@ -1,5 +1,3 @@
-<%@page import="com.atm.daoimpl.UserProfileImpl"%>
-<%@page import="com.atm.models.UserProfileModel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.atm.controller.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,7 +13,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <div id="bgBlur">
-
 	<title>Balance</title>
 	<style>
 * {

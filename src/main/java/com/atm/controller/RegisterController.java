@@ -1,7 +1,13 @@
 package com.atm.controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.atm.models.UsernamePasswordModel;
 import com.atm.daoimpl.UserProfileImpl;
@@ -9,15 +15,12 @@ import com.atm.daoimpl.UsernamePasswordImpl;
 import com.atm.exception.MobileNoAlreadyRegException;
 import com.atm.exception.UserNameAlreadyExistException;
 import com.atm.models.UserProfileModel;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+
 
 @WebServlet("/registersucc")
 public class RegisterController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
@@ -72,7 +75,6 @@ public class RegisterController extends HttpServlet {
 							throw new MobileNoAlreadyRegException();
 						}
 					}
-
 				} else {
 					throw new UserNameAlreadyExistException();
 				}

@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+  <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang = "en">
+<html>
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
-<title>Deposit Limit</title>
+<title>Deposit Amount Remaining</title>
 <style>
 * {
 	margin: 0;
@@ -28,7 +28,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-#amountexceed{
+#remainingWithdraw{
 position:absolute;
 top:230px;
 left:220px;
@@ -36,13 +36,13 @@ color:yellow;
 font-size:80px;
 }
 </style>
-
 </head>
 <body>
 <c:if test="${user == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
-<h1 id = "amountexceed">Enter Amount Less Than 20000</h1>
+<!-- amount exceed than 20000 -->
+<h1 id = "remainingWithdraw">Your Remaining Withdraw Limit is ${remainingWithdraw}</h1>
 	<h1 id="timehead">00:00</h1>
 </body>
 

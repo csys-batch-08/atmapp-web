@@ -50,9 +50,6 @@ font-size : 20px;
 </style>
 </head>
 <body>
-
-
-	
 <h1>Account Is Locked Try After 2 Minutes!!</h1>
 <h2>Contact Branch</h2>
 <h1 id = "timehead">00:00</h1>

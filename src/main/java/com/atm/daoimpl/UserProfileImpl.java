@@ -372,9 +372,7 @@ public class UserProfileImpl implements UserprofileDao {
 				if(con != null) {
 					con.close();
 				}
-		}
-	
-		
+		}	
 		return false;
 	}
 	

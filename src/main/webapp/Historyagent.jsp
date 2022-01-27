@@ -1,10 +1,10 @@
 <%@page import="com.atm.daoimpl.AtmMoneyManagementImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import = "java.sql.*" import = "com.atm.controller.*"%>
-    <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang = "eng">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
@@ -39,16 +39,15 @@ background-color: #0072B5;
 			<th>Money Filled</th>
 			<th>Current Balance</th>
 			<th>Filled At</th>
-			<th>Agent Name</th>
-		
+			<th>Agent Name</th>		
 		</tr>
-		<c:forEach items="${agenthistoryobj}" var="h">
+		<c:forEach items="${agenthistoryobj}" var="agentHistory">
 		<tr>
-			<td>${h.id}</td>
-			<td>${h.moneydeposited}</td>
-			<td>${h.moneybalance}</td>
-			<td>${h.depositedat}</td>
-			<td>${h.agentname}</td>
+			<td>${agentHistory.id}</td>
+			<td>${agentHistory.moneydeposited}</td>
+			<td>${agentHistory.moneybalance}</td>
+			<td>${agentHistory.depositedat}</td>
+			<td>${agentHistory.agentname}</td>
 		</tr>
 		</c:forEach>
 	</table>

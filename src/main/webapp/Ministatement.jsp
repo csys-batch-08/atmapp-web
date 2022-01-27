@@ -1,13 +1,11 @@
-<%@page import="com.atm.daoimpl.UserProfileImpl"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.atm.daoimpl.MiniStatementImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import = "com.atm.controller.*"
 	import="com.atm.models.*" isELIgnored="false"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 <!DOCTYPE html>
-<html>
+<html lang = "eng">
 <div id="bgBlur"></div>
 <head>
 <meta charset="ISO-8859-1">
@@ -70,7 +68,7 @@ background-size: cover;
 	
   <div class="container mt-1">	
 	<div id = "minidiv">
-	<table class="table table-bordered table-sm">
+	<table  class="table table-bordered table-sm">
 	<thead class="table-dark">
 		<tr>
 			<th>Transaction_type</th>
@@ -78,11 +76,11 @@ background-size: cover;
 			<th id="transtime">Transaction Time</th>
 		</tr>
 		</thead>
-		<c:forEach items="${ministatementjspobj}" var = "m">
+		<c:forEach items="${ministatementjspobj}" var = "miniStatement">
 		<tr>
-		<td>${m.transActionType}</td>
-		<td>${m.transActionAmount}</td>
-		<td>${m.transActionAt}</td>
+		<td>${miniStatement.transActionType}</td>
+		<td>${miniStatement.transActionAmount}</td>
+		<td>${miniStatement.transActionAt}</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -115,8 +113,5 @@ window.addEventListener('load', () =>{
 	},1000);
 	
 });
-
-
-
 </script>
 </html>

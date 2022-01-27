@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang = "eng">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>  
 <div id="bgBlur"></div>
 <title>Withdraw</title>
 <style>
@@ -93,48 +94,12 @@ left : 350px;
 </style>
 </head>
 <body>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if (session.getAttribute("invalidpin") != null) {
-		boolean flag = (boolean) session.getAttribute("invalidpin");
-		if (flag) {
-	%>
-	<label id="invallab">Invalid Pin</label>
-
-	<%
-	session.removeAttribute("invalidpin");
-	}
-	}
-	%>
-	<!-- amount exceed than 10000 -->
-	<%
-	if(session.getAttribute("amountexceed") != null){%>
-		<h1 id = "amountexceed">Enter Amount Less Than 10000</h1>
-	<% session.removeAttribute("amountexceed");}
-	%>
-	
-	<!-- remaining amount limit-->
-	<%
-	if(session.getAttribute("remainingWithdraw") != null){
-		int remainingAmount = (int)session.getAttribute("remainingWithdraw");
-		
-	%>
-	
-		<h1 id = "remainingWithdraw">Your Remaining Withdraw Limit is <%=remainingAmount %></h1>
-	<% session.removeAttribute("remainingWithdraw");}
-	%>
-	<%!String user;%>
-
-	<%
-	if (session.getAttribute("user") == null) {
-		response.sendRedirect("index.jsp");
-	} else {
-		user = session.getAttribute("user").toString();
-	}
-	%>
+<c:if test="${user == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
 	<h1 id="headwith">
 		Welcome&ensp;
-		<%=user%></h1>
+		${user}</h1>
 	<label id="labwith">Enter Amount To Withdraw</label>
 	<form action="Enterpin.jsp" id="formwith" autocomplete="off">
 		<br> <input type="text" name="inpwith" id="withinp" required
@@ -190,6 +155,4 @@ window.addEventListener('load', () =>{
 
 
 </script>
-
-
 </html>

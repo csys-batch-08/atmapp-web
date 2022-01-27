@@ -1,6 +1,8 @@
 package com.atm.daoimpl;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ import com.atm.util.ConnectionUtil;
 
 public class RemovedUsersImpl implements RemovedUsersDao {
 	// Insert data into removed users:
-	public int insremoveusers(RemovedUsersModel removedusersmodel) throws SQLException {
+	public int insertRemovedUsers(RemovedUsersModel removedusersmodel) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int res = -1;
@@ -43,17 +45,18 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 
 //fetch user:
 
-	public List<RemovedUsersModel> fetchremoveusers() throws SQLException {
+	public List<RemovedUsersModel> fetchRemovedUsers() throws SQLException {
 		List<RemovedUsersModel> removedUsersModels = new ArrayList<>();
 		Connection con = null;
 		Statement statement = null;
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "select id,user_acc_no,username,last_balance,mob_no,user_pin,substr(acc_removed_at,1,16) from removedusers order by id desc";
+			String query = "select id,user_acc_no,username,last_balance,mob_no,user_pin,acc_removed_at from removedusers order by id desc";
 			statement = con.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()) {
-				removedUsersModels.add(new RemovedUsersModel(resultSet.getInt(1), resultSet.getLong(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getLong(5), resultSet.getInt(6), resultSet.getString(7)));
+				removedUsersModels.add(new RemovedUsersModel(resultSet.getInt(1), resultSet.getLong(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getLong(5), resultSet.getInt(6), (resultSet.getTimestamp(7)).toLocalDateTime().format(dateTimeFormatter)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
