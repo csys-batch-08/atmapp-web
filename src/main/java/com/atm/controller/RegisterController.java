@@ -83,11 +83,11 @@ public class RegisterController extends HttpServlet {
 			}
 		} catch (UserNameAlreadyExistException e) {
 			resp.sendRedirect(e.getMessage());
-		} catch (MobileNoAlreadyRegException e) {
-			resp.sendRedirect(e.getMessage());
+		} catch (MobileNoAlreadyRegException e1) {
+			resp.sendRedirect(e1.getMessage());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

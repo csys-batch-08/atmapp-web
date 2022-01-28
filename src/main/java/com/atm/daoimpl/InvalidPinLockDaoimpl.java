@@ -26,7 +26,7 @@ public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws
 		 res = statement.executeUpdate();
 		statement.executeUpdate("commit");
 	} catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(statement != null) {
 		statement.close();
@@ -53,7 +53,7 @@ public boolean invalidPinLockStatus(InvalidPinLockModel invalidPinLockModel) thr
 			return true;
 		}
 	} catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(statement != null) {
 		statement.close();
@@ -80,7 +80,7 @@ public int deleteInvalidPinLock(InvalidPinLockModel invalidPinLockModel) throws 
 		 res = statement.executeUpdate();
 		statement.executeUpdate("commit");
 	} catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(statement != null) {
 		statement.close();
@@ -112,15 +112,13 @@ public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 				while(rSet1.next()) {
 					String ret = rSet1.getString(1);
 					if(ret.matches("[0][0-9]")) {
-					 date = Integer.parseInt(ret.substring(1));
-					
-					}else {
-						
+					 date = Integer.parseInt(ret.substring(1));				
+					}else {						
 					 date = Integer.parseInt(rSet1.getString(1));
 					}
 				}
 }catch (Exception e) {
-	e.printStackTrace();
+	e.getMessage();
 }finally {
 	if(statement != null) {
 	statement.close();
@@ -157,7 +155,7 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 					}
 				}
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(statement != null) {
 			statement.close();
@@ -201,7 +199,7 @@ public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws 
 		}
 		}
 	} catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(statement != null) {
 			statement.close();

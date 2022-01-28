@@ -28,7 +28,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("loginDetails.jsp");
 			requestDispatcher.forward(req, resp);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	
 }

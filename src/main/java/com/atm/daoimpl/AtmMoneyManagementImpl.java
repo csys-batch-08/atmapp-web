@@ -33,15 +33,14 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 					 res = statement.executeUpdate();
 					statement.executeUpdate(query1);
 				} catch (Exception e) {
-					e.printStackTrace();
+					e.getMessage();
 				}finally {
 					if(statement != null) {
 					statement.close();
 					}
 					if(con != null) {
 						con.close();
-					}
-					
+					}				
 				}
 				return res;
 	}
@@ -61,7 +60,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 						atmMoneyManagementModels.add(new AtmMoneyManagementModel(res.getInt(1),res.getLong(2),res.getLong(3),(res.getTimestamp(4)).toLocalDateTime().format(dateTimeFormatter),res.getString(5)));
 					}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 			statement.close();
@@ -89,8 +88,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 						return res.getLong(1);
 					}
 		} catch (Exception e) {
-
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 			statement.close();
@@ -120,7 +118,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 					res = statement.executeUpdate();
 					statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 			statement.close();

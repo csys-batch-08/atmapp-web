@@ -36,7 +36,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		RequestDispatcher rsDispatcher = req.getRequestDispatcher("userDetailAdmin.jsp");
 		rsDispatcher.forward(req, resp);
 	} catch (SQLException e) {
-		e.printStackTrace();
+		e.getMessage();
 	}catch(InvalidUsernameAdminException e){
 		resp.sendRedirect(e.getMessage());
 		}

@@ -84,10 +84,10 @@ public class WithdrawController extends HttpServlet {
 			}
 		} catch (AtmOutOfCashException e) {
 			res.sendRedirect(e.getMessage());
-		} catch (LowBalanceException e) {
-			res.sendRedirect(e.getMessage());
+		} catch (LowBalanceException e1) {
+			res.sendRedirect(e1.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

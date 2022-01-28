@@ -32,7 +32,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("userDetails.jsp");
 		requestDispatcher.forward(req, resp);		
 	} catch (SQLException e) {
-		e.printStackTrace();
+		e.getMessage();
 	}
 }
 }

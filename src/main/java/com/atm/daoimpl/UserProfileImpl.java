@@ -30,7 +30,7 @@ public class UserProfileImpl implements UserprofileDao {
 				res = rSet.getInt(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -57,7 +57,7 @@ public class UserProfileImpl implements UserprofileDao {
 			 res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -85,7 +85,7 @@ public class UserProfileImpl implements UserprofileDao {
 				resLong = rs.getLong(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -114,7 +114,7 @@ public class UserProfileImpl implements UserprofileDao {
 				userProfileModels.add(new UserProfileModel(rs.getInt(1), rs.getString(2), rs.getLong(3), rs.getInt(4), rs.getLong(5), rs.getInt(6), rs.getString(7)));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -143,7 +143,7 @@ public class UserProfileImpl implements UserprofileDao {
 			res = statement.executeUpdate();
 			 statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -167,7 +167,7 @@ public class UserProfileImpl implements UserprofileDao {
 			statement = con.createStatement();
 			 rs = statement.executeQuery(query);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -195,7 +195,7 @@ public class UserProfileImpl implements UserprofileDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -222,7 +222,7 @@ public class UserProfileImpl implements UserprofileDao {
 				accno = rs.getLong(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -248,7 +248,7 @@ public class UserProfileImpl implements UserprofileDao {
 				pin = rs.getInt(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -275,7 +275,7 @@ public class UserProfileImpl implements UserprofileDao {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -305,7 +305,7 @@ public class UserProfileImpl implements UserprofileDao {
 				res = rSet.getInt(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -334,7 +334,7 @@ public class UserProfileImpl implements UserprofileDao {
 			res= pStatement.executeUpdate();
 			pStatement.executeUpdate("commit");
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pStatement != null) {
 				pStatement.close();
@@ -362,7 +362,7 @@ public class UserProfileImpl implements UserprofileDao {
 				return true;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pStatement != null) {
 				pStatement.close();

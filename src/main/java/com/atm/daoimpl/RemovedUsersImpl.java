@@ -30,7 +30,7 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -59,7 +59,7 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 				removedUsersModels.add(new RemovedUsersModel(resultSet.getInt(1), resultSet.getLong(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getLong(5), resultSet.getInt(6), (resultSet.getTimestamp(7)).toLocalDateTime().format(dateTimeFormatter)));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();

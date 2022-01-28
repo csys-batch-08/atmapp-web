@@ -73,7 +73,7 @@ public class MoneyTransferController extends HttpServlet {
 				resp.getWriter().println("Invalid Username or Password!!!");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

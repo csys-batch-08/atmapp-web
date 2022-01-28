@@ -93,7 +93,7 @@ try {
 	try {
 		response.sendRedirect(red);
 	} catch (IOException e1) {
-		e1.printStackTrace();
+		e1.getMessage();
 	}
 }
 	}

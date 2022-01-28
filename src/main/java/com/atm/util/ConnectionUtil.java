@@ -10,4 +10,5 @@ public class ConnectionUtil {
 		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", userName, password);
 		
 	}
+	
 }

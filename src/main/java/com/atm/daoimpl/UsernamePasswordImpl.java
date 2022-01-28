@@ -29,7 +29,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 				role = rs.getString(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -57,7 +57,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -85,7 +85,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -111,7 +111,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();

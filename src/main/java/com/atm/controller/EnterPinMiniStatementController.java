@@ -47,7 +47,7 @@ protected void service(HttpServletRequest req, HttpServletResponse res) throws S
 		}
 	} 	
 	catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}
 }
 }

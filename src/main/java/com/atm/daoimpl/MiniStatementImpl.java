@@ -39,7 +39,7 @@ public class MiniStatementImpl implements MiniStatementDao {
 				miniStatement.add(new TransActionsModel(rSet.getInt(2),(rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter),transtype));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();

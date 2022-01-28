@@ -31,7 +31,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -41,10 +41,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 					con.close();
 				}
 			}
-
-	
-		return res;
-		
+		return res;		
 	}
 
 	// Insert Data in to login table:
@@ -63,7 +60,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -93,7 +90,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			loginDetailsModels.add(new LoginDetailsModel(rSet.getInt(1), rSet.getString(2), (rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter), rSet.getString(4)));
 		}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		
 	}finally {
 		if(statement != null) {

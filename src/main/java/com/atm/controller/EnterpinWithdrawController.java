@@ -55,7 +55,7 @@ public class EnterpinWithdrawController extends HttpServlet {
 		}
 		
 		catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

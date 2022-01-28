@@ -43,7 +43,7 @@ public class MiniStatementController extends HttpServlet{
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("miniStatement.jsp");
 			requestDispatcher.forward(req, resp);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	

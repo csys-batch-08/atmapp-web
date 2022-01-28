@@ -29,7 +29,7 @@ public class TransActionsImpl {
 				res = statement.executeUpdate();
 				statement.executeUpdate(query1);
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.getMessage();
 			}finally {
 				if(statement != null) {
 					statement.close();
@@ -55,7 +55,7 @@ public class TransActionsImpl {
 				 res = statement.executeUpdate();
 				statement.executeUpdate(query1);
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.getMessage();
 			}finally {
 				if(statement != null) {
 					statement.close();
@@ -90,7 +90,7 @@ public class TransActionsImpl {
 			        finaldateString = dayString + "-" +monthString + "-" + yearString;
 			        }
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.getMessage();
 			}finally {
 				if(statement != null) {
 					statement.close();
@@ -122,7 +122,7 @@ public class TransActionsImpl {
 			        	return total;
 			        }
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.getMessage();
 			}finally {
 				if(preparedStatement != null) {
 					preparedStatement.close();
@@ -155,7 +155,7 @@ public class TransActionsImpl {
 			         finaldateString = dayString + "-" +monthString + "-" + yearString;
 			        }
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.getMessage();
 			}finally {
 				if(statement != null) {
 					statement.close();
@@ -187,7 +187,7 @@ public class TransActionsImpl {
 				        	return total;
 				        }
 					} catch (Exception e) {
-						e.printStackTrace();
+						e.getMessage();
 					}finally {
 						if(preparedStatement != null) {
 							preparedStatement.close();
