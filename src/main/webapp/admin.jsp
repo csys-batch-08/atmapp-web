@@ -139,13 +139,10 @@ a:hover {
 </head>
 <body bgcolor="blue">
 
-
 	<label id="adminlab">welcome : ${admin}</label>
-
 	<a href="register.jsp" id="adminregus">Register New User</a>
 	<br>
 	<br>
-
 	<a href="removeAccount.jsp" id="adminremuser">Remove User</a>
 	<br>
 	<br>
@@ -185,9 +182,6 @@ window.addEventListener('load', () =>{
 	},1000);
 	
 });
-
-
-
 </script>
 
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import = "java.sql.*" import = "com.atm.controller.*"%>
- <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang = "en">
@@ -24,6 +24,9 @@ font-size:30px;
 body{
 background-color: #0072B5;
 }
+#agentCaption{
+font-size:40px;
+}
 </style>
 </head>
 
@@ -33,6 +36,7 @@ background-color: #0072B5;
 	</c:if>
 	
 	<table style="width: 80%; margin-left: 100px;">
+	<caption id = "agentCaption">Agent History</caption>
 		<tr>
 			<th>Id</th>
 			<th>Money Filled</th>
