@@ -27,7 +27,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 				RequestDispatcher requestDispatcher = req.getRequestDispatcher("agentHistory.jsp");
 				requestDispatcher.forward(req, resp);
 			} catch (Exception e) {			
-				e.printStackTrace();
+				e.getMessage();
 			}	
 }
 }
