@@ -52,8 +52,7 @@ public class EnterPinDepositController extends HttpServlet {
 			
 		
 		catch (Exception e) {
-
-			e.printStackTrace();
+        e.getMessage();
 		}
 	}
 }

@@ -83,7 +83,7 @@ public class DepositController extends HttpServlet {
 		} catch (DepositLimitExceedException e) {
 			res.sendRedirect(e.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

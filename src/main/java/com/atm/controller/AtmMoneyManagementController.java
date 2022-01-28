@@ -44,7 +44,7 @@ public class AtmMoneyManagementController extends HttpServlet {
 				resp.getWriter().println("Enter Valid Amount!!");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }
