@@ -48,9 +48,7 @@ public class EnterPinDepositController extends HttpServlet {
 			}
 		} catch(DepositWrongPinException e) {
 			res.sendRedirect(e.getMessage());
-		}
-			
-		
+		}	
 		catch (Exception e) {
         e.getMessage();
 		}

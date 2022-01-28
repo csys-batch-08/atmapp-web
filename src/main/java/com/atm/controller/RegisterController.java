@@ -37,7 +37,7 @@ public class RegisterController extends HttpServlet {
 			}
 
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 		String username = req.getParameter("userreg");
 		String password = req.getParameter("passreg");
@@ -49,7 +49,7 @@ public class RegisterController extends HttpServlet {
 		try {
 			flag = userProfileImpl2.userMobileNoExistCheck(userProfileModel);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 		try {
 			if (!flag) {

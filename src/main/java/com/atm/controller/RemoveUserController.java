@@ -42,7 +42,7 @@ public class RemoveUserController extends HttpServlet {
 			UserProfileModel userprofilemodel = new UserProfileModel(user);
 			accno = userprofileimpl.getAccountNo(userprofilemodel);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 		try {
 			LoginDetailsModel loginModel = new LoginDetailsModel(user);

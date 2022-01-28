@@ -81,7 +81,7 @@ private static final long serialVersionUID = 1L;
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		// invalid user redirect:
 try {
