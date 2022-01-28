@@ -39,7 +39,6 @@ a:hover {
 	<c:if test="${invalidhomepin != null}">
 	<h1 id="invalpin">Invalid Pin</h1>
 	</c:if>
-	<marquee id="welmar" scrollamount="20">STATE BANK OF INDIA</marquee>
 	<hr>
 	<a href="withdraw.jsp" id="withdraw" class="atag">Withdraw</a>
 	<a href="deposit.jsp" id="deposit" class="atag">Deposit</a>

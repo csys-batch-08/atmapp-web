@@ -106,7 +106,7 @@ button:hover{
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 	<fieldset>
-		<h2>Remove User : </h2>
+		<legend>Remove User : </legend>
 		<form action="removeaccserv" method="post">
 			<label class="form-label">Enter User : </label><br> <input type="text"
 				name="remusername" class="form-control" pattern="[A-Z][a-zA-Z]{3,20}"

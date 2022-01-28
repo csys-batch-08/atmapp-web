@@ -170,7 +170,7 @@ button:hover{
 	</fieldset>
 	</div>
 	
-<marquee scrollamount="10">For Security Reason kindly change your Password in a circle of 180 days,Contact 18000189786 for help,Stay home and stay safe,Avoid visiting Bank in Pandemic situation,Bank never ask otp/card details be aware of Fraud Calls!!,please dont click any Anonymus link in the name of STATE BANK.</marquee>
+
 <div id = "logintxt">
 <h3>Be aware of fraudulent emails offering free gifts and rewards. Scammers send these emails to extract money from your account via your personal details. Do not share your bank details with anyone. SBI never asks for your UPI PIN or Card Details.</h3>
 </div>
