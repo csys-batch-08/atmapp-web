@@ -19,7 +19,7 @@ import com.atm.models.UserProfileModel;
 @WebServlet("/depserv")
 public class DepositController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		try {
 		UserProfileImpl userprofileimpl = new UserProfileImpl();

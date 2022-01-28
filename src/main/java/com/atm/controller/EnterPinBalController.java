@@ -22,6 +22,7 @@ public class EnterPinBalController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 		HttpSession session = req.getSession();
+		String invalidPinLockString = "invalidpinlock";
 		String user = session.getAttribute("user").toString();
 		int pin = Integer.parseInt(req.getParameter("balpin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
@@ -33,11 +34,11 @@ public class EnterPinBalController extends HttpServlet {
 					res.sendRedirect("balanceservlet");
 				} else {
 					// invalid pin section:
-					int invalid = (int) session.getAttribute("invalidpinlock");
+					int invalid = (int) session.getAttribute(invalidPinLockString);
 					invalid++;
 					if (invalid < 3) {
-						session.removeAttribute("invalidpinlock");
-						session.setAttribute("invalidpinlock", invalid);
+						session.removeAttribute(invalidPinLockString);
+						session.setAttribute(invalidPinLockString, invalid);
 						session.setAttribute("invalidhomepin", true);
 						res.sendRedirect("welcomePage.jsp");
 					} else {
