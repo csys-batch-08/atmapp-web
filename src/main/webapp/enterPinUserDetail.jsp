@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +66,6 @@ background-size: cover;
 	<h1>Enter Pin</h1>
 	<form action="Enterpinuserdetserv" method = "post">
 		<input type="password" name="userdetailpin" id="withpinid" pattern="[0-9]{4}" title = "enter your pin 0-9 in length of four" required autofocus>
-
 	</form>
 <h1 id = "timehead">00:00</h1>
 </body>

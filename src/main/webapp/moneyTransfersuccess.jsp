@@ -66,7 +66,7 @@ color:white;
 
 <h1 id = "succhead">You Have Successfully Transfered ${moneytransfamount} to ${moneytransfname}</h1>
 <label>Your Balance is ${userbalint}</label>
-<form action = "Welcomepage.jsp">
+<form action = "welcomePage.jsp">
 <button type = "submit">Home</button>
 </form>
 <h1 id = "timehead">00:00</h1>

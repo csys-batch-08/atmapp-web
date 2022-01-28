@@ -94,7 +94,7 @@ top:0px;
 	
 	<h1 id = "agenthead">welcome :
 	${agent}</h1>
-<a href = "Depositagent.jsp" id = "depagent">Deposit Money To ATM</a><br>
+<a href = "depositAgent.jsp" id = "depagent">Deposit Money To ATM</a><br>
 <a href = "agenthistoryservlet" id = "historyagent">View History</a>
 <a href="LogOutAgent.jsp" id="logout" class="atag">Logout</a>
 <h1 id = "timehead">00:00</h1>

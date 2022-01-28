@@ -64,7 +64,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("Welcomepage.jsp");
+			window.location.assign("welcomePage.jsp");
 		}
 	},1000);
 	

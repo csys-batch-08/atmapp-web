@@ -117,7 +117,7 @@ button:hover{
 		<h1 id = "reglab">Pin Must Match!!</h1>
 	</fieldset>
 <h1 id = "timehead">00:00</h1>
-<form action="Welcomepage.jsp">
+<form action="welcomePage.jsp">
 		<button type="submit" id = "homebt">Home</button>
 	</form>
 </body>

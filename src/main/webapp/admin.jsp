@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.atm.controller.* "%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,14 +142,14 @@ a:hover {
 
 	<label id="adminlab">welcome : ${admin}</label>
 
-	<a href="Register.jsp" id="adminregus">Register New User</a>
+	<a href="register.jsp" id="adminregus">Register New User</a>
 	<br>
 	<br>
 
-	<a href="Removeacc.jsp" id="adminremuser">Remove User</a>
+	<a href="removeAccount.jsp" id="adminremuser">Remove User</a>
 	<br>
 	<br>
-	<a href="Userdetailsadmingetuser.jsp" id="adminuserdet">User
+	<a href="userDetailsAdminGetUser.jsp" id="adminuserdet">User
 		Details</a>
 	<a href="Logoutadmin.jsp" id="logoutatag" class="btn btn-danger"
 		class="left">LogOut</a>

@@ -21,6 +21,7 @@ public class DepositController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		try {
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		TransActionsModel transActionsModel = new TransActionsModel();
 		TransActionsImpl transActionsImpl = new TransActionsImpl();
@@ -29,7 +30,6 @@ public class DepositController extends HttpServlet {
 		int eamount = (int) session.getAttribute("depamount");
 		UserProfileModel userprofilemodelaccno = new UserProfileModel(uname);
 		Long accno;
-		try {
 //get acc no:
 			accno = userprofileimpl.getAccountNo(userprofilemodelaccno);
 			transActionsModel.setUserAccnoLong(accno);

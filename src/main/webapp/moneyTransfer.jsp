@@ -113,7 +113,7 @@ button:hover{
 			<button type="submit" id="formbt">TRANSFER</button>
 		</form>
 	</fieldset>
-	<form action="Welcomepage.jsp">
+	<form action="welcomePage.jsp">
 		<button type="submit" id="homebt" class="btn btn-danger">Home</button>
 	</form>
 <h1 id = "timehead">00:00</h1>

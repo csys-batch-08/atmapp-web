@@ -22,7 +22,7 @@ public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		Long accno = 0l;

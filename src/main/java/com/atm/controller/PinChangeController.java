@@ -18,13 +18,13 @@ public class PinChangeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int pinChanged = -1;
+		try {
 		UserProfileImpl userProfileImpl = new UserProfileImpl();		
 		int pin = Integer.parseInt(req.getParameter("pininp"));
 		HttpSession session = req.getSession();
 		String user = session.getAttribute("user").toString();
-		int pinChanged = -1;
-		try {
 			UserProfileModel userProfileModel = new UserProfileModel(pin,user);
 			pinChanged = userProfileImpl.updateUserPin(userProfileModel);
 		} catch (Exception e) {

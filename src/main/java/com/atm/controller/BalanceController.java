@@ -20,12 +20,12 @@ public class BalanceController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	try {
 	HttpSession session = req.getSession();
 	String user = session.getAttribute("user").toString();
 	UserProfileImpl userProfiledao = new UserProfileImpl();
 	UserProfileModel userprofilepojo = new UserProfileModel(user);
-	try {
 		int balance = userProfiledao.getUserBalance(userprofilepojo);
 		req.setAttribute("balanceInt", balance);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("balance.jsp");

@@ -21,7 +21,7 @@ public class UserDetailsController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	HttpSession session = req.getSession();
 	String userName = session.getAttribute("user").toString();
 	UserProfileModel userprofilepojo = new UserProfileModel(userName);
@@ -30,8 +30,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		List<UserProfileModel> userProfileModels = userProfileImpl.fetchUserDetails(userprofilepojo);
 		req.setAttribute("userprofilelistobjuser", userProfileModels);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("userDetails.jsp");
-		requestDispatcher.forward(req, resp);
-		
+		requestDispatcher.forward(req, resp);		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}

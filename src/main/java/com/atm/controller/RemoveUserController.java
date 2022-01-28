@@ -28,16 +28,17 @@ public class RemoveUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		LoginDetailsImpl loginDetailsimpl = new LoginDetailsImpl();
 		TransActionsImpl transActionsImpl = new TransActionsImpl();
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		RemovedUsersImpl removedUsersimpl = new RemovedUsersImpl();
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
-		String user = req.getParameter("remusername");
-		int id = Integer.parseInt(req.getParameter("remuserid"));
 		Long accno = -1l;
+		String user = req.getParameter("remusername");
+		int id = -1;
 		try {
+		 id = Integer.parseInt(req.getParameter("remuserid"));
 			UserProfileModel userprofilemodel = new UserProfileModel(user);
 			accno = userprofileimpl.getAccountNo(userprofilemodel);
 		} catch (Exception e1) {

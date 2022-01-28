@@ -112,14 +112,14 @@ body {
 
 	<h1 id="headwith">Welcome&ensp; ${user}</h1>
 	<label id="labwith">Enter Amount To Deposit</label>
-	<form action="Enterpindep.jsp" id="formwith" autocomplete="off">
+	<form action="enterPinDeposit.jsp" id="formwith" autocomplete="off">
 		<br> <input type="text" name="inpdep" id="withinp" required
 			pattern="[1-9][0-9]*[0][0]" minlength="3" maxlength="7"
 			title="Enter Valid Amount" onclick="invalabfn()"
 			onmouseover="amountexceed()" onmouseenter="remainingamount()"
 			autofocus>
 	</form>
-	<form action="Welcomepage.jsp">
+	<form action="welcomePage.jsp">
 		<button type="submit" class="btn btn-danger">Home</button>
 	</form>
 	<h1 id="timehead">00:00</h1>

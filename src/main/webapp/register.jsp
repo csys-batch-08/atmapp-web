@@ -170,7 +170,7 @@ button:hover{
 		return true;
 	}
 	
-	//hide pssword must be same label:
+	//hide password must be same label:
 		function invalabfn() {
 		let invallab = document.getElementById("reglab");
 		invallab.style.visibility = "hidden";

@@ -22,17 +22,16 @@ public class LoginValidationController extends HttpServlet {
 private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-		
+	protected void service(HttpServletRequest request, HttpServletResponse response) {
+		boolean flag = false;
+		try {
 		String userName = request.getParameter("username");
 		String passwordParameter = request.getParameter("password");
-		boolean flag = false;
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
 		LoginDetailsImpl logindetailsimpl = new LoginDetailsImpl();
 		HttpSession session = request.getSession();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 		InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(userName);
-		try {
 			UsernamePasswordModel usernamepassmodel = new UsernamePasswordModel(userName, passwordParameter);
 			String role = userimpl.fetchRole(usernamepassmodel);
 			//check if user:

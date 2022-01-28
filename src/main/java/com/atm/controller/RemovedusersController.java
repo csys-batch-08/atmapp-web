@@ -20,7 +20,7 @@ public class RemovedusersController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	RemovedUsersImpl removedusersdao = new RemovedUsersImpl();
 	try {
 		List<RemovedUsersModel> removedUsersModels = removedusersdao.fetchRemovedUsers();

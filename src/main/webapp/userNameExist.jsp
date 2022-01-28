@@ -44,7 +44,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("Register.jsp");
+			window.location.assign("register.jsp");
 		}
 	},1000);
 	

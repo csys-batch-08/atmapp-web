@@ -45,7 +45,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("Admin.jsp");
+			window.location.assign("admin.jsp");
 		}
 	},1000);
 	

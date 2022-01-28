@@ -87,12 +87,11 @@ body {
 	</c:if>
 
 	<h1 id="headbal">Welcome&ensp; ${user}</h1>
-
 	<h1 id="headbal1">Your Balance :</h1>
 	<br>
 
 	<label id="ballab">${balanceInt}</label>
-	<form action="Welcomepage.jsp">
+	<form action="welcomePage.jsp">
 		<button type="submit" class="btn btn-danger">Home</button>
 	</form>
 	<h1 id="timehead">00:00</h1>

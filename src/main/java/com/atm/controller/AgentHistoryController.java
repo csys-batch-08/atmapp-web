@@ -19,15 +19,14 @@ public class AgentHistoryController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
+	try {
 	AtmMoneyManagementImpl atmMoneyManagementimpl = new AtmMoneyManagementImpl();
-			try {
 				List<AtmMoneyManagementModel> atmMoneyManagementModels = atmMoneyManagementimpl.showRefillHistory();
 				req.setAttribute("agenthistoryobj", atmMoneyManagementModels);
 				RequestDispatcher requestDispatcher = req.getRequestDispatcher("agentHistory.jsp");
 				requestDispatcher.forward(req, resp);
-			} catch (Exception e) {
-				
+			} catch (Exception e) {			
 				e.printStackTrace();
 			}	
 }

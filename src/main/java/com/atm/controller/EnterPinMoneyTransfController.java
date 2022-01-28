@@ -17,13 +17,13 @@ import com.atm.models.InvalidPinLockModel;
 public class EnterPinMoneyTransfController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		try {
 		HttpSession session = req.getSession();
 		String user = session.getAttribute("user").toString();
 		int pin = Integer.parseInt(req.getParameter("moneytransfpin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl(); 
-		try {
 			int userpin = userprofileimpl.getUserPin(user);
 			if (userpin > 0) {
 				if (userpin == pin) {

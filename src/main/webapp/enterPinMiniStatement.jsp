@@ -66,7 +66,6 @@ background-size: cover;
 	<h1>Enter Pin</h1>
 	<form action="Enterpinminiserv" method = "post">
 		<input type="password" name="minipin" id="withpinid" pattern="[0-9]{4}" title = "enter your pin 0-9 in length of four" required autofocus>
-
 	</form>
 <h1 id = "timehead">00:00</h1>
 </body>
