@@ -26,9 +26,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	UserProfileImpl userProfiledao = new UserProfileImpl();
 	UserProfileModel userprofilepojo = new UserProfileModel(user);
 	try {
-		int balance = userProfiledao.getbal(userprofilepojo);
+		int balance = userProfiledao.getUserBalance(userprofilepojo);
 		req.setAttribute("balanceInt", balance);
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("Balance.jsp");
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("balance.jsp");
 		requestDispatcher.forward(req, resp);
 	} catch (Exception e) {
 

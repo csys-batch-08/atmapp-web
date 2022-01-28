@@ -7,6 +7,6 @@ public class WithdrawWrongPinException extends Exception{
 @Override
 public String getMessage() {
 	
-	return "InvalidPin.jsp";
+	return "invalidPin.jsp";
 }
 }

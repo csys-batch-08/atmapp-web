@@ -20,27 +20,26 @@ public class MoneyTransferController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
 		String username = req.getParameter("moneytransfname");
 		Long accountno = Long.parseLong(req.getParameter("moneytransfaccno"));
 		int eamount = Integer.parseInt(req.getParameter("moneytransfamount"));
-
 		TransActionsModel transActionsModel = new TransActionsModel();
 		TransActionsImpl transActionsImpl = new TransActionsImpl();
 		UserProfileModel userprofilemodel = new UserProfileModel(username, accountno);
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		HttpSession session = req.getSession();
 		String user = session.getAttribute("user").toString();
-		try {
 			// fetch sender balance:
-			int bal = userprofileimpl.moneytransf(userprofilemodel);
+			int bal = userprofileimpl.moneyTransfer(userprofilemodel);
 			if (bal >= 0) {
 				UserProfileModel userprofileModelGetBalance = new UserProfileModel(user);
-				int userbal = userprofileimpl.getbal(userprofileModelGetBalance);
+				int userbal = userprofileimpl.getUserBalance(userprofileModelGetBalance);
 				if (eamount <= userbal && eamount > 0 && eamount <= 30000) {
 					int withamount = userbal - eamount;
 					UserProfileModel userprofileModelInsertBalance = new UserProfileModel(user, withamount);
-					userprofileimpl.insbal(userprofileModelInsertBalance);
-					Long useraccountno = userprofileimpl.getaccno(userprofileModelGetBalance);
+					userprofileimpl.insertUserBalance(userprofileModelInsertBalance);
+					Long useraccountno = userprofileimpl.getAccountNo(userprofileModelGetBalance);
 					transActionsModel.setUserAccnoLong(useraccountno);
 					transActionsModel.setTransActionAmount(-eamount);
 					transActionsModel.setTransActionType("withdraw");
@@ -48,11 +47,11 @@ public class MoneyTransferController extends HttpServlet {
 					transActionsImpl.insertTransAction(transActionsModel);
 					// fetch receiver balance:
 					UserProfileModel userprofileModelReceiverBalance = new UserProfileModel(username);
-					int userDepositBalance = userprofileimpl.getbal(userprofileModelReceiverBalance);
+					int userDepositBalance = userprofileimpl.getUserBalance(userprofileModelReceiverBalance);
 					// add received amount:
 					int depositAmount = userDepositBalance + eamount;
 					UserProfileModel userprofileModelReceivedAmount = new UserProfileModel(username, depositAmount);
-					 userprofileimpl.insbal(userprofileModelReceivedAmount);
+					 userprofileimpl.insertUserBalance(userprofileModelReceivedAmount);
 						transActionsModel.setUserAccnoLong(accountno);
 						transActionsModel.setTransActionAmount(eamount);
 						transActionsModel.setTransActionType("deposit");
@@ -63,9 +62,9 @@ public class MoneyTransferController extends HttpServlet {
 							session.setAttribute("moneytransfamount", eamount);
 							UserProfileModel userprofilepojo = new UserProfileModel(user);
 							UserProfileImpl userprofiledao = new UserProfileImpl();
-							int userNewBalance = userprofiledao.getbal(userprofilepojo);
+							int userNewBalance = userprofiledao.getUserBalance(userprofilepojo);
 							session.setAttribute("userbalint", userNewBalance);
-							resp.sendRedirect("Moneytransfersucc.jsp");
+							resp.sendRedirect("moneyTransfersuccess.jsp");
 						}
 				} else {
 					resp.getWriter().println("Enter Valid Amount!!!");

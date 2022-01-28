@@ -31,7 +31,7 @@ public class EnterpinWithdrawController extends HttpServlet {
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 		try {
-			int userpin = userprofileimpl.getuserpin(user);
+			int userpin = userprofileimpl.getUserPin(user);
 			if (userpin > 0) {
 				if (userpin == pin) {
 					res.sendRedirect("withdrawserv");
@@ -46,7 +46,7 @@ public class EnterpinWithdrawController extends HttpServlet {
 					}else {
 						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
 						invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
-						res.sendRedirect("InvalidPinMax.jsp");
+						res.sendRedirect("invalidPinMax.jsp");
 					}
 				}
 			}

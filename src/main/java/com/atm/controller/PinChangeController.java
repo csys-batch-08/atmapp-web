@@ -26,12 +26,12 @@ public class PinChangeController extends HttpServlet {
 		int pinChanged = -1;
 		try {
 			UserProfileModel userProfileModel = new UserProfileModel(pin,user);
-			pinChanged = userProfileImpl.updatepin(userProfileModel);
+			pinChanged = userProfileImpl.updateUserPin(userProfileModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if (pinChanged > 0) {
-			resp.sendRedirect("Pinchangesucc.jsp");
+			resp.sendRedirect("pinChangeSuccess.jsp");
 		} else {
 			resp.getWriter().println("Something went wrong try again!!!");
 		}

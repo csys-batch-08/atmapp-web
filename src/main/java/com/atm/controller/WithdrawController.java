@@ -33,7 +33,7 @@ public class WithdrawController extends HttpServlet {
 		UserProfileModel userprofileModelGetAccno = new UserProfileModel(userName);
 		Long accno;
 		try {
-			accno = userprofileimpl.getaccno(userprofileModelGetAccno);
+			accno = userprofileimpl.getAccountNo(userprofileModelGetAccno);
 			transActionsModel.setUserAccnoLong(accno);
 			int withdrawSum = transActionsImpl.checkwithdrawlimit(transActionsModel);
 			int withdrawCheck = 0;
@@ -46,13 +46,13 @@ public class WithdrawController extends HttpServlet {
 					Long atmPreviousBalance = atmMoneyManagementimpl.atmPreviousBalance();
 					if (enteredAmount <= atmPreviousBalance) {
 						UserProfileModel userprofilemodel = new UserProfileModel(userName);
-						int userBalance = userprofileimpl.getbal(userprofilemodel);
+						int userBalance = userprofileimpl.getUserBalance(userprofilemodel);
 						if (enteredAmount <= userBalance) {
 							int newbal = userBalance - enteredAmount;
 							UserProfileModel userprofileModelInsertBalance = new UserProfileModel(userName, newbal);
-							userprofileimpl.insbal(userprofileModelInsertBalance);
+							userprofileimpl.insertUserBalance(userprofileModelInsertBalance);
 							UserProfileModel userprofilemodel3 = new UserProfileModel(userName, newbal);
-							Long acc = userprofileimpl.getaccno(userprofilemodel3);
+							Long acc = userprofileimpl.getAccountNo(userprofilemodel3);
 							transActionsModel.setUserAccnoLong(acc);
 							transActionsModel.setTransActionAmount(-enteredAmount);
 							transActionsModel.setTransActionType("withdraw");
@@ -63,7 +63,7 @@ public class WithdrawController extends HttpServlet {
 							Long dedbaL1 = atmMoneyManagementimpl.atmPreviousBalance()-enteredAmount;
 							AtmMoneyManagementModel atmMoneyManagement = new AtmMoneyManagementModel(dedbaL1);
 							atmMoneyManagementimpl.updateNewAtmBalance(atmMoneyManagement);
-							res.sendRedirect("Withdrawsucc.jsp");
+							res.sendRedirect("withdrawSuccess.jsp");
 						} else {
 							throw new LowBalanceException();
 						}
@@ -74,13 +74,13 @@ public class WithdrawController extends HttpServlet {
 					int remainingWithdraw = (10000 - withdrawSum);
 					if (remainingWithdraw > 0) {
 						session.setAttribute("remainingWithdraw", remainingWithdraw);
-						res.sendRedirect("WithdrawRemainingAmount.jsp");
+						res.sendRedirect("withdrawRemainingAmount.jsp");
 					} else {
-						res.sendRedirect("WithdrawLimitExceed.jsp");
+						res.sendRedirect("withdrawLimitExceed.jsp");
 					}
 				}
 			} else {
-				res.sendRedirect("WithdrawEntAmountExcceed.jsp");
+				res.sendRedirect("withdrawEnteredAmountExcceed.jsp");
 			}
 		} catch (AtmOutOfCashException e) {
 			res.sendRedirect(e.getMessage());

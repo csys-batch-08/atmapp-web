@@ -28,9 +28,9 @@ public class RegisterController extends HttpServlet {
 		Long accno = 0l;
 		int userpin = 0;
 		try {
-			if (userprofileimpl.getusermaxacc() > 0 && userprofileimpl.getusermaxpin() > 0) {
-				accno = userprofileimpl.getusermaxacc() + 1;
-				userpin = userprofileimpl.getusermaxpin() + 1;
+			if (userprofileimpl.getUserMaximumAccountNo() > 0 && userprofileimpl.getUserMaximumPin() > 0) {
+				accno = userprofileimpl.getUserMaximumAccountNo() + 1;
+				userpin = userprofileimpl.getUserMaximumPin() + 1;
 			} else {
 				accno = 12345678901l;
 				userpin = 1234;
@@ -47,30 +47,30 @@ public class RegisterController extends HttpServlet {
 		UserProfileImpl userProfileImpl2 = new UserProfileImpl();
 		boolean flag = false;
 		try {
-			flag = userProfileImpl2.usermobileexist(userProfileModel);
+			flag = userProfileImpl2.userMobileNoExistCheck(userProfileModel);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 		try {
 			if (!flag) {
 				UsernamePasswordModel usernamepassmodel = new UsernamePasswordModel(username, password, role);
-				int ins = userimpl.insusernamepass(usernamepassmodel);
+				int ins = userimpl.insertUsernamePasswords(usernamepassmodel);
 				if (ins > 0) {
 					if (role.equals("admin")) {
 						HttpSession session = req.getSession();
 						session.setAttribute("adminreg", username);
-						resp.sendRedirect("Adminregsucc.jsp");
+						resp.sendRedirect("adminRegisterSuccess.jsp");
 					} else if (role.equals("agent")) {
 						HttpSession session = req.getSession();
 						session.setAttribute("agentreg", username);
-						resp.sendRedirect("Agentregsucc.jsp");
+						resp.sendRedirect("agentRegisterSuccess.jsp");
 					} else {
 						UserProfileModel userprofilemodel = new UserProfileModel(username, accno, mobno, userpin);
-						int profins = userprofileimpl.insuserprofile(userprofilemodel);
+						int profins = userprofileimpl.insertUserProfile(userprofilemodel);
 						if (profins > 0) {
 							HttpSession session = req.getSession();
 							session.setAttribute("reguser", username);
-							resp.sendRedirect("Registeruserprofilesucc.jsp");
+							resp.sendRedirect("registerUserProfileSuccess.jsp");
 						} else {
 							throw new MobileNoAlreadyRegException();
 						}

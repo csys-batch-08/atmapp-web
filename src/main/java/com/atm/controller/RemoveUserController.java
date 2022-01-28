@@ -39,7 +39,7 @@ public class RemoveUserController extends HttpServlet {
 		Long accno = -1l;
 		try {
 			UserProfileModel userprofilemodel = new UserProfileModel(user);
-			accno = userprofileimpl.getaccno(userprofilemodel);
+			accno = userprofileimpl.getAccountNo(userprofilemodel);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -52,7 +52,7 @@ public class RemoveUserController extends HttpServlet {
 				int transactionRemove = transActionsImpl.removeTransActions(transActionsModel);
 				if (transactionRemove >= 0) {					
 						UserProfileModel userprofilemodel = new UserProfileModel(user);
-						List<UserProfileModel> userProfileModels = userprofileimpl.getuserdetails(userprofilemodel);						
+						List<UserProfileModel> userProfileModels = userprofileimpl.fetchUserDetails(userprofilemodel);						
 							int lastbalance = userProfileModels.get(0).getBalance();
 							Long mobno = userProfileModels.get(0).getMobno();
 							int userpin = userProfileModels.get(0).getUserpin();
@@ -60,20 +60,20 @@ public class RemoveUserController extends HttpServlet {
 									userpin);
 							removedUsersimpl.insertRemovedUsers(removedUsersModel);						
 					UserProfileModel userprofileModelRemoveUserProfile = new UserProfileModel(accno, id);
-					int userprofrem = userprofileimpl.removeuserprof(userprofileModelRemoveUserProfile);
+					int userprofrem = userprofileimpl.removeUserProfile(userprofileModelRemoveUserProfile);
 					if (userprofrem > 0) {
 						UsernamePasswordModel usernamepassmodel = new UsernamePasswordModel(user);
-						int userrem = userimpl.removeuser(usernamepassmodel);
+						int userrem = userimpl.removeUser(usernamepassmodel);
 						if (userrem > 0) {
-							resp.sendRedirect("Userrem.jsp");
+							resp.sendRedirect("removeUser.jsp");
 						} else {
 							resp.getWriter().println("Invalid UserName");
 						}
 					} else {
 						UsernamePasswordModel usernamepassmodel = new UsernamePasswordModel(user);
-						int userrem = userimpl.removeuser(usernamepassmodel);
+						int userrem = userimpl.removeUser(usernamepassmodel);
 						if (userrem > 0) {
-							resp.sendRedirect("Userrem.jsp");
+							resp.sendRedirect("removeUser.jsp");
 						} else {
 							throw new InvalidUsernameAdminException();
 						}

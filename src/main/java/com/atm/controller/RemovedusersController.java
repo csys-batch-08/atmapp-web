@@ -25,7 +25,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	try {
 		List<RemovedUsersModel> removedUsersModels = removedusersdao.fetchRemovedUsers();
 		req.setAttribute("removeduserslist", removedUsersModels);
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("Removedusers.jsp");
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("removedUsers.jsp");
 		requestDispatcher.forward(req, resp);
 	} catch (SQLException e) {
 		e.printStackTrace();

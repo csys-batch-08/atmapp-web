@@ -26,7 +26,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse res) throws Se
 	UserProfileImpl userprofileimpl = new UserProfileImpl();
 	InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl(); 
 	try {
-		int userpin = userprofileimpl.getuserpin(user);
+		int userpin = userprofileimpl.getUserPin(user);
 		if (userpin > 0) {
 			if (userpin == pin) {
 				res.sendRedirect("minisateserv");
@@ -37,11 +37,11 @@ protected void doPost(HttpServletRequest req, HttpServletResponse res) throws Se
 					session.removeAttribute("invalidpinlock");
 				session.setAttribute("invalidpinlock", invalid);
 				session.setAttribute("invalidhomepin", true);
-				res.sendRedirect("Welcomepage.jsp");
+				res.sendRedirect("welcomePage.jsp");
 				}else {
 					InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
 					invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
-					res.sendRedirect("InvalidPinMax.jsp");
+					res.sendRedirect("invalidPinMax.jsp");
 				}
 			}
 		}

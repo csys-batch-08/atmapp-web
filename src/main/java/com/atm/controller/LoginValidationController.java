@@ -34,7 +34,7 @@ private static final long serialVersionUID = 1L;
 		InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(userName);
 		try {
 			UsernamePasswordModel usernamepassmodel = new UsernamePasswordModel(userName, passwordParameter);
-			String role = userimpl.getrole(usernamepassmodel);
+			String role = userimpl.fetchRole(usernamepassmodel);
 			//check if user:
 			if (role != null) {
 				if (role.equals("user")) {
@@ -47,7 +47,7 @@ private static final long serialVersionUID = 1L;
 					logindetailsimpl.insertLoginDetails(loginmodel);
 					flag = true;
 					session.setAttribute("user", userName);
-					response.sendRedirect("Welcomepage.jsp");
+					response.sendRedirect("welcomePage.jsp");
 				}else {
 					//fetch minutes:
 					int retriveat = invalidPinLockDaoimpl.accountLockReleaseAt(invalidPinLockModel);
@@ -60,10 +60,10 @@ private static final long serialVersionUID = 1L;
 						logindetailsimpl.insertLoginDetails(loginmodel);
 						flag = true;
 						session.setAttribute("user", userName);
-						response.sendRedirect("Welcomepage.jsp");
+						response.sendRedirect("welcomePage.jsp");
 					}else {
 						flag = true;
-						response.sendRedirect("InvalidPinMax.jsp");
+						response.sendRedirect("invalidPinMax.jsp");
 					}
 				}
 				}
@@ -72,13 +72,13 @@ private static final long serialVersionUID = 1L;
 					logindetailsimpl.insertLoginDetails(loginmodel);
 					flag = true;
 					session.setAttribute("admin", userName);
-					response.sendRedirect("Admin.jsp");
+					response.sendRedirect("admin.jsp");
 				}else if(role.equals("agent")) {
 					LoginDetailsModel loginmodel = new LoginDetailsModel(userName, role);
 					logindetailsimpl.insertLoginDetails(loginmodel);
 					flag = true;
 					session.setAttribute("agent", userName);
-					response.sendRedirect("Agent.jsp");
+					response.sendRedirect("agent.jsp");
 				}
 			}
 		} catch (Exception e) {

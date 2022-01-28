@@ -26,7 +26,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		try {
 			List<LoginDetailsModel> loginDetailsModels = logindetailsdao.fetchLoginDetails();
 			req.setAttribute("logindetailsobj", loginDetailsModels);
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("Logindetails.jsp");
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("loginDetails.jsp");
 			requestDispatcher.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();

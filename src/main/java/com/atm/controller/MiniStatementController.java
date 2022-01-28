@@ -36,11 +36,11 @@ public class MiniStatementController extends HttpServlet{
 		}
 		UserProfileImpl userProfileImpl = new UserProfileImpl();
 		UserProfileModel userprofilepojo = new UserProfileModel(user);
-			Long accno = userProfileImpl.getaccno(userprofilepojo);
+			Long accno = userProfileImpl.getAccountNo(userprofilepojo);
 			MiniStatementImpl miniStatementImpl = new MiniStatementImpl();
 			List<TransActionsModel> ministatementobj = miniStatementImpl.fetchMiniStatement(accno);
 			req.setAttribute("ministatementjspobj", ministatementobj);
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("Ministatement.jsp");
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("miniStatement.jsp");
 			requestDispatcher.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -13,7 +13,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 	Scanner sc = new Scanner(System.in);
 
 	// Get Role:
-	public String getrole(UsernamePasswordModel usernamepasspojo) throws SQLException {
+	public String fetchRole(UsernamePasswordModel usernamepasspojo) throws SQLException {
 
 		String role = null;
 		Connection con = null;
@@ -43,7 +43,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 
 	
 	// password change:
-	public int pinchange(UsernamePasswordModel usernamepasspojo) throws SQLException {
+	public int userPinChange(UsernamePasswordModel usernamepasspojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int res = -1;
@@ -70,7 +70,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 	}
 
 	// insert User name password:
-	public int insusernamepass(UsernamePasswordModel usernamepasspojo) throws SQLException {
+	public int insertUsernamePasswords(UsernamePasswordModel usernamepasspojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int res = -1;
@@ -98,7 +98,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 	}
 
 	// remove account:
-	public int removeuser(UsernamePasswordModel usernamepasspojo) throws SQLException {
+	public int removeUser(UsernamePasswordModel usernamepasspojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
 		PreparedStatement statement = null;

@@ -20,14 +20,14 @@ public class EnterPinBalController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		try {
 		HttpSession session = req.getSession();
 		String user = session.getAttribute("user").toString();
 		int pin = Integer.parseInt(req.getParameter("balpin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
-		try {
 			// fetch user pin from table:
-			int userpin = userprofileimpl.getuserpin(user);
+			int userpin = userprofileimpl.getUserPin(user);
 			if (userpin > 0) {
 				if (userpin == pin) {
 					res.sendRedirect("balanceservlet");
@@ -39,13 +39,13 @@ public class EnterPinBalController extends HttpServlet {
 						session.removeAttribute("invalidpinlock");
 						session.setAttribute("invalidpinlock", invalid);
 						session.setAttribute("invalidhomepin", true);
-						res.sendRedirect("Welcomepage.jsp");
+						res.sendRedirect("welcomePage.jsp");
 					} else {
 						// invalid pin entry more than three time:
 						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
 						// insert data in invalidpinlock table:
 						invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
-						res.sendRedirect("InvalidPinMax.jsp");
+						res.sendRedirect("invalidPinMax.jsp");
 					}
 				}
 			}

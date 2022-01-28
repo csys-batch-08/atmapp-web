@@ -41,16 +41,16 @@ a:hover {
 	</c:if>
 	<marquee id="welmar" scrollamount="20">STATE BANK OF INDIA</marquee>
 	<hr>
-	<a href="Withdraw.jsp" id="withdraw" class="atag">Withdraw</a>
-	<a href="Deposit.jsp" id="deposit" class="atag">Deposit</a>
-	<a href="EnterPinBal.jsp" id="balance" class="atag">Balance</a>
-	<a href="EnterPinuserDetail.jsp" id="userdetails" class="atag">User
+	<a href="withdraw.jsp" id="withdraw" class="atag">Withdraw</a>
+	<a href="deposit.jsp" id="deposit" class="atag">Deposit</a>
+	<a href="enterPinBalance.jsp" id="balance" class="atag">Balance</a>
+	<a href="enterPinUserDetail.jsp" id="userdetails" class="atag">User
 		Details</a>
-	<a href="EnterPinMoneyTransf.jsp" id="moneytransfer" class="atag">Money
+	<a href="enterPinMoneyTransfer.jsp" id="moneytransfer" class="atag">Money
 		Transfer</a>
-	<a href="EnterPinMiniState.jsp" id="ministatement" class="atag">Mini
+	<a href="enterPinMiniStatement.jsp" id="ministatement" class="atag">Mini
 		Statement</a>
-	<a href="Pinchange.jsp" id="pinchange" class="atag">Pin Change</a>
+	<a href="pinChange.jsp" id="pinchange" class="atag">Pin Change</a>
 	<a href="Logout.jsp" id="logout" class="atag">Logout</a>
 	<h1 id="timehead">00:00</h1>
 </body>

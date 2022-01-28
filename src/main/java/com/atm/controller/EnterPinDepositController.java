@@ -21,13 +21,13 @@ public class EnterPinDepositController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		try {
 		HttpSession session = req.getSession();
 		String user = session.getAttribute("user").toString();
 		int pin = Integer.parseInt(req.getParameter("deppin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
-		try {
-			int userpin = userprofileimpl.getuserpin(user);
+			int userpin = userprofileimpl.getUserPin(user);
 			if (userpin > 0) {
 				if (userpin == pin) {
 					res.sendRedirect("depserv");
@@ -42,7 +42,7 @@ public class EnterPinDepositController extends HttpServlet {
 					}else {
 						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
 						invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
-						res.sendRedirect("InvalidPinMax.jsp");
+						res.sendRedirect("invalidPinMax.jsp");
 					}
 				}
 			}

@@ -1,5 +1,4 @@
-<%@page import="com.atm.daoimpl.UserProfileImpl"%>
-<%@page import="com.atm.models.UserProfileModel"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
 <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>

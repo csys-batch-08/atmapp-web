@@ -5,6 +5,6 @@ public class DepositWrongPinException extends Exception{
 
 @Override
 public String getMessage() {
-	return "InvalidPin.jsp";
+	return "invalidPin.jsp";
 }
 }

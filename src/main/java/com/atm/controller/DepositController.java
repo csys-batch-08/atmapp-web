@@ -31,7 +31,7 @@ public class DepositController extends HttpServlet {
 		Long accno;
 		try {
 //get acc no:
-			accno = userprofileimpl.getaccno(userprofilemodelaccno);
+			accno = userprofileimpl.getAccountNo(userprofilemodelaccno);
 			transActionsModel.setUserAccnoLong(accno);
 			//check withdraw limit:
 			int depositSum = transActionsImpl.checkDepositLimit(transActionsModel);
@@ -43,17 +43,17 @@ public class DepositController extends HttpServlet {
 				if (depositCheck <= 20000) {
 					UserProfileModel userprofilemodel = new UserProfileModel(uname);
 					// get user balance:
-					if (userprofileimpl.getbal(userprofilemodel) >= 0) {
-						int bal = userprofileimpl.getbal(userprofilemodel);
+					if (userprofileimpl.getUserBalance(userprofilemodel) >= 0) {
+						int bal = userprofileimpl.getUserBalance(userprofilemodel);
 						// Amount greater than 0 and less than 20000:
 						if (eamount > 0 && eamount < 20000) {
 							int newbal = bal + eamount;
 							UserProfileModel userprofilemodel2 = new UserProfileModel(uname, newbal);
 							// update New Balance:
-							userprofileimpl.insbal(userprofilemodel2);
+							userprofileimpl.insertUserBalance(userprofilemodel2);
 								// Get User Account Number:
 								UserProfileModel userprofilemodel3 = new UserProfileModel(uname);
-								Long acc = userprofileimpl.getaccno(userprofilemodel3);
+								Long acc = userprofileimpl.getAccountNo(userprofilemodel3);
 									// Insert data in Deposit table:
 									transActionsModel.setUserAccnoLong(acc);
 									transActionsModel.setTransActionAmount(eamount);
@@ -61,24 +61,24 @@ public class DepositController extends HttpServlet {
 									transActionsImpl.insertTransAction(transActionsModel);
 									session.setAttribute("depsuccamount", eamount);
 									session.setAttribute("depsuccbal", newbal);
-									res.sendRedirect("Depsucc.jsp");
+									res.sendRedirect("depositsuccess.jsp");
 						} else {
 							throw new DepositLimitExceedException();
 						}
 					} else {
-						res.sendRedirect("Invaliduser.jsp");
+						res.sendRedirect("invalidUser.jsp");
 					}
 				} else {
 					int remainingDeposit = (20000 - depositSum);
 					if (remainingDeposit > 0) {
 						session.setAttribute("remainingDeposit", remainingDeposit);
-						res.sendRedirect("DepositAmountRemaining.jsp");
+						res.sendRedirect("depositAmountRemaining.jsp");
 					} else {
-						res.sendRedirect("DepositLimitExceed.jsp");
+						res.sendRedirect("depositLimitExceed.jsp");
 					}
 				}
 			} else {
-				res.sendRedirect("DepositEnteredLimit.jsp");
+				res.sendRedirect("depositEnteredLimit.jsp");
 			}
 		} catch (DepositLimitExceedException e) {
 			res.sendRedirect(e.getMessage());

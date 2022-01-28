@@ -36,9 +36,9 @@ public class AtmMoneyManagementController extends HttpServlet {
 						atmMoneyManagementimpl.depositAtmMoney(atmMoneyManagement);
 						//atm refill success:
 							session.setAttribute("agentdepamount", eamount);
-							resp.sendRedirect("AtmMoneymanagementsucc.jsp");	 
+							resp.sendRedirect("atmMoneyManagementSuccess.jsp");	 
 				} else {
-					resp.sendRedirect("AtmRefillNotNeeded.jsp");
+					resp.sendRedirect("atmRefillNotNeeded.jsp");
 				}
 			} else {
 				resp.getWriter().println("Enter Valid Amount!!");

@@ -27,9 +27,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	UserProfileModel userprofilepojo = new UserProfileModel(userName);
 	UserProfileImpl userProfileImpl = new UserProfileImpl();
 	try {
-		List<UserProfileModel> userProfileModels = userProfileImpl.getuserdetails(userprofilepojo);
+		List<UserProfileModel> userProfileModels = userProfileImpl.fetchUserDetails(userprofilepojo);
 		req.setAttribute("userprofilelistobjuser", userProfileModels);
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("Userdetails.jsp");
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("userDetails.jsp");
 		requestDispatcher.forward(req, resp);
 		
 	} catch (SQLException e) {

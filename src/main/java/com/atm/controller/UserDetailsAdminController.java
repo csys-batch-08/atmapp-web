@@ -28,12 +28,12 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	UserProfileModel userprofilepojo = new UserProfileModel(username);
 	UserProfileImpl userProfileImpl = new UserProfileImpl();
 	try {
-		List<UserProfileModel> userProfileModels = userProfileImpl.getuserdetails(userprofilepojo);
+		List<UserProfileModel> userProfileModels = userProfileImpl.fetchUserDetails(userprofilepojo);
 		if(userProfileModels.isEmpty()) {
 			throw new InvalidUsernameAdminException();
 		}
 		req.setAttribute("userdetailslistobj", userProfileModels);
-		RequestDispatcher rsDispatcher = req.getRequestDispatcher("Userdetailadmin.jsp");
+		RequestDispatcher rsDispatcher = req.getRequestDispatcher("userDetailAdmin.jsp");
 		rsDispatcher.forward(req, resp);
 	} catch (SQLException e) {
 		e.printStackTrace();

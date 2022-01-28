@@ -24,7 +24,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 			try {
 				List<AtmMoneyManagementModel> atmMoneyManagementModels = atmMoneyManagementimpl.showRefillHistory();
 				req.setAttribute("agenthistoryobj", atmMoneyManagementModels);
-				RequestDispatcher requestDispatcher = req.getRequestDispatcher("Historyagent.jsp");
+				RequestDispatcher requestDispatcher = req.getRequestDispatcher("agentHistory.jsp");
 				requestDispatcher.forward(req, resp);
 			} catch (Exception e) {
 				

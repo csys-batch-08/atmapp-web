@@ -1,12 +1,11 @@
 package com.atm.daoimpl;
 
-import java.sql.CallableStatement;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ import com.atm.util.ConnectionUtil;
 public class UserProfileImpl implements UserprofileDao {
 
 	// Get Balance:
-	public int getbal(UserProfileModel userprofilepojo) throws SQLException {
+	public int getUserBalance(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
 		PreparedStatement statement = null;
@@ -44,7 +43,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// update balance:
-	public int insbal(UserProfileModel userprofilepojo) throws SQLException {
+	public int insertUserBalance(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
 		PreparedStatement statement = null; 
@@ -72,7 +71,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get Account number:
-	public Long getaccno(UserProfileModel userprofilepojo) throws SQLException {
+	public Long getAccountNo(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		Long resLong = -1l;
 		PreparedStatement statement = null;
@@ -100,7 +99,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get user details:
-	public List<UserProfileModel> getuserdetails(UserProfileModel userprofilepojo) throws SQLException {
+	public List<UserProfileModel> fetchUserDetails(UserProfileModel userprofilepojo) throws SQLException {
 		List<UserProfileModel> userProfileModels = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -128,8 +127,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// insert user profile details:
-
-	public int insuserprofile(UserProfileModel userprofilepojo) throws SQLException {
+	public int insertUserProfile(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
 		PreparedStatement statement = null;
@@ -158,7 +156,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get user details All:
-	public ResultSet getuserdetails() throws SQLException {
+	public ResultSet fetchUserDetails() throws SQLException {
 		Connection con = null;
 		Statement statement = null; 
 		ResultSet rs = null;
@@ -183,7 +181,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// remove account:
-	public int removeuserprof(UserProfileModel userprofilepojo) throws SQLException {
+	public int removeUserProfile(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int res = -1;
@@ -211,7 +209,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get max account:
-	public long getusermaxacc() throws SQLException {
+	public long getUserMaximumAccountNo() throws SQLException {
 		Connection con = null;
 		long accno = -1l;
 		Statement statement = null;
@@ -237,7 +235,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get max pin:
-	public int getusermaxpin() throws SQLException {
+	public int getUserMaximumPin() throws SQLException {
 		int pin = -1;
 		Connection con = null;
 		Statement statement = null;
@@ -263,7 +261,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get user_pin:
-	public int getuserpin(String username) throws SQLException {
+	public int getUserPin(String username) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		try {
@@ -291,7 +289,7 @@ public class UserProfileImpl implements UserprofileDao {
 		
 	}
 
-	public int moneytransf(UserProfileModel userprofilepojo) throws SQLException {
+	public int moneyTransfer(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
 		PreparedStatement statement = null;
@@ -323,7 +321,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 	
 	//update User Pin:
-	public int updatepin(UserProfileModel userProfileModel) throws SQLException {
+	public int updateUserPin(UserProfileModel userProfileModel) throws SQLException {
 		Connection con = null;
 		PreparedStatement pStatement = null;
 		int res = -1;
@@ -351,7 +349,7 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 	
 	//check usermobile no exist:
-	public boolean usermobileexist(UserProfileModel userProfileModel)throws SQLException {
+	public boolean userMobileNoExistCheck(UserProfileModel userProfileModel)throws SQLException {
 		Connection con = null;
 		PreparedStatement pStatement = null;
 		try {
