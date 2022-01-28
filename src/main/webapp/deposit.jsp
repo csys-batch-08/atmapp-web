@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-
 <link rel="icon" type="" href="Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
 <link
@@ -143,7 +142,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("Logout.jsp");
+			window.location.assign("logOut.jsp");
 		}
 	},1000);
 	

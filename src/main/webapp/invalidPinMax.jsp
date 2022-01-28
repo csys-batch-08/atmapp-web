@@ -76,7 +76,7 @@ window.addEventListener('load', () =>{
 			localStorage.removeItem("invalmax");
 			localStorage.setItem("invalmax",1);
 			clearInterval(i);
-			window.location.assign("Logout.jsp");
+			window.location.assign("logOut.jsp");
 			}else{
 				clearInterval(i);
 				window.location.assign("index.jsp");

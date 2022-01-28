@@ -52,7 +52,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("LogOutAgent.jsp");
+			window.location.assign("logOutAgent.jsp");
 		}
 	},1000);
 	

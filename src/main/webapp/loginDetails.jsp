@@ -1,5 +1,3 @@
-<%@page import="com.atm.daoimpl.LoginDetailsImpl"%>
-<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
 <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
@@ -29,7 +27,9 @@ background-color: rgba(255,255,255,0.2);
 width: 80%;
 margin-left: 100px;
 }
-
+#loginCaption{
+font-size:40px;
+}
 </style>
 </head>
 <body bgcolor=" #363945">
@@ -38,6 +38,7 @@ margin-left: 100px;
 	</c:if>
 	
 	<table>
+	<caption id = "loginCaption">Login Details</caption>
 		<tr>
 			<th>Id</th>
 			<th>UserName</th>

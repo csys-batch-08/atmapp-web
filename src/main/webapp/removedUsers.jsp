@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import = "com.atm.controller.*"%>
-	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -21,6 +21,9 @@ th{
 color:#F5DF4D;
 font-size:30px;
 }
+#removedUsersCaption{
+font-size: 40px;
+}
 
 </style>
 </head>
@@ -31,6 +34,7 @@ font-size:30px;
 	
 	
 	<table style="width: 80%; margin-left: 100px;">
+	<caption id = "removedUsersCaption">Removed Users</caption>
 	<thead>
 		<tr>
 			<th>Id</th>

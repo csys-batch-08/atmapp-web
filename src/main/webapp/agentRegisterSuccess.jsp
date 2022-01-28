@@ -24,13 +24,11 @@ left : 130px;
 font-size : 60px;
 }
 body{
-
 background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
 background-repeat: no-repeat;
 background-size: cover;
 }
-
- #bgBlur{
+#bgBlur{
 	position: absolute;
 	background-color: rgba(11, 11, 11, 0.6);
 	height: 625px;

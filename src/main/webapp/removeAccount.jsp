@@ -113,7 +113,6 @@ button:hover{
 				title="Start with A-Z and use A-Z or a-z or 0-9 minimum 3 character maximum 20 character"> </br><label class="form-label" required>Enter user id :</label><br> <input type="text"
 				name="remuserid" class="form-control" pattern="[0-9]{1,5}" title="Enter Valid User Id" required>
 			<button type="submit" class="btn btn-primary">Remove</button>
-
 		</form>
 	</fieldset>
 </body>
