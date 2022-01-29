@@ -31,16 +31,17 @@ public class EnterpinWithdrawController extends HttpServlet {
 		int pin = Integer.parseInt(req.getParameter("withpin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
+		String invalidPinLockString = "invalidpinlock";
 			int userpin = userprofileimpl.getUserPin(user);
 			if (userpin > 0) {
 				if (userpin == pin) {
 					res.sendRedirect("withdrawserv");
 				} else {
-					int invalid = (int)session.getAttribute("invalidpinlock");
+					int invalid = (int)session.getAttribute(invalidPinLockString);
 					invalid++;
 					if(invalid < 3) {
-						session.removeAttribute("invalidpinlock");
-					session.setAttribute("invalidpinlock", invalid);
+						session.removeAttribute(invalidPinLockString);
+					session.setAttribute(invalidPinLockString, invalid);
 					session.setAttribute("invalidpin", true);
 					throw new WithdrawWrongPinException();
 					}else {
