@@ -16,11 +16,13 @@ import com.atm.models.AtmMoneyManagementModel;
 import com.atm.util.ConnectionUtil;
 
 public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
+	
+	String commitString = "commit";
 //Deposit money:
 	public int depositAtmMoney(AtmMoneyManagementModel atmMoneyManagement) throws SQLException{
 		
 		String query = "insert into atm_money_management(money_deposited,money_balance,agent_name) values(?,?,?)";
-		String query1 = "commit";
+		String query1 = commitString;
 				PreparedStatement statement = null;
 				Connection con = null;
 				int res = -1;
@@ -111,7 +113,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "update atm_money_management set money_balance = ? where id in (select max(id) from atm_money_management)";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 					statement.setLong(1, atmMoneyManagement.getMoneybalance());
 					

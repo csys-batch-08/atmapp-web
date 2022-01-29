@@ -17,6 +17,7 @@ import com.atm.util.ConnectionUtil;
 
 
 public class LoginDetailsImpl implements LoginDetailsDao {
+	String commitString = "commit";
 	// Remove Account:
 	public int removeLoginDetails(LoginDetailsModel loginpojo) throws SQLException {
 		Connection con = null;
@@ -25,7 +26,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "delete from login where username in ?";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, loginpojo.getUsername());
 			res = statement.executeUpdate();
@@ -53,7 +54,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "insert into login(username,role) values(?,?)";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, loginpojo.getUsername());
 			statement.setString(2, loginpojo.getRole());

@@ -15,6 +15,7 @@ import com.atm.util.ConnectionUtil;
 
 public class UserProfileImpl implements UserprofileDao {
 
+	private String commitString = "commit";
 	// Get Balance:
 	public int getUserBalance(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
@@ -50,7 +51,7 @@ public class UserProfileImpl implements UserprofileDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "update userprofile set balance = ? where username in ?";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setInt(1, userprofilepojo.getBalance());
 			statement.setString(2, userprofilepojo.getUsername());
@@ -134,7 +135,7 @@ public class UserProfileImpl implements UserprofileDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "insert into userprofile(username,user_acc_no,mob_no,user_pin) values(?,?,?,?)";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, userprofilepojo.getUsername());
 			statement.setLong(2, userprofilepojo.getUseraccno());
@@ -188,7 +189,7 @@ public class UserProfileImpl implements UserprofileDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "delete from userprofile where user_acc_no in ? and id in ?";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setLong(1, userprofilepojo.getUseraccno());
 			statement.setInt(2, userprofilepojo.getId());
@@ -332,7 +333,7 @@ public class UserProfileImpl implements UserprofileDao {
 			pStatement.setInt(1, userProfileModel.getUserpin());
 			pStatement.setString(2, userProfileModel.getUsername());
 			res= pStatement.executeUpdate();
-			pStatement.executeUpdate("commit");
+			pStatement.executeUpdate(commitString);
 		} catch (Exception e) {
 			e.getMessage();
 		}finally {

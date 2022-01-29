@@ -11,7 +11,7 @@ import com.atm.util.ConnectionUtil;
 
 public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 	Scanner sc = new Scanner(System.in);
-
+String commitString = "commit";
 	// Get Role:
 	public String fetchRole(UsernamePasswordModel usernamepasspojo) throws SQLException {
 
@@ -50,7 +50,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "update usernamepassword set password = ? where username in ?";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, usernamepasspojo.getPassword());
 			statement.setString(2, usernamepasspojo.getUsername());
@@ -77,7 +77,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "insert into usernamepassword(username,password,role) values(?,?,?)";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, usernamepasspojo.getUsername());
 			statement.setString(2, usernamepasspojo.getPassword());
@@ -105,7 +105,7 @@ public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "delete from usernamepassword where username in ?";
-			String query1 = "commit";
+			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, usernamepasspojo.getUsername());
 			res = statement.executeUpdate();

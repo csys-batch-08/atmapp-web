@@ -11,7 +11,7 @@ import com.atm.models.TransActionsModel;
 import com.atm.util.ConnectionUtil;
 
 public class TransActionsImpl {
-	
+	String commitString = "commit";
 	// Insert TransAction Data:
 		public int insertTransAction(TransActionsModel transActionsModel) throws SQLException {
 			Connection con = null;
@@ -20,7 +20,7 @@ public class TransActionsImpl {
 			try {
 				con = ConnectionUtil.getConnection();
 				String query = "insert into transactions(user_acc_no,transaction_amount,transaction_type,money_transfer) values(?,?,?,?)";
-				String query1 = "commit";
+				String query1 = commitString;
 				statement = con.prepareStatement(query);
 				statement.setLong(1, transActionsModel.getUserAccnoLong());
 				statement.setInt(2, transActionsModel.getTransActionAmount());
@@ -49,7 +49,7 @@ public class TransActionsImpl {
 			try {
 				con = ConnectionUtil.getConnection();
 				String query = "delete from transactions where user_acc_no in ?";
-				String query1 = "commit";
+				String query1 = commitString;
 				statement = con.prepareStatement(query);
 				statement.setLong(1, transActionsModel.getUserAccnoLong());
 				 res = statement.executeUpdate();

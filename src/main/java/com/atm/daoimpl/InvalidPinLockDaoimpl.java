@@ -12,6 +12,7 @@ import com.atm.models.InvalidPinLockModel;
 import com.atm.util.ConnectionUtil;
 
 public class InvalidPinLockDaoimpl {
+	String commitString = "commit";
 	//Insert data in table:
 public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
@@ -24,7 +25,7 @@ public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws
 		statement.setString(1, invalidPinLockModel.getUsername());
 		
 		 res = statement.executeUpdate();
-		statement.executeUpdate("commit");
+		statement.executeUpdate(commitString);
 	} catch (Exception e) {
 		e.getMessage();
 	}finally {
@@ -78,7 +79,7 @@ public int deleteInvalidPinLock(InvalidPinLockModel invalidPinLockModel) throws 
 		statement = con.prepareStatement(query);
 		statement.setString(1, invalidPinLockModel.getUsername());
 		 res = statement.executeUpdate();
-		statement.executeUpdate("commit");
+		statement.executeUpdate(commitString);
 	} catch (Exception e) {
 		e.getMessage();
 	}finally {
