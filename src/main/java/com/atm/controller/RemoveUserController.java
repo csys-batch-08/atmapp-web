@@ -87,7 +87,7 @@ public class RemoveUserController extends HttpServlet {
 		} catch (InvalidUsernameAdminException e) {
 			resp.sendRedirect(e.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 			
 		}
 	}
