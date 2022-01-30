@@ -15,7 +15,6 @@ import com.atm.daoimpl.TransActionsImpl;
 import com.atm.daoimpl.UserProfileImpl;
 import com.atm.daoimpl.UsernamePasswordImpl;
 import com.atm.exception.InvalidUsernameAdminException;
-import com.atm.models.DepositModel;
 import com.atm.models.LoginDetailsModel;
 import com.atm.models.RemovedUsersModel;
 import com.atm.models.TransActionsModel;
@@ -87,8 +86,7 @@ public class RemoveUserController extends HttpServlet {
 		} catch (InvalidUsernameAdminException e) {
 			resp.sendRedirect(e.getMessage());
 		} catch (Exception e) {
-			e.getMessage();
-			
+			e.getMessage();			
 		}
 	}
 }
