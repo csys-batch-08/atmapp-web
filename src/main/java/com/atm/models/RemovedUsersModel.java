@@ -2,94 +2,110 @@ package com.atm.models;
 
 public class RemovedUsersModel {
 private int id;
-private long useraccno;
-private String username;
-private int lastbalance;
-private long mobno;
-private int userpin;
-private String accremovedat;
+private long userAccountNo;
+private String userName;
+private int lastBalance;
+private long mobileNo;
+private int userPin;
+private String accountRemovedTime;
 
-public RemovedUsersModel(int id, long useraccno, String username, int lastbalance, long mobno, int userpin,
-		String accremovedat) {
+public RemovedUsersModel(int id, long userAccountNo, String userName, int lastBalance, long mobileNo, int userPin,
+		String accontRemovedTime) {
 	super();
 	this.id = id;
-	this.useraccno = useraccno;
-	this.username = username;
-	this.lastbalance = lastbalance;
-	this.mobno = mobno;
-	this.userpin = userpin;
-	this.accremovedat = accremovedat;
+	this.userAccountNo = userAccountNo;
+	this.userName = userName;
+	this.lastBalance = lastBalance;
+	this.mobileNo = mobileNo;
+	this.userPin = userPin;
+	this.accountRemovedTime = accontRemovedTime;
+}
+
+public RemovedUsersModel(long userAccountNo, String userName, int lastBalance, long mobileNo, int userPin) {
+	
+	this.userAccountNo = userAccountNo;
+	this.userName = userName;
+	this.lastBalance = lastBalance;
+	this.mobileNo = mobileNo;
+	this.userPin = userPin;
 }
 
 
-public RemovedUsersModel(long useraccno, String username, int lastbalance, long mobno, int userpin) {
-	super();
-	this.useraccno = useraccno;
-	this.username = username;
-	this.lastbalance = lastbalance;
-	this.mobno = mobno;
-	this.userpin = userpin;
-}
+
 public int getId() {
 	return id;
 }
+
 
 public void setId(int id) {
 	this.id = id;
 }
 
-public long getUseraccno() {
-	return useraccno;
+
+public long getUserAccountNo() {
+	return userAccountNo;
 }
 
-public void setUseraccno(long useraccno) {
-	this.useraccno = useraccno;
+
+public void setUserAccountNo(long userAccountNo) {
+	this.userAccountNo = userAccountNo;
 }
 
-public String getUsername() {
-	return username;
+
+public String getUserName() {
+	return userName;
 }
 
-public void setUsername(String username) {
-	this.username = username;
+
+public void setUserName(String userName) {
+	this.userName = userName;
 }
 
-public int getLastbalance() {
-	return lastbalance;
+
+public int getLastBalance() {
+	return lastBalance;
 }
 
-public void setLastbalance(int lastbalance) {
-	this.lastbalance = lastbalance;
+
+public void setLastBalance(int lastBalance) {
+	this.lastBalance = lastBalance;
 }
 
-public long getMobno() {
-	return mobno;
+
+public long getMobileNo() {
+	return mobileNo;
 }
 
-public void setMobno(long mobno) {
-	this.mobno = mobno;
+
+public void setMobileNo(long mobileNo) {
+	this.mobileNo = mobileNo;
 }
 
-public int getUserpin() {
-	return userpin;
+
+public int getUserPin() {
+	return userPin;
 }
 
-public void setUserpin(int userpin) {
-	this.userpin = userpin;
+
+public void setUserPin(int userPin) {
+	this.userPin = userPin;
 }
 
-public String getAccremovedat() {
-	return accremovedat;
+
+public String getAccountRemovedTime() {
+	return accountRemovedTime;
 }
 
-public void setAccremovedat(String accremovedat) {
-	this.accremovedat = accremovedat;
+
+public void setAccountRemovedTime(String accontRemovedTime) {
+	this.accountRemovedTime = accontRemovedTime;
 }
+
 
 @Override
 public String toString() {
-	return "Removedusersmodel [id=" + id + ", useraccno=" + useraccno + ", username=" + username + ", lastbalance="
-			+ lastbalance + ", mobno=" + mobno + ", userpin=" + userpin + ", accremovedat=" + accremovedat + "]";
+	return "Removedusersmodel [id=" + id + ", useraccno=" + userAccountNo + ", username=" + userName + ", lastbalance="
+			+ lastBalance + ", mobno=" + mobileNo + ", userpin=" + userPin + ", accremovedat=" + accountRemovedTime + "]";
 }
 
 

@@ -49,8 +49,8 @@ font-size:40px;
 		<c:forEach items="${logindetailsobj}" var="loginDetails">
 		<tr>
 			<td>${loginDetails.id}</td>
-			<td>${loginDetails.username}</td>
-			<td>${loginDetails.loggedat}</td>
+			<td>${loginDetails.userName}</td>
+			<td>${loginDetails.loggedTime}</td>
 			<td>${loginDetails.role}</td>
 		</tr>
 		</c:forEach>

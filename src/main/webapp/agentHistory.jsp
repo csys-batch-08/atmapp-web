@@ -47,10 +47,10 @@ font-size:40px;
 		<c:forEach items="${agenthistoryobj}" var="agentHistory">
 		<tr>
 			<td>${agentHistory.id}</td>
-			<td>${agentHistory.moneydeposited}</td>
-			<td>${agentHistory.moneybalance}</td>
-			<td>${agentHistory.depositedat}</td>
-			<td>${agentHistory.agentname}</td>
+			<td>${agentHistory.moneyDeposited}</td>
+			<td>${agentHistory.moneyBalance}</td>
+			<td>${agentHistory.depositedTime}</td>
+			<td>${agentHistory.agentName}</td>
 		</tr>
 		</c:forEach>
 	</table>

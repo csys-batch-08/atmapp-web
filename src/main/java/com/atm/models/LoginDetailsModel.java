@@ -4,27 +4,11 @@ import java.util.Objects;
 
 public class LoginDetailsModel {
 	private int id;
-	private String username;
-	private String loggedat;
+	private String userName;
+	private String loggedTime;
 	private String role;
 
-	public LoginDetailsModel(int id, String username, String loggedat, String role) {
-
-		this.id = id;
-		this.username = username;
-		this.loggedat = loggedat;
-		this.role = role;
-	}
-
-	public LoginDetailsModel(String username) {
-		this.username = username;
-	}
-
-	public LoginDetailsModel(String username, String role) {
-		this.username = username;
-		this.role = role;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -33,20 +17,20 @@ public class LoginDetailsModel {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getLoggedat() {
-		return loggedat;
+	public String getLoggedTime() {
+		return loggedTime;
 	}
 
-	public void setLoggedat(String loggedat) {
-		this.loggedat = loggedat;
+	public void setLoggedTime(String loggedTime) {
+		this.loggedTime = loggedTime;
 	}
 
 	public String getRole() {
@@ -57,14 +41,31 @@ public class LoginDetailsModel {
 		this.role = role;
 	}
 
+	public LoginDetailsModel(int id, String userName, String loggedTime, String role) {
+
+		this.id = id;
+		this.userName = userName;
+		this.loggedTime = loggedTime;
+		this.role = role;
+	}
+
+	public LoginDetailsModel(String userName) {
+		this.userName = userName;
+	}
+
+	public LoginDetailsModel(String userName, String role) {
+		this.userName = userName;
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "Loginpojo [Id=" + id + ", username=" + username + ", logged_at=" + loggedat + ", Role=" + role + "]";
+		return "Loginpojo [Id=" + id + ", username=" + userName + ", logged_at=" + loggedTime + ", Role=" + role + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, role, loggedat, username);
+		return Objects.hash(id, role, loggedTime, userName);
 	}
 
 	@Override
@@ -76,8 +77,8 @@ public class LoginDetailsModel {
 		if (getClass() != obj.getClass())
 			return false;
 		LoginDetailsModel other = (LoginDetailsModel) obj;
-		return id == other.id && Objects.equals(role, other.role) && Objects.equals(loggedat, other.loggedat)
-				&& Objects.equals(username, other.username);
+		return id == other.id && Objects.equals(role, other.role) && Objects.equals(loggedTime, other.loggedTime)
+				&& Objects.equals(userName, other.userName);
 	}
 
 }

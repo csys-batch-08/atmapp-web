@@ -53,13 +53,15 @@ public class RemoveUserController extends HttpServlet {
 				int transactionRemove = transActionsImpl.removeTransActions(transActionsModel);
 				if (transactionRemove >= 0) {					
 						UserProfileModel userprofilemodel = new UserProfileModel(user);
-						List<UserProfileModel> userProfileModels = userprofileimpl.fetchUserDetails(userprofilemodel);						
+						List<UserProfileModel> userProfileModels = userprofileimpl.fetchUserDetails(userprofilemodel);	
+						if(!userProfileModels.isEmpty()) {
 							int lastbalance = userProfileModels.get(0).getBalance();
-							Long mobno = userProfileModels.get(0).getMobno();
-							int userpin = userProfileModels.get(0).getUserpin();
+							Long mobno = userProfileModels.get(0).getMobileNo();
+							int userpin = userProfileModels.get(0).getUserPin();
 							RemovedUsersModel removedUsersModel = new RemovedUsersModel(accno, user, lastbalance, mobno,
 									userpin);
-							removedUsersimpl.insertRemovedUsers(removedUsersModel);						
+							removedUsersimpl.insertRemovedUsers(removedUsersModel);	
+						}
 					UserProfileModel userprofileModelRemoveUserProfile = new UserProfileModel(accno, id);
 					int userprofrem = userprofileimpl.removeUserProfile(userprofileModelRemoveUserProfile);
 					if (userprofrem > 0) {
@@ -85,7 +87,8 @@ public class RemoveUserController extends HttpServlet {
 		} catch (InvalidUsernameAdminException e) {
 			resp.sendRedirect(e.getMessage());
 		} catch (Exception e) {
-			e.getMessage();
+			e.printStackTrace();
+			
 		}
 	}
 }

@@ -2,12 +2,14 @@ package com.atm.models;
 
 public class UserProfileModel {
 	private int id;
-	private String username;
-	private Long useraccno;
+	private String userName;
+	private Long userAccountNo;
 	private int balance;
-	private Long mobno;
-	private int userpin;
-	private String acccreatedat;
+	private Long mobileNo;
+	private int userPin;
+	private String accountCreatedTime;
+
+	
 
 	public int getId() {
 		return id;
@@ -17,20 +19,20 @@ public class UserProfileModel {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public Long getUseraccno() {
-		return useraccno;
+	public Long getUserAccountNo() {
+		return userAccountNo;
 	}
 
-	public void setUseraccno(Long user_acc_no) {
-		this.useraccno = user_acc_no;
+	public void setUserAccountNo(Long userAccountNo) {
+		this.userAccountNo = userAccountNo;
 	}
 
 	public int getBalance() {
@@ -41,89 +43,89 @@ public class UserProfileModel {
 		this.balance = balance;
 	}
 
-	public Long getMobno() {
-		return mobno;
+	public Long getMobileNo() {
+		return mobileNo;
 	}
 
-	public void setMobno(Long mob_no) {
-		this.mobno = mob_no;
+	public void setMobileNo(Long mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 
-	public int getUserpin() {
-		return userpin;
+	public int getUserPin() {
+		return userPin;
 	}
 
-	public void setUserpin(int user_pin) {
-		this.userpin = user_pin;
+	public void setUserPin(int userPin) {
+		this.userPin = userPin;
 	}
 
-	public String getAcccreatedat() {
-		return acccreatedat;
+	public String getAccountCreatedTime() {
+		return accountCreatedTime;
 	}
 
-	public void setAcccreatedat(String acccreatedat) {
-		this.acccreatedat = acccreatedat;
+	public void setAccountCreatedTime(String accountCreatedTime) {
+		this.accountCreatedTime = accountCreatedTime;
 	}
 
-	public UserProfileModel(int id, String username, Long useraccno, int balance, Long mobno, int userpin,
-			String acccreatedat) {
+	public UserProfileModel(int id, String userName, Long userAccountNo, int balance, Long mobileNo, int userPin,
+			String accountCreatedTime) {
 		super();
 		this.id = id;
-		this.username = username;
-		this.useraccno = useraccno;
+		this.userName = userName;
+		this.userAccountNo = userAccountNo;
 		this.balance = balance;
-		this.mobno = mobno;
-		this.userpin = userpin;
-		this.acccreatedat = acccreatedat;
+		this.mobileNo = mobileNo;
+		this.userPin = userPin;
+		this.accountCreatedTime = accountCreatedTime;
 	}
 
-	public UserProfileModel(String username, int balance) {
+	public UserProfileModel(String userName, int balance) {
 
-		this.username = username;
+		this.userName = userName;
 		this.balance = balance;
 	}
 
-	public UserProfileModel(String username) {
+	public UserProfileModel(String userName) {
 
-		this.username = username;
+		this.userName = userName;
 	}
 
-	public UserProfileModel(String username, Long useraccno, Long mobno, int userpin) {
+	public UserProfileModel(String userName, Long userAccountNo, Long mobileNo, int userPin) {
 
-		this.username = username;
-		this.useraccno = useraccno;
-		this.mobno = mobno;
-		this.userpin = userpin;
+		this.userName = userName;
+		this.userAccountNo = userAccountNo;
+		this.mobileNo = mobileNo;
+		this.userPin = userPin;
 	}
-	public UserProfileModel(int userpin,String username) {
+	public UserProfileModel(int userPin,String userName) {
 
-		this.username = username;
-		this.userpin = userpin;
+		this.userName = userName;
+		this.userPin = userPin;
 	}
-	public UserProfileModel(Long accno) {
+	public UserProfileModel(Long accountNo) {
 
-		this.useraccno = accno;
+		this.userAccountNo = accountNo;
 	}
-	public UserProfileModel(Long accno,int id) {
+	public UserProfileModel(Long accountNo,int id) {
 
-		this.useraccno = accno;
+		this.userAccountNo = accountNo;
 		this.id = id;
 	}
-	public UserProfileModel(Long mob_no,String s) {
+	public UserProfileModel(Long mobileNo,String s) {
 
-		this.mobno = mob_no;
+		this.mobileNo = mobileNo;
 	}
-	public UserProfileModel(String username, Long useracno) {
+	public UserProfileModel(String userName, Long accountNo) {
 
-		this.username = username;
-		this.useraccno = useracno;
+		this.userName = userName;
+		this.userAccountNo = accountNo;
 	}
 	
 
 	@Override
 	public String toString() {
-		return "Userprofilepojo [id=" + id + ", username=" + username + ", user_acc_no=" + useraccno + ", balance="
-				+ balance + ", mob_no=" + mobno + ", user_pin=" + userpin + ", acc_created_at=" + acccreatedat
+		return "Userprofilepojo [id=" + id + ", username=" + userName + ", user_acc_no=" + userAccountNo + ", balance="
+				+ balance + ", mob_no=" + mobileNo + ", user_pin=" + userPin + ", acc_created_at=" + accountCreatedTime
 				+ "]";
 	}
 

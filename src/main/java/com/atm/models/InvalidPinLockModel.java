@@ -4,59 +4,68 @@ import java.sql.Timestamp;
 
 public class InvalidPinLockModel {
 private int id;
-private String username;
-private String acclockedat;
-private Timestamp accretriveat;
+private String userName;
+private String accountLockedTime;
+private Timestamp accountRetriveTime;
+
 
 public int getId() {
 	return id;
 }
 
+
 public void setId(int id) {
 	this.id = id;
 }
 
-public String getUsername() {
-	return username;
+
+public String getUserName() {
+	return userName;
 }
 
-public void setUsername(String username) {
-	this.username = username;
+
+public void setUserName(String userName) {
+	this.userName = userName;
 }
 
-public String getAcclockedat() {
-	return acclockedat;
+
+public String getAccountLockedTime() {
+	return accountLockedTime;
 }
 
-public void setAcclockedat(String acclockedat) {
-	this.acclockedat = acclockedat;
+
+public void setAccountLockedTime(String accountLockedTime) {
+	this.accountLockedTime = accountLockedTime;
 }
 
-public Timestamp getAccretriveat() {
-	return accretriveat;
+
+public Timestamp getAccountRetriveTime() {
+	return accountRetriveTime;
 }
 
-public void setAccretriveat(Timestamp accretriveat) {
-	this.accretriveat = accretriveat;
+
+public void setAccountRetriveTime(Timestamp accountRetriveTime) {
+	this.accountRetriveTime = accountRetriveTime;
 }
 
-public InvalidPinLockModel(String username, Timestamp accretriveat) {
+
+public InvalidPinLockModel(String userName, Timestamp accountRetriveTime) {
 	
-	this.username = username;
-	this.accretriveat = accretriveat;
+	this.userName = userName;
+	this.accountRetriveTime = accountRetriveTime;
 }
 
 
-public InvalidPinLockModel(String username) {
+public InvalidPinLockModel(String userName) {
 	
-	this.username = username;
+	this.userName = userName;
 	
 }
 
 @Override
 public String toString() {
-	return "InvalidPinLockModel [id=" + id + ", username=" + username + ", acclockedat=" + acclockedat
-			+ ", accretriveat=" + accretriveat + "]";
+	return "InvalidPinLockModel [id=" + id + ", username=" + userName + ", acclockedat=" + accountLockedTime
+			+ ", accretriveat=" + accountRetriveTime + "]";
 }
 
 }

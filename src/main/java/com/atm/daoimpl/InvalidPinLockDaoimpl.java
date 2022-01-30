@@ -22,7 +22,7 @@ public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws
 		con = ConnectionUtil.getConnection();
 		String query = "insert into invalidpinlock(username) values(?)";
 		statement = con.prepareStatement(query);
-		statement.setString(1, invalidPinLockModel.getUsername());
+		statement.setString(1, invalidPinLockModel.getUserName());
 		
 		 res = statement.executeUpdate();
 		statement.executeUpdate(commitString);
@@ -48,7 +48,7 @@ public boolean invalidPinLockStatus(InvalidPinLockModel invalidPinLockModel) thr
 		con = ConnectionUtil.getConnection();
 		String query = "select * from invalidpinlock where username in ?";
 		statement = con.prepareStatement(query);
-		statement.setString(1, invalidPinLockModel.getUsername());
+		statement.setString(1, invalidPinLockModel.getUserName());
 		ResultSet rSet = statement.executeQuery();
 		if(rSet.next()) {
 			return true;
@@ -77,7 +77,7 @@ public int deleteInvalidPinLock(InvalidPinLockModel invalidPinLockModel) throws 
 		con = ConnectionUtil.getConnection();
 		String query = "delete from invalidpinlock where username in ?";
 		statement = con.prepareStatement(query);
-		statement.setString(1, invalidPinLockModel.getUsername());
+		statement.setString(1, invalidPinLockModel.getUserName());
 		 res = statement.executeUpdate();
 		statement.executeUpdate(commitString);
 	} catch (Exception e) {
@@ -107,7 +107,7 @@ public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 		String datequery = "select substr((current_timestamp-acc_lockedat),2,2) from invalidpinlock where username in ?";
 		//date:
 		statement = con.prepareStatement(datequery);
-				statement.setString(1, invalidPinLockModel.getUsername());
+				statement.setString(1, invalidPinLockModel.getUserName());
 				
 				ResultSet rSet1 = statement.executeQuery();
 				while(rSet1.next()) {
@@ -143,7 +143,7 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 				String hoursqueryString = "select substr((current_timestamp-acc_lockedat),5,2) from invalidpinlock where username in ?";
 		//hours:
 		statement = con.prepareStatement(hoursqueryString);
-				statement.setString(1, invalidPinLockModel.getUsername());
+				statement.setString(1, invalidPinLockModel.getUserName());
 				
 				ResultSet rSet2 = statement.executeQuery();
 				while(rSet2.next()) {
@@ -181,7 +181,7 @@ public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws 
 		int date = getCurrentDate(invalidPinLockModel);
 		int hours = getCurrentHour(invalidPinLockModel);
 		statement = con.prepareStatement(query);
-		statement.setString(1, invalidPinLockModel.getUsername());
+		statement.setString(1, invalidPinLockModel.getUserName());
 		ResultSet rSet = statement.executeQuery();
 		while(rSet.next()) {
 			String ret = rSet.getString(1);

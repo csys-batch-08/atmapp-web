@@ -49,12 +49,12 @@ font-size: 40px;
 		<c:forEach items="${removeduserslist}" var = "removedUsers">
 		<tr>
 		<td>${removedUsers.id}</td>
-		<td>${removedUsers.useraccno}</td>
-		<td>${removedUsers.username}</td>
-		<td>${removedUsers.lastbalance}</td>
-		<td>${removedUsers.mobno}</td>
-		<td>${removedUsers.userpin}</td>
-		<td>${removedUsers.accremovedat}</td>
+		<td>${removedUsers.userAccountNo}</td>
+		<td>${removedUsers.userName}</td>
+		<td>${removedUsers.lastBalance}</td>
+		<td>${removedUsers.mobileNo}</td>
+		<td>${removedUsers.userPin}</td>
+		<td>${removedUsers.accountRemovedTime}</td>
 			</tr>
 		</c:forEach>
 	</table>

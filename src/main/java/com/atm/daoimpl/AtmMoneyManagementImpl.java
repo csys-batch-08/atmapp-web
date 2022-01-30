@@ -29,9 +29,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 				try {
 					 con = ConnectionUtil.getConnection();
 					statement = con.prepareStatement(query);
-					statement.setLong(1, atmMoneyManagement.getMoneydeposited());
-					statement.setLong(2, atmMoneyManagement.getMoneydeposited());
-					statement.setString(3, atmMoneyManagement.getAgentname());
+					statement.setLong(1, atmMoneyManagement.getMoneyDeposited());
+					statement.setLong(2, atmMoneyManagement.getMoneyDeposited());
+					statement.setString(3, atmMoneyManagement.getAgentName());
 					 res = statement.executeUpdate();
 					statement.executeUpdate(query1);
 				} catch (Exception e) {
@@ -115,7 +115,7 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 			String query = "update atm_money_management set money_balance = ? where id in (select max(id) from atm_money_management)";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-					statement.setLong(1, atmMoneyManagement.getMoneybalance());
+					statement.setLong(1, atmMoneyManagement.getMoneyBalance());
 					
 					res = statement.executeUpdate();
 					statement.executeUpdate(query1);

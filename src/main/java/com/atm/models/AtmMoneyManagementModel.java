@@ -2,58 +2,49 @@ package com.atm.models;
 
 public class AtmMoneyManagementModel {
 	private int id;
-	private Long moneydeposited;
-	private Long moneybalance;
-	private String depositedat;
-	private String agentname;
+	private Long moneyDeposited;
+	private Long moneyBalance;
+	private String depositedTime;
+	private String agentName;
 
+	
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public Long getMoneydeposited() {
-		return moneydeposited;
+	public Long getMoneyDeposited() {
+		return moneyDeposited;
 	}
-
-	public void setMoneydeposited(Long moneydeposited) {
-		this.moneydeposited = moneydeposited;
+	public void setMoneyDeposited(Long moneyDeposited) {
+		this.moneyDeposited = moneyDeposited;
 	}
-
-	public Long getMoneybalance() {
-		return moneybalance;
+	public Long getMoneyBalance() {
+		return moneyBalance;
 	}
-
-	public void setMoneybalance(Long moneybalance) {
-		this.moneybalance = moneybalance;
+	public void setMoneyBalance(Long moneyBalance) {
+		this.moneyBalance = moneyBalance;
 	}
-
-	public String getDepositedat() {
-		return depositedat;
+	public String getDepositedTime() {
+		return depositedTime;
 	}
-
-	public void setDepositedat(String depositedat) {
-		this.depositedat = depositedat;
+	public void setDepositedTime(String depositedTime) {
+		this.depositedTime = depositedTime;
 	}
-
-	public String getAgentname() {
-		return agentname;
+	public String getAgentName() {
+		return agentName;
 	}
-
-	public void setAgentname(String agentname) {
-		this.agentname = agentname;
+	public void setAgentName(String agentName) {
+		this.agentName = agentName;
 	}
-
-	public AtmMoneyManagementModel(int id, Long moneydeposited, Long moneybalance, String depositedat, String agentname) {
+	public AtmMoneyManagementModel(int id, Long moneyDeposited, Long moneyBalance, String depositedTime, String agentName) {
 
 		this.id = id;
-		this.moneydeposited = moneydeposited;
-		this.moneybalance = moneybalance;
-		this.depositedat = depositedat;
-		this.agentname = agentname;
+		this.moneyDeposited = moneyDeposited;
+		this.moneyBalance = moneyBalance;
+		this.depositedTime = depositedTime;
+		this.agentName = agentName;
 	}
 	public AtmMoneyManagementModel() {
 
@@ -62,19 +53,19 @@ public class AtmMoneyManagementModel {
 
 	@Override
 	public String toString() {
-		return "AtmMoneyManagement [id=" + id + ", moneydeposited=" + moneydeposited + ", moneybalance=" + moneybalance
-				+ ", depositedat=" + depositedat + ", agentname=" + agentname + "]";
+		return "AtmMoneyManagement [id=" + id + ", moneydeposited=" + moneyDeposited + ", moneybalance=" + moneyBalance
+				+ ", depositedat=" + depositedTime + ", agentname=" + agentName + "]";
 	}
 
-	public AtmMoneyManagementModel(Long moneydeposited, String agentname) {
+	public AtmMoneyManagementModel(Long moneyDeposited, String agentName) {
 
-		this.moneydeposited = moneydeposited;
-		this.agentname = agentname;
+		this.moneyDeposited = moneyDeposited;
+		this.agentName = agentName;
 	}
 	
-	public AtmMoneyManagementModel(Long moneybalance) {
+	public AtmMoneyManagementModel(Long moneyBalance) {
 
-		this.moneybalance = moneybalance;
+		this.moneyBalance = moneyBalance;
 		
 	}
 	

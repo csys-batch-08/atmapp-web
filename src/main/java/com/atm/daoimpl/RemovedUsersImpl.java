@@ -22,11 +22,11 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 			String query = "insert into removedusers(user_acc_no,username,last_balance,mob_no,user_pin) values(?,?,?,?,?)";
 			String query1 = "commit";
 			statement = con.prepareStatement(query);
-			statement.setLong(1, removedusersmodel.getUseraccno());
-			statement.setString(2, removedusersmodel.getUsername());
-			statement.setInt(3, removedusersmodel.getLastbalance());
-			statement.setLong(4, removedusersmodel.getMobno());
-			statement.setInt(5, removedusersmodel.getUserpin());
+			statement.setLong(1, removedusersmodel.getUserAccountNo());
+			statement.setString(2, removedusersmodel.getUserName());
+			statement.setInt(3, removedusersmodel.getLastBalance());
+			statement.setLong(4, removedusersmodel.getMobileNo());
+			statement.setInt(5, removedusersmodel.getUserPin());
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {

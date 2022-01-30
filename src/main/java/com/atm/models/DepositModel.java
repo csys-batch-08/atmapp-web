@@ -2,79 +2,105 @@ package com.atm.models;
 
 public class DepositModel {
 	private int id;
-	private Long useraccno;
-	private int depamount;
-	private String depat;
-	private String moneytransfer;
+	private Long userAccountNo;
+	private int depositAmount;
+	private String depositTime;
+	private String moneyTransfer;
 
 	@Override
 	public String toString() {
-		return "Depositpojo [id=" + id + ", user_acc_no=" + useraccno + ", dep_amount=" + depamount + ", dep_at="
-				+ depat + "]";
+		return "Depositpojo [id=" + id + ", user_acc_no=" + userAccountNo + ", dep_amount=" + depositAmount + ", dep_at="
+				+ depositTime + "]";
 	}
+
+	
 
 	public int getId() {
 		return id;
 	}
-	
-	public String getmoneytransfer() {
-		return this.moneytransfer;
-	}
+
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Long getUser_acc_no() {
-		return useraccno;
+
+
+	public Long getUserAccountNo() {
+		return userAccountNo;
 	}
 
-	public void setUser_acc_no(Long user_acc_no) {
-		this.useraccno = user_acc_no;
+
+
+	public void setUserAccountNo(Long userAccountNo) {
+		this.userAccountNo = userAccountNo;
 	}
 
-	public int getDep_amount() {
-		return depamount;
+
+
+	public int getDepositAmount() {
+		return depositAmount;
 	}
 
-	public void setDep_amount(int dep_amount) {
-		this.depamount = dep_amount;
+
+
+	public void setDepositAmount(int depositAmount) {
+		this.depositAmount = depositAmount;
 	}
 
-	public String getDep_at() {
-		return depat;
+
+
+	public String getDepositTime() {
+		return depositTime;
 	}
 
-	public void setDep_at(String dep_at) {
-		this.depat = dep_at;
+
+
+	public void setDepositTime(String depositTime) {
+		this.depositTime = depositTime;
 	}
 
-	public DepositModel(int id, Long user_acc_no, int dep_amount, String dep_at) {
+
+
+	public String getMoneyTransfer() {
+		return moneyTransfer;
+	}
+
+
+
+	public void setMoneyTransfer(String moneyTransfer) {
+		this.moneyTransfer = moneyTransfer;
+	}
+
+
+
+	public DepositModel(int id, Long userAccountNo, int depositAmount, String depositTime) {
 
 		this.id = id;
-		this.useraccno = user_acc_no;
-		this.depamount = dep_amount;
-		this.depat = dep_at;
+		this.userAccountNo = userAccountNo;
+		this.depositAmount = depositAmount;
+		this.depositTime = depositTime;
 	}
 
-	public DepositModel(Long user_acc_no, int dep_amount) {
+	public DepositModel(Long userAccountNo, int depositAmount) {
 
-		this.useraccno = user_acc_no;
-		this.depamount = dep_amount;
+		this.userAccountNo = userAccountNo;
+		this.depositAmount = depositAmount;
 
 	}
 
-	public DepositModel(Long user_acc_no) {
+	public DepositModel(Long userAccountNo) {
 
-		this.useraccno = user_acc_no;
+		this.userAccountNo = userAccountNo;
 
 	}
 	
-	public DepositModel(Long user_acc_no, int dep_amount,String moneytransfname) {
+	public DepositModel(Long userAccountNo, int depositAmount,String moneyTransfName) {
 
-		this.useraccno = user_acc_no;
-		this.depamount = dep_amount;
-this.moneytransfer = moneytransfname;
+		this.userAccountNo = userAccountNo;
+		this.depositAmount = depositAmount;
+this.moneyTransfer = moneyTransfName;
 	}
 	
 	public DepositModel() {

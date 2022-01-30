@@ -25,7 +25,7 @@ public class UserProfileImpl implements UserprofileDao {
 			con = ConnectionUtil.getConnection();
 			String query = "select balance from userprofile where username in ?";
 			statement = con.prepareStatement(query);
-			statement.setString(1, userprofilepojo.getUsername());
+			statement.setString(1, userprofilepojo.getUserName());
 			ResultSet rSet = statement.executeQuery();
 			while (rSet.next()) {
 				res = rSet.getInt(1);
@@ -54,7 +54,7 @@ public class UserProfileImpl implements UserprofileDao {
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setInt(1, userprofilepojo.getBalance());
-			statement.setString(2, userprofilepojo.getUsername());
+			statement.setString(2, userprofilepojo.getUserName());
 			 res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class UserProfileImpl implements UserprofileDao {
 			con = ConnectionUtil.getConnection();
 			String query = "select user_acc_no from userprofile where username in ?";
 			statement = con.prepareStatement(query);
-			statement.setString(1, userprofilepojo.getUsername());
+			statement.setString(1, userprofilepojo.getUserName());
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
 				resLong = rs.getLong(1);
@@ -109,7 +109,7 @@ public class UserProfileImpl implements UserprofileDao {
 			con = ConnectionUtil.getConnection();
 			String query = "select id,username,user_acc_no,balance,mob_no,user_pin,acc_created_at from userprofile where username in ?";
 			statement = con.prepareStatement(query);
-			statement.setString(1, userprofilepojo.getUsername());
+			statement.setString(1, userprofilepojo.getUserName());
 			ResultSet rs = statement.executeQuery();
 			if(rs.next()) {
 				userProfileModels.add(new UserProfileModel(rs.getInt(1), rs.getString(2), rs.getLong(3), rs.getInt(4), rs.getLong(5), rs.getInt(6), rs.getString(7)));
@@ -137,10 +137,10 @@ public class UserProfileImpl implements UserprofileDao {
 			String query = "insert into userprofile(username,user_acc_no,mob_no,user_pin) values(?,?,?,?)";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-			statement.setString(1, userprofilepojo.getUsername());
-			statement.setLong(2, userprofilepojo.getUseraccno());
-			statement.setLong(3, userprofilepojo.getMobno());
-			statement.setInt(4, userprofilepojo.getUserpin());
+			statement.setString(1, userprofilepojo.getUserName());
+			statement.setLong(2, userprofilepojo.getUserAccountNo());
+			statement.setLong(3, userprofilepojo.getMobileNo());
+			statement.setInt(4, userprofilepojo.getUserPin());
 			res = statement.executeUpdate();
 			 statement.executeUpdate(query1);
 		} catch (Exception e) {
@@ -191,7 +191,7 @@ public class UserProfileImpl implements UserprofileDao {
 			String query = "delete from userprofile where user_acc_no in ? and id in ?";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-			statement.setLong(1, userprofilepojo.getUseraccno());
+			statement.setLong(1, userprofilepojo.getUserAccountNo());
 			statement.setInt(2, userprofilepojo.getId());
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
@@ -298,8 +298,8 @@ public class UserProfileImpl implements UserprofileDao {
 			con = ConnectionUtil.getConnection();
 			String query = "select balance from userprofile where username in ? and user_acc_no in ?";
 			statement = con.prepareStatement(query);
-			statement.setString(1, userprofilepojo.getUsername());
-			statement.setLong(2, userprofilepojo.getUseraccno());
+			statement.setString(1, userprofilepojo.getUserName());
+			statement.setLong(2, userprofilepojo.getUserAccountNo());
 			ResultSet rSet = statement.executeQuery();
 
 			if (rSet.next()) {
@@ -330,8 +330,8 @@ public class UserProfileImpl implements UserprofileDao {
 			con = ConnectionUtil.getConnection();
 			String query = "update userprofile set user_pin = ? where username in ?";
 			pStatement = con.prepareStatement(query);
-			pStatement.setInt(1, userProfileModel.getUserpin());
-			pStatement.setString(2, userProfileModel.getUsername());
+			pStatement.setInt(1, userProfileModel.getUserPin());
+			pStatement.setString(2, userProfileModel.getUserName());
 			res= pStatement.executeUpdate();
 			pStatement.executeUpdate(commitString);
 		} catch (Exception e) {
@@ -357,7 +357,7 @@ public class UserProfileImpl implements UserprofileDao {
 			con = ConnectionUtil.getConnection();
 			String query = "select id,username,user_acc_no,balance,mob_no,user_pin,acc_created_at from userprofile where mob_no in ?";
 			pStatement = con.prepareStatement(query);
-			pStatement.setLong(1, userProfileModel.getMobno());
+			pStatement.setLong(1, userProfileModel.getMobileNo());
 			ResultSet rSet = pStatement.executeQuery();
 			if(rSet.next()) {
 				return true;

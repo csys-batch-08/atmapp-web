@@ -22,7 +22,7 @@ String commitString = "commit";
 			con = ConnectionUtil.getConnection();
 			String query = "select role from usernamepassword where username in ? and password in ?";
 			 statement = con.prepareStatement(query);
-			statement.setString(1, usernamepasspojo.getUsername());
+			statement.setString(1, usernamepasspojo.getUserName());
 			statement.setString(2, usernamepasspojo.getPassword());
 			ResultSet rs = statement.executeQuery();
 			if(rs.next()) {
@@ -53,7 +53,7 @@ String commitString = "commit";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
 			statement.setString(1, usernamepasspojo.getPassword());
-			statement.setString(2, usernamepasspojo.getUsername());
+			statement.setString(2, usernamepasspojo.getUserName());
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ String commitString = "commit";
 			String query = "insert into usernamepassword(username,password,role) values(?,?,?)";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-			statement.setString(1, usernamepasspojo.getUsername());
+			statement.setString(1, usernamepasspojo.getUserName());
 			statement.setString(2, usernamepasspojo.getPassword());
 			statement.setString(3, usernamepasspojo.getRole());
 			res = statement.executeUpdate();
@@ -107,7 +107,7 @@ String commitString = "commit";
 			String query = "delete from usernamepassword where username in ?";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-			statement.setString(1, usernamepasspojo.getUsername());
+			statement.setString(1, usernamepasspojo.getUserName());
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {

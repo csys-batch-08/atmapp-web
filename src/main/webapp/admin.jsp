@@ -148,7 +148,7 @@ a:hover {
 	<br>
 	<a href="userDetailsAdminGetUser.jsp" id="adminuserdet">User
 		Details</a>
-	<a href="Logoutadmin.jsp" id="logoutatag" class="btn btn-danger"
+	<a href="logOutAdmin.jsp" id="logoutatag" class="btn btn-danger"
 		class="left">LogOut</a>
 	<br>
 	<a href="Removeduserlistservlet" id="removedusers" class="left">Removed

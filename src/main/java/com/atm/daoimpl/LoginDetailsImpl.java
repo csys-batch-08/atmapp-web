@@ -28,7 +28,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			String query = "delete from login where username in ?";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-			statement.setString(1, loginpojo.getUsername());
+			statement.setString(1, loginpojo.getUserName());
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
@@ -56,7 +56,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			String query = "insert into login(username,role) values(?,?)";
 			String query1 = commitString;
 			statement = con.prepareStatement(query);
-			statement.setString(1, loginpojo.getUsername());
+			statement.setString(1, loginpojo.getUserName());
 			statement.setString(2, loginpojo.getRole());
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);

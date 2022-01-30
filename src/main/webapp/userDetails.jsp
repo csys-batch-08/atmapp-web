@@ -33,10 +33,10 @@ legend {
 <c:forEach items="${userprofilelistobjuser}" var = "userProfile">
 	<fieldset id="userdetailfield">
 		<legend>User Details</legend>
-		 <h1>UserName : ${userProfile.username}</h1><br>
-		<h1>User Account No : ${userProfile.useraccno}</h1><br>
+		 <h1>UserName : ${userProfile.userName}</h1><br>
+		<h1>User Account No : ${userProfile.userAccountNo}</h1><br>
 		<h1>Balance : ${userProfile.balance}</h1><br>
-		<h1>Mobile No : ${userProfile.mobno}</h1><br>
+		<h1>Mobile No : ${userProfile.mobileNo}</h1><br>
 		<br>
 	</fieldset>
 	</c:forEach>
