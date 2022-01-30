@@ -49,7 +49,7 @@ public class UsernamePasswordModel {
 		this.role = role;
 	}
 
-	public UsernamePasswordModel(int id, String userName, String password, String createdTime, String role) {
+	public UsernamePasswordModel(int id, String userName, String password, String role) {
 		super();
 		this.id = id;
 		this.userName = userName;

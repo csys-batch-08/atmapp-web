@@ -21,7 +21,7 @@ import com.atm.models.UserProfileModel;
 @WebServlet("/withdrawserv")
 public class WithdrawController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		TransActionsModel transActionsModel = new TransActionsModel();
 		TransActionsImpl transActionsImpl = new TransActionsImpl();
