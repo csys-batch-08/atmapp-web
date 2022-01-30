@@ -24,10 +24,12 @@ font-size:30px;
 #removedUsersCaption{
 font-size: 40px;
 }
-
+body{
+background-color: #2F4F4F;
+}
 </style>
 </head>
-<body bgcolor="#2F4F4F">
+<body>
 <c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

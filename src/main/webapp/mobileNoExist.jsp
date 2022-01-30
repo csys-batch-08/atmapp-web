@@ -22,10 +22,12 @@ position: absolute;
 top: 0px;
 left : 0px;
 }
-
+body{
+background-color: navy;
+}
 </style>
 </head>
-<body bgcolor = "navy">
+<body>
 
 <c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>

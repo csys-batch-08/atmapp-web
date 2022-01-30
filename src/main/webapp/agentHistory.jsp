@@ -30,7 +30,7 @@ font-size:40px;
 </style>
 </head>
 
-	<body bgcolor="blue">
+	<body>
 	<c:if test="${agent == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

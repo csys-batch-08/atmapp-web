@@ -111,10 +111,12 @@ button:hover{
 	box-shadow: 0 0 20px blue;
 	transition-duration: 0.2s;
 }
-
+body{
+background-color: grey;
+}
 </style>
 </head>
-<body bgcolor="grey">
+<body>
 	<c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

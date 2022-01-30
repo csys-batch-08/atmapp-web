@@ -137,7 +137,7 @@ a:hover {
 }
 </style>
 </head>
-<body bgcolor="blue">
+<body>
 
 	<label id="adminlab">welcome : ${admin}</label>
 	<a href="register.jsp" id="adminregus">Register New User</a>

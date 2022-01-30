@@ -22,9 +22,12 @@ legend {
 	font-size: 30px;
 	color:white;
 } 	
+body{
+background-color: #2F4F4F;
+}
 </style>
 </head>
-<body bgcolor="#2F4F4F">
+<body>
 	<c:if test="${user == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

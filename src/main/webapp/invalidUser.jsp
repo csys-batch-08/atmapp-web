@@ -58,7 +58,7 @@ body {
 }
 </style>
 </head>
-<body bgcolor="blue">
+<body>
 
 	<h1>Invalid Username or password</h1>
 	<form action="index.jsp">

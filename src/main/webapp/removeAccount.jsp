@@ -101,7 +101,7 @@ button:hover{
 }
 </style>
 </head>
-<body bgcolor="blue">
+<body>
 	<c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

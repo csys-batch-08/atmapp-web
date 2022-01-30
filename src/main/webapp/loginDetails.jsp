@@ -30,9 +30,12 @@ margin-left: 100px;
 #loginCaption{
 font-size:40px;
 }
+body{
+background-color: #363945;
+}
 </style>
 </head>
-<body bgcolor=" #363945">
+<body>
 <c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

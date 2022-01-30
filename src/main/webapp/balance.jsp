@@ -80,7 +80,7 @@ body {
 }
 </style>
 </head>
-<body bgcolor="blue">
+<body>
 
 	<c:if test="${user == null}">
 		<c:redirect url="index.jsp"></c:redirect>
