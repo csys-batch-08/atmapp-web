@@ -61,8 +61,7 @@ window.addEventListener('load', () =>{
 			clearInterval(i);
 			window.location.assign("logOut.jsp");
 		}
-	},1000);
-	
+	},1000);	
 });
 
 </script>

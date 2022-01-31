@@ -43,7 +43,8 @@ public class RegisterController extends HttpServlet {
 		String password = req.getParameter("passreg");
 		String role = req.getParameter("rolereg");
 		Long mobno = Long.parseLong(req.getParameter("mobnoreg"));
-		UserProfileModel userProfileModel = new UserProfileModel(mobno, "s");
+		UserProfileModel userProfileModel = new UserProfileModel();
+		userProfileModel.setMobileNo(mobno);
 		UserProfileImpl userProfileImpl2 = new UserProfileImpl();
 		boolean flag = false;
 		try {

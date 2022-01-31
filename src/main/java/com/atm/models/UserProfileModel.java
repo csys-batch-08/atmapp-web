@@ -1,6 +1,11 @@
 package com.atm.models;
 
 public class UserProfileModel {
+	public UserProfileModel() {
+		super();
+	}
+
+
 	private int id;
 	private String userName;
 	private Long userAccountNo;
@@ -110,10 +115,6 @@ public class UserProfileModel {
 
 		this.userAccountNo = accountNo;
 		this.id = id;
-	}
-	public UserProfileModel(Long mobileNo,String s) {
-
-		this.mobileNo = mobileNo;
 	}
 	public UserProfileModel(String userName, Long accountNo) {
 

@@ -23,6 +23,7 @@ private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) {
+		String invalidPinLockString = "invalidpinlock";
 		boolean flag = false;
 		try {
 		String userName = request.getParameter("username");
@@ -39,8 +40,8 @@ private static final long serialVersionUID = 1L;
 				if (role.equals("user")) {
 					//check the user in invalid pin lock table:
 					if(!(invalidPinLockDaoimpl.invalidPinLockStatus(invalidPinLockModel))) {
-					if(session.getAttribute("invalidpinlock") == null) {						
-						session.setAttribute("invalidpinlock", 0);
+					if(session.getAttribute(invalidPinLockString) == null) {						
+						session.setAttribute(invalidPinLockString, 0);
 					}
 					LoginDetailsModel loginmodel = new LoginDetailsModel(userName, role);
 					logindetailsimpl.insertLoginDetails(loginmodel);
@@ -52,8 +53,8 @@ private static final long serialVersionUID = 1L;
 					int retriveat = invalidPinLockDaoimpl.accountLockReleaseAt(invalidPinLockModel);
 					if(retriveat > 2) {
 						invalidPinLockDaoimpl.deleteInvalidPinLock(invalidPinLockModel);
-						if(session.getAttribute("invalidpinlock") == null) {
-							session.setAttribute("invalidpinlock", 0);
+						if(session.getAttribute(invalidPinLockString) == null) {
+							session.setAttribute(invalidPinLockString, 0);
 						}
 						LoginDetailsModel loginmodel = new LoginDetailsModel(userName, role);
 						logindetailsimpl.insertLoginDetails(loginmodel);
