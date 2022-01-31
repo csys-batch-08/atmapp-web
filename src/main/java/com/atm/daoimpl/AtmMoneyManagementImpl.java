@@ -20,14 +20,14 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 //Deposit money:
 	public int depositAtmMoney(AtmMoneyManagementModel atmMoneyManagement) throws SQLException{
 		
-		String query = "insert into atm_money_management(money_deposited,money_balance,agent_name) values(?,?,?)";
+		String depositAtmMoneyQuery = "insert into atm_money_management(money_deposited,money_balance,agent_name) values(?,?,?)";
 		String query1 = commitString;
 				PreparedStatement statement = null;
 				Connection con = null;
 				int res = -1;
 				try {
 					 con = ConnectionUtil.getConnection();
-					statement = con.prepareStatement(query);
+					statement = con.prepareStatement(depositAtmMoneyQuery);
 					statement.setLong(1, atmMoneyManagement.getMoneyDeposited());
 					statement.setLong(2, atmMoneyManagement.getMoneyDeposited());
 					statement.setString(3, atmMoneyManagement.getAgentName());
@@ -54,9 +54,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "select id,money_deposited,money_balance,deposited_at,agent_name from atm_money_management order by id desc";
+			String showRefillHistoryQuery = "select id,money_deposited,money_balance,deposited_at,agent_name from atm_money_management order by id desc";
 			statement = con.createStatement();
-			ResultSet res = statement.executeQuery(query);
+			ResultSet res = statement.executeQuery(showRefillHistoryQuery);
 					while(res.next()) {
 						atmMoneyManagementModels.add(new AtmMoneyManagementModel(res.getInt(1),res.getLong(2),res.getLong(3),(res.getTimestamp(4)).toLocalDateTime().format(dateTimeFormatter),res.getString(5)));
 					}
@@ -82,9 +82,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 		Statement statement = null;
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "select money_balance from atm_money_management where id in (select max(id) from atm_money_management)";
+			String atmPreviousBalanceQuery = "select money_balance from atm_money_management where id in (select max(id) from atm_money_management)";
 			 statement = con.createStatement();
-			ResultSet res = statement.executeQuery(query);
+			ResultSet res = statement.executeQuery(atmPreviousBalanceQuery);
 					while(res.next()) {
 						return res.getLong(1);
 					}
@@ -111,9 +111,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 		int res = -1;
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "update atm_money_management set money_balance = ? where id in (select max(id) from atm_money_management)";
+			String updateNewAtmBalanceQuery = "update atm_money_management set money_balance = ? where id in (select max(id) from atm_money_management)";
 			String query1 = commitString;
-			statement = con.prepareStatement(query);
+			statement = con.prepareStatement(updateNewAtmBalanceQuery);
 					statement.setLong(1, atmMoneyManagement.getMoneyBalance());
 					
 					res = statement.executeUpdate();
