@@ -24,8 +24,7 @@ public class EncryptPassword {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(128); // block size is 128bits
         SecretKey secretKey = keyGenerator.generateKey();
-        cipher = Cipher.getInstance("AES");
-
+        cipher = Cipher.getInstance("AES"); 
         String encryptString = encrypt("oracle", secretKey);
         byte[] encryptedTextByte = decoder.decode(encryptString);
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
