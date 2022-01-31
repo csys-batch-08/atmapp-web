@@ -22,14 +22,14 @@ public class EnterPinMiniStatementController extends HttpServlet{
 protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 	try {
 	HttpSession session = req.getSession();
-	String user = session.getAttribute("user").toString();
-	int pin = Integer.parseInt(req.getParameter("minipin"));
+	String userMiniStatement = session.getAttribute("user").toString();
+	int pinMiniStatement = Integer.parseInt(req.getParameter("minipin"));
 	UserProfileImpl userprofileimpl = new UserProfileImpl();
 	InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 	String invalidPinLockString = "invalidpinlock";
-		int userpinMiniStatement = userprofileimpl.getUserPin(user);
+		int userpinMiniStatement = userprofileimpl.getUserPin(userMiniStatement);
 		if (userpinMiniStatement > 0) {
-			if (userpinMiniStatement == pin) {
+			if (userpinMiniStatement == pinMiniStatement) {
 				res.sendRedirect("minisateserv");
 			} else {
 				int countMiniStatement = (int)session.getAttribute(invalidPinLockString);
@@ -40,7 +40,7 @@ protected void service(HttpServletRequest req, HttpServletResponse res) throws S
 				session.setAttribute("invalidhomepin", true);
 				res.sendRedirect("welcomePage.jsp");
 				}else {
-					InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
+					InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(userMiniStatement);
 					invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
 					res.sendRedirect("invalidPinMax.jsp");
 				}

@@ -23,14 +23,14 @@ public class EnterPinDepositController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 		HttpSession session = req.getSession();
-		String user = session.getAttribute("user").toString();
-		int pin = Integer.parseInt(req.getParameter("deppin"));
+		String userDeposit = session.getAttribute("user").toString();
+		int pinDeposit = Integer.parseInt(req.getParameter("deppin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 		String invalidPinLockString = "invalidpinlock";
-			int userpinDeposit = userprofileimpl.getUserPin(user);
+			int userpinDeposit = userprofileimpl.getUserPin(userDeposit);
 			if (userpinDeposit > 0) {
-				if (userpinDeposit == pin) {
+				if (userpinDeposit == pinDeposit) {
 					res.sendRedirect("depserv");
 				}  else {
 					int countDeposit = (int)session.getAttribute(invalidPinLockString);
@@ -41,7 +41,7 @@ public class EnterPinDepositController extends HttpServlet {
 					session.setAttribute("invaliddeppin", true);
 					throw new DepositWrongPinException();
 					}else {
-						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
+						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(userDeposit);
 						invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
 						res.sendRedirect("invalidPinMax.jsp");
 					}

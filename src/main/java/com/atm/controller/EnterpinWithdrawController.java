@@ -27,14 +27,14 @@ public class EnterpinWithdrawController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 		HttpSession session = req.getSession();
-		String user = session.getAttribute("user").toString();
-		int pin = Integer.parseInt(req.getParameter("withpin"));
+		String userWithdraw = session.getAttribute("user").toString();
+		int pinWithdraw = Integer.parseInt(req.getParameter("withpin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 		String invalidPinLockString = "invalidpinlock";
-			int userpinWithdraw = userprofileimpl.getUserPin(user);
+			int userpinWithdraw = userprofileimpl.getUserPin(userWithdraw);
 			if (userpinWithdraw > 0) {
-				if (userpinWithdraw == pin) {
+				if (userpinWithdraw == pinWithdraw) {
 					res.sendRedirect("withdrawserv");
 				} else {
 					int countWithdraw = (int)session.getAttribute(invalidPinLockString);
@@ -45,7 +45,7 @@ public class EnterpinWithdrawController extends HttpServlet {
 					session.setAttribute("invalidpin", true);
 					throw new WithdrawWrongPinException();
 					}else {
-						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
+						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(userWithdraw);
 						invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
 						res.sendRedirect("invalidPinMax.jsp");
 					}

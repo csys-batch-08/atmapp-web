@@ -21,14 +21,14 @@ public class EnterPinMoneyTransfController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 		HttpSession session = req.getSession();
-		String user = session.getAttribute("user").toString();
-		int pin = Integer.parseInt(req.getParameter("moneytransfpin"));
+		String userMoneyTransfer = session.getAttribute("user").toString();
+		int pinMoneyTransfer = Integer.parseInt(req.getParameter("moneytransfpin"));
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl(); 
 		String invalidPinLockString = "invalidpinlock";
-			int userpinMoneyTransfer = userprofileimpl.getUserPin(user);
+			int userpinMoneyTransfer = userprofileimpl.getUserPin(userMoneyTransfer);
 			if (userpinMoneyTransfer > 0) {
-				if (userpinMoneyTransfer == pin) {
+				if (userpinMoneyTransfer == pinMoneyTransfer) {
 					res.sendRedirect("moneyTransfer.jsp");
 				} else {
 					int countMoneyTransfer = (int)session.getAttribute(invalidPinLockString);
@@ -39,7 +39,7 @@ public class EnterPinMoneyTransfController extends HttpServlet{
 					session.setAttribute("invalidhomepin", true);
 					res.sendRedirect("welcomePage.jsp");
 					}else {
-						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(user);
+						InvalidPinLockModel invalidPinLockModel = new InvalidPinLockModel(userMoneyTransfer);
 						invalidPinLockDaoimpl.insertInavalidPinLock(invalidPinLockModel);
 						res.sendRedirect("invalidPinMax.jsp");
 					}
