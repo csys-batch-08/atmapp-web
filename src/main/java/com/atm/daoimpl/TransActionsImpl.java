@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.atm.dao.TransActionsDao;
 import com.atm.models.TransActionsModel;
 
 import com.atm.util.ConnectionUtil;
 
-public class TransActionsImpl {
+public class TransActionsImpl implements TransActionsDao{
 	String commitString = "commit";
 	// Insert TransAction Data:
 		public int insertTransAction(TransActionsModel transActionsModel) throws SQLException {

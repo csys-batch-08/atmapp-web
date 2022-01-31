@@ -49,7 +49,8 @@ input {
 
 #homebt {
 	position: relative;
-	float: right;
+	position : absolute;
+	right : 0px;
 	background-color: red;
 	width: 130px;
 	height: 50px;

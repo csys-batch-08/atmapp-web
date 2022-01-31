@@ -33,7 +33,8 @@ button{
 width:80px;
 height:50px;
 background-color:red;
-float:right;
+position : absolute;
+right: 0px;
 border-radius:10px;
 }
 #timehead{

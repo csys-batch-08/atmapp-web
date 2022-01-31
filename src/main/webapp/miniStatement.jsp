@@ -71,7 +71,6 @@ font-size: 40px;
   <div class="container mt-1">	
 	<div id = "minidiv">
 	<table  class="table table-bordered table-sm">
-	<caption id = "miniStatementCaption">Mini Statement</caption>
 	<thead class="table-dark">
 		<tr>
 			<th>Transaction_type</th>
