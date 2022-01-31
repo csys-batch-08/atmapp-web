@@ -11,6 +11,7 @@ import com.atm.util.ConnectionUtil;
 
 public class InvalidPinLockDaoimpl {
 	String commitString = "commit";
+	String regexTimeString = "[0][0-9]";
 	//Insert data in table:
 public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
@@ -110,7 +111,7 @@ public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 				ResultSet rSet1 = statement.executeQuery();
 				while(rSet1.next()) {
 					String ret = rSet1.getString(1);
-					if(ret.matches("[0][0-9]")) {
+					if(ret.matches(regexTimeString)) {
 					 date = Integer.parseInt(ret.substring(1));				
 					}else {						
 					 date = Integer.parseInt(rSet1.getString(1));
@@ -146,7 +147,7 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 				ResultSet rSet2 = statement.executeQuery();
 				while(rSet2.next()) {
 					String ret = rSet2.getString(1);
-					if(ret.matches("[0][0-9]")) {
+					if(ret.matches(regexTimeString)) {
 					 hours = Integer.parseInt(ret.substring(1));
 					
 					}else {
@@ -185,7 +186,7 @@ public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws 
 			String ret = rSet.getString(1);
 			if(date < 1) {
 				if(hours < 1) {
-			if(ret.matches("[0][0-9]")) {
+			if(ret.matches(regexTimeString)) {
 			return Integer.parseInt(ret.substring(1));
 			}else {
 				return Integer.parseInt(ret);

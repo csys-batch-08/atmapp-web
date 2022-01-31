@@ -143,12 +143,33 @@ button:hover{
 	box-shadow: 0 0 20px blue;
 	transition-duration: 0.2s;
 }
-
-
+  .marquee {
+    width: 100%;
+line-height: 5px;
+	background-color: black;
+	color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    position : absolute;
+    bottom: 0px;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    padding-top:15px;
+    animation: marquee 25s linear infinite;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-60%, 0); }
+}
 </style>
 </head>
 <body >
-
+<div class="marquee">
+	<p><strong> State Bank of India never ask for your user id / password / pin no. through phone call / SMSes / e-mails. Any such phone call / SMSes / e-mails asking you to reveal credential or One Time Password through SMS could be attempt to withdraw money from your account.NEVER share these details to anyone. State Bank of India wants you to be secure. If you come across any such instances please inform us through e-mail to the following address</strong></p>
+</div>
 <div class="fullbody">
 <div class="one">
 	<fieldset>

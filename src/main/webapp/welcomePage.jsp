@@ -33,13 +33,34 @@ a {
 a:hover {
 	transform: translateY(-10px);
 }
+  .marquee {
+    width: 100%;
+line-height: 50px;
+	font-size:40px;
+	color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-70%, 0); }
+}
 </style>
 </head>
 <body>
 	<c:if test="${invalidhomepin != null}">
 	<h1 id="invalpin">Invalid Pin</h1>
 	</c:if>
-	<hr>
+	<div class="marquee">
+	<p><strong>STATE BANK OF INDIA</strong></p>
+</div>
+<hr>
 	<a href="withdraw.jsp" id="withdraw" class="atag">Withdraw</a>
 	<a href="deposit.jsp" id="deposit" class="atag">Deposit</a>
 	<a href="enterPinBalance.jsp" id="balance" class="atag">Balance</a>
