@@ -14,8 +14,8 @@ public class EncryptPassword {
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         byte[] encryptedByte = cipher.doFinal(plainTextByte);
         Base64.Encoder encoder = Base64.getEncoder();
-        String encryptedText = encoder.encodeToString(encryptedByte);
-        return encryptedText;
+        return encoder.encodeToString(encryptedByte);
+
     }
 
     public static String decrypt()
@@ -33,9 +33,8 @@ public class EncryptPassword {
     }
     public static void main(String[] args) {
 		try {
-			System.out.println(decrypt());
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }
