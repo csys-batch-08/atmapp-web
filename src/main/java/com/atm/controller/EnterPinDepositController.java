@@ -28,16 +28,16 @@ public class EnterPinDepositController extends HttpServlet {
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 		String invalidPinLockString = "invalidpinlock";
-			int userpin = userprofileimpl.getUserPin(user);
-			if (userpin > 0) {
-				if (userpin == pin) {
+			int userpinDeposit = userprofileimpl.getUserPin(user);
+			if (userpinDeposit > 0) {
+				if (userpinDeposit == pin) {
 					res.sendRedirect("depserv");
 				}  else {
-					int inv = (int)session.getAttribute(invalidPinLockString);
-					inv++;
-					if(inv < 3) {
+					int countDeposit = (int)session.getAttribute(invalidPinLockString);
+					countDeposit++;
+					if(countDeposit < 3) {
 						session.removeAttribute(invalidPinLockString);
-					session.setAttribute(invalidPinLockString, inv);
+					session.setAttribute(invalidPinLockString, countDeposit);
 					session.setAttribute("invaliddeppin", true);
 					throw new DepositWrongPinException();
 					}else {

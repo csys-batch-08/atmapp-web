@@ -27,16 +27,16 @@ protected void service(HttpServletRequest req, HttpServletResponse res) throws S
 	UserProfileImpl userprofileimpl = new UserProfileImpl();
 	InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl();
 	String invalidPinLockString = "invalidpinlock";
-		int userpin = userprofileimpl.getUserPin(user);
-		if (userpin > 0) {
-			if (userpin == pin) {
+		int userpinMiniStatement = userprofileimpl.getUserPin(user);
+		if (userpinMiniStatement > 0) {
+			if (userpinMiniStatement == pin) {
 				res.sendRedirect("minisateserv");
 			} else {
-				int invalid = (int)session.getAttribute(invalidPinLockString);
-				invalid++;
-				if(invalid < 3) {
+				int countMiniStatement = (int)session.getAttribute(invalidPinLockString);
+				countMiniStatement++;
+				if(countMiniStatement < 3) {
 					session.removeAttribute(invalidPinLockString);
-				session.setAttribute(invalidPinLockString, invalid);
+				session.setAttribute(invalidPinLockString, countMiniStatement);
 				session.setAttribute("invalidhomepin", true);
 				res.sendRedirect("welcomePage.jsp");
 				}else {

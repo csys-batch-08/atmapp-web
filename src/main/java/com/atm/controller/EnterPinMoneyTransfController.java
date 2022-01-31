@@ -26,16 +26,16 @@ public class EnterPinMoneyTransfController extends HttpServlet{
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		InvalidPinLockDaoimpl invalidPinLockDaoimpl = new InvalidPinLockDaoimpl(); 
 		String invalidPinLockString = "invalidpinlock";
-			int userpin = userprofileimpl.getUserPin(user);
-			if (userpin > 0) {
-				if (userpin == pin) {
+			int userpinMoneyTransfer = userprofileimpl.getUserPin(user);
+			if (userpinMoneyTransfer > 0) {
+				if (userpinMoneyTransfer == pin) {
 					res.sendRedirect("moneyTransfer.jsp");
 				} else {
-					int invalid = (int)session.getAttribute(invalidPinLockString);
-					invalid++;
-					if(invalid < 3) {
+					int countMoneyTransfer = (int)session.getAttribute(invalidPinLockString);
+					countMoneyTransfer++;
+					if(countMoneyTransfer < 3) {
 						session.removeAttribute(invalidPinLockString);
-					session.setAttribute(invalidPinLockString, invalid);
+					session.setAttribute(invalidPinLockString, countMoneyTransfer);
 					session.setAttribute("invalidhomepin", true);
 					res.sendRedirect("welcomePage.jsp");
 					}else {
