@@ -2,7 +2,7 @@ package com.atm.util;
 
 import java.sql.*;
 
-import com.atm.EncryptPassword.EncryptPassword;
+import com.atm.encryptpassword.EncryptPassword;
 
 public class ConnectionUtil {
 

@@ -1,4 +1,4 @@
-package com.atm.EncryptPassword;
+package com.atm.encryptpassword;
 import java.security.SecureRandom;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -8,19 +8,17 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptPassword
 {
+	
     static String plainText = "oracle";
     public static final int AES_KEY_SIZE = 256;
     public static final int GCM_IV_LENGTH = 12;
     public static final int GCM_TAG_LENGTH = 16;
 
-    public static void main(String[] args) throws Exception
-    {
-      System.out.println(decrypt());
-        
-       
-    }
+private EncryptPassword() {
+	
+}
 
-    public static byte[] encrypt(byte[] plaintext, SecretKey key, byte[] IV) throws Exception
+    public static byte[] encrypt(byte[] plaintext, SecretKey key, byte[] iv) throws Exception
     {
         // Get Cipher Instance
         Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
@@ -29,15 +27,13 @@ public class EncryptPassword
         SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
         
         // Create GCMParameterSpec
-        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, IV);
+        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, iv);
         
         // Initialize Cipher for ENCRYPT_MODE
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, gcmParameterSpec);
         
-        // Perform Encryption
-        byte[] cipherText = cipher.doFinal(plaintext);
         
-        return cipherText;
+        return cipher.doFinal(plaintext);
     }
 
     public static String decrypt() throws Exception
