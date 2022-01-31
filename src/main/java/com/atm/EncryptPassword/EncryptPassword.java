@@ -1,40 +1,71 @@
 package com.atm.EncryptPassword;
-import java.util.Base64;    
-import javax.crypto.Cipher;  
-import javax.crypto.KeyGenerator;   
-import javax.crypto.SecretKey;  
+import java.security.SecureRandom;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
-public class EncryptPassword {  
-    static Cipher cipher;  
+public class EncryptPassword
+{
+    static String plainText = "oracle";
+    public static final int AES_KEY_SIZE = 256;
+    public static final int GCM_IV_LENGTH = 12;
+    public static final int GCM_TAG_LENGTH = 16;
 
-   
-    public static String encrypt(String plainText, SecretKey secretKey)
-            throws Exception {
-        byte[] plainTextByte = plainText.getBytes();
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-        byte[] encryptedByte = cipher.doFinal(plainTextByte);
-        Base64.Encoder encoder = Base64.getEncoder();
-        return encoder.encodeToString(encryptedByte);
-
+    public static void main(String[] args) throws Exception
+    {
+      System.out.println(decrypt());
+        
+       
     }
 
-    public static String decrypt()
-            throws Exception {
-        Base64.Decoder decoder = Base64.getDecoder();
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(128); // block size is 128bits
-        SecretKey secretKey = keyGenerator.generateKey();
-        cipher = Cipher.getInstance("AES"); 
-        String encryptString = encrypt("oracle", secretKey);
-        byte[] encryptedTextByte = decoder.decode(encryptString);
-        cipher.init(Cipher.DECRYPT_MODE, secretKey);
-        byte[] decryptedByte = cipher.doFinal(encryptedTextByte);
-       return new String(decryptedByte);
+    public static byte[] encrypt(byte[] plaintext, SecretKey key, byte[] IV) throws Exception
+    {
+        // Get Cipher Instance
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        
+        // Create SecretKeySpec
+        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+        
+        // Create GCMParameterSpec
+        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, IV);
+        
+        // Initialize Cipher for ENCRYPT_MODE
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec, gcmParameterSpec);
+        
+        // Perform Encryption
+        byte[] cipherText = cipher.doFinal(plaintext);
+        
+        return cipherText;
     }
-    public static void main(String[] args) {
-		try {
-		} catch (Exception e) {
-			e.getMessage();
-		}
-	}
+
+    public static String decrypt() throws Exception
+    {
+    	
+    	  KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+          keyGenerator.init(AES_KEY_SIZE);
+          // Generate Key
+          SecretKey key = keyGenerator.generateKey();
+          byte[] iv = new byte[GCM_IV_LENGTH];
+          SecureRandom random = new SecureRandom();
+          random.nextBytes(iv);
+          byte[] cipherText = encrypt("oracle".getBytes(), key, iv);
+        // Get Cipher Instance
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        
+        // Create SecretKeySpec
+        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+        
+        // Create GCMParameterSpec
+        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, iv);
+        
+        // Initialize Cipher for DECRYPT_MODE
+        cipher.init(Cipher.DECRYPT_MODE, keySpec, gcmParameterSpec);
+        
+        // Perform Decryption
+        byte[] decryptedText = cipher.doFinal(cipherText);
+        
+        return new String(decryptedText);
+    }
 }
