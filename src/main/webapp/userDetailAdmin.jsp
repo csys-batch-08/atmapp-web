@@ -6,9 +6,18 @@
 <html lang = "en">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+
 <meta charset="ISO-8859-1">
 <title>User Details</title>
 <style>
+a{
+text-decoration: none;
+font-size: 30px;
+position: absolute;
+right: 20px;
+top :20px;
+color: red;
+}
 #userdetailfield {
 	width: 700px;
 }
@@ -51,5 +60,6 @@ background-color: #2F4F4F;
 		<br>
 	</fieldset>
 </c:forEach>
+<a href="admin.jsp" class="btn btn-danger">Home</a>
 </body>
 </html>

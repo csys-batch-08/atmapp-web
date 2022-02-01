@@ -13,6 +13,9 @@ import com.atm.util.ConnectionUtil;
 
 public class RemovedUsersImpl implements RemovedUsersDao {
 	// Insert data into removed users:
+	/**
+	 * this method is used to insert Removed Users Details:
+	 */
 	public int insertRemovedUsers(RemovedUsersModel removedusersmodel) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -45,7 +48,9 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 	}
 
 //fetch user:
-
+	/**
+	 * this method is used to fetch removed users details:
+	 */
 	public List<RemovedUsersModel> fetchRemovedUsers() throws SQLException {
 		List<RemovedUsersModel> removedUsersModels = new ArrayList<>();
 		Connection con = null;
@@ -58,7 +63,7 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 			statement = con.createStatement();
 			 resultSet = statement.executeQuery(query);
 			while(resultSet.next()) {
-				removedUsersModels.add(new RemovedUsersModel(resultSet.getInt(1), resultSet.getLong(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getLong(5), resultSet.getInt(6), (resultSet.getTimestamp(7)).toLocalDateTime().format(dateTimeFormatter)));
+				removedUsersModels.add(new RemovedUsersModel(resultSet.getInt("id"), resultSet.getLong("user_acc_no"), resultSet.getString("username"), resultSet.getInt("last_balance"), resultSet.getLong("mob_no"), resultSet.getInt("user_pin"), (resultSet.getTimestamp("acc_removed_at")).toLocalDateTime().format(dateTimeFormatter)));
 			}
 		} catch (Exception e) {
 			Logger.printStackTrace(e);

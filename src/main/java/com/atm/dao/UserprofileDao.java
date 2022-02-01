@@ -23,7 +23,7 @@ public interface UserprofileDao {
 	public int insertUserProfile(UserProfileModel userprofilepojo) throws SQLException;
 
 	// get user details All
-	public ResultSet fetchUserDetails() throws SQLException;
+	public List<UserProfileModel> fetchUserDetails() throws SQLException;
 
 	// remove account:
 	public int removeUserProfile(UserProfileModel userprofilepojo) throws SQLException;

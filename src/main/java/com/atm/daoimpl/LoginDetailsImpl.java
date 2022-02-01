@@ -19,6 +19,9 @@ import com.atm.util.ConnectionUtil;
 public class LoginDetailsImpl implements LoginDetailsDao {
 	String commitString = "commit";
 	// Remove Account:
+	/**
+	 * this method is used to delete user from login details for given username:
+	 */
 	public int removeLoginDetails(LoginDetailsModel loginpojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -47,6 +50,9 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 	}
 
 	// Insert Data in to login table:
+	/**
+	 * this method is used to insert login details:
+	 */
 	public int insertLoginDetails(LoginDetailsModel loginpojo) throws SQLException {
 
 		Connection con = null;
@@ -78,6 +84,9 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 	}
 	
 	//fetch login details:
+	/**
+	 * this method is used to fetch login details:
+	 */
 	public List<LoginDetailsModel> fetchLoginDetails()throws SQLException {
 		Connection con = null;
 		Statement statement = null;
@@ -91,7 +100,7 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 		 rSet = statement.executeQuery(query);
 		
 		while(rSet.next()) {
-			loginDetailsModels.add(new LoginDetailsModel(rSet.getInt(1), rSet.getString(2), (rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter), rSet.getString(4)));
+			loginDetailsModels.add(new LoginDetailsModel(rSet.getInt("id"), rSet.getString("username"), (rSet.getTimestamp("logged_at")).toLocalDateTime().format(dateTimeFormatter), rSet.getString("role")));
 		}
 		} catch (Exception e) {
 			Logger.printStackTrace(e);

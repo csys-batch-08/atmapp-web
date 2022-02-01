@@ -77,13 +77,12 @@ color:white;
 	<legend>REFILL</legend>
 	<form action = "depagentserv" method = "post">
 	<label>Enter Amount To Refill : </label><br>
-	<input type = "text" name= "depagentamount" pattern="[1-9][0-9]+[0][0]" maxlength="7" title = "Enter Amount Greater Than 2000 And Less Than 50000" autofocus><br>
+	<input type = "text" name= "depagentamount" pattern="[1-9][0-9]+[0][0]" maxlength="7" title = "Enter Amount Greater Than 2000 And Less Than 50000" required="required" autofocus="autofocus"><br>
 	<button type = "submit">Deposit</button>
 	</form>
 	</fieldset>
 <h2 id = "timehead">00:00</h2>
 </body>
-
 <script>
 let th = document.getElementById("timehead");
 let time = 100;
@@ -107,8 +106,5 @@ window.addEventListener('load', () =>{
 	},1000);
 	
 });
-
-
-
 </script>
 </html>

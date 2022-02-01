@@ -12,7 +12,10 @@ import com.atm.util.ConnectionUtil;
 public class InvalidPinLockDaoimpl {
 	String commitString = "commit";
 	String regexTimeString = "[0][0-9]";
-	//Insert data in table:
+	//Insert invalidPinLock data in table:
+	/**
+	 * this method is used to insert user data in invalidPinLock table:
+	 */
 public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
 	PreparedStatement statement = null;
@@ -40,6 +43,9 @@ public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws
 }
 
 //check whether the acc is locked or not:
+/**
+ * this method is used to check whether the user is locked or not for given username:
+ */
 public boolean invalidPinLockStatus(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
 	PreparedStatement statement = null;
@@ -71,7 +77,9 @@ public boolean invalidPinLockStatus(InvalidPinLockModel invalidPinLockModel) thr
 	return false;
 }
 //delete entries from table:
-
+/**
+ * this method is used to delete invalidPinLock users:
+ */
 public int deleteInvalidPinLock(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
 	PreparedStatement statement = null;
@@ -101,6 +109,9 @@ public int deleteInvalidPinLock(InvalidPinLockModel invalidPinLockModel) throws 
 
 
 //retrive date : 
+/**
+ * this method is used to get deducted date:
+ */
 public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLException{
 	Connection con = null;
 	PreparedStatement statement = null;
@@ -141,6 +152,9 @@ return date;
 }
 
 //retrive hours: 
+/**
+ * this method is used to get deducted hour:
+ */
 public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLException{
 	Connection con = null;
 	int hours = 0;
@@ -183,6 +197,9 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 		
 
 //retrive the releasing time:
+/**
+ * this method is used to retrive the account lock releasing time:
+ */
 public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
 	PreparedStatement statement = null;

@@ -85,6 +85,13 @@ button:hover{
 body{
 background-color: #363945;
 }
+a{
+text-decoration: none;
+font-size: 30px;
+position: absolute;
+right: 20px;
+top :20px;
+}
 </style>
 </head>
 <body>
@@ -100,5 +107,6 @@ background-color: #363945;
 			<button type="submit" class="btn btn-primary">Submit</button>
 			</div>
 		</form>
+		<a href="admin.jsp" class="btn btn-danger">Home</a>
 </body>
 </html>

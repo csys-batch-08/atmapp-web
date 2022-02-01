@@ -55,7 +55,7 @@ public class WithdrawController extends HttpServlet {
 							Long acc = userprofileimpl.getAccountNo(userprofilemodel3);
 							transActionsModel.setUserAccnoLong(acc);
 							transActionsModel.setTransActionAmount(-enteredAmount);
-							transActionsModel.setTransActionType("withdraw");
+							transActionsModel.setTransActionType("DEBIT");
 							transActionsImpl.insertTransAction(transActionsModel);
 							session.setAttribute("withamount", enteredAmount);
 							session.setAttribute("withbal", newbal);

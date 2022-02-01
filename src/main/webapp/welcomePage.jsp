@@ -12,6 +12,10 @@
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 <title>Welcome ${user}</title>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <link rel="stylesheet" href="welcomeuser.css">
 <style>
 #invalpin {
@@ -51,6 +55,9 @@ line-height: 50px;
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-70%, 0); }
 }
+#timehead{
+color : #F5DF4D;
+}
 </style>
 </head>
 <body>
@@ -61,6 +68,7 @@ line-height: 50px;
 	<p><strong>STATE BANK OF INDIA</strong></p>
 </div>
 <hr>
+<div class="animate__animated animate__fadeInDown">
 	<a href="withdraw.jsp" id="withdraw" class="atag">Withdraw</a>
 	<a href="deposit.jsp" id="deposit" class="atag">Deposit</a>
 	<a href="enterPinBalance.jsp" id="balance" class="atag">Balance</a>
@@ -73,6 +81,7 @@ line-height: 50px;
 	<a href="pinChange.jsp" id="pinchange" class="atag">Pin Change</a>
 	<a href="logOut.jsp" id="logout" class="atag">Logout</a>
 	<h1 id="timehead">00:00</h1>
+	</div>
 </body>
 
 <script>

@@ -75,7 +75,7 @@ background-size: cover;
 
 <script>
 let th = document.getElementById("timehead");
-let time = 20;
+let time = 2000;
 let i;
 window.addEventListener('load', () =>{
 	

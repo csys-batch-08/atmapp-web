@@ -8,7 +8,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
-
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <div id="bgBlur"></div>
@@ -167,11 +170,14 @@ line-height: 5px;
 </style>
 </head>
 <body >
+<div class = "animate__animated animate__flash">
 <div class="marquee">
 	<p><strong> State Bank of India never ask for your user id / password / pin no. through phone call / SMSes / e-mails. Any such phone call / SMSes / e-mails asking you to reveal credential or One Time Password through SMS could be attempt to withdraw money from your account.NEVER share these details to anyone. State Bank of India wants you to be secure. If you come across any such instances please inform us through e-mail to the following address</strong></p>
 </div>
+</div>
 <div class="fullbody">
 <div class="one">
+<div class="animate__animated animate__bounce">
 	<fieldset>
 		<legend id="logger" class="form-label">LOGIN</legend>
 		
@@ -190,9 +196,10 @@ line-height: 5px;
 		</form>
 	</fieldset>
 	</div>
+	</div>
 	
 
-<div id = "logintxt">
+<div id = "logintxt" class = "animate__animated animate__fadeInLeft">
 <h3>Be aware of fraudulent emails offering free gifts and rewards. Scammers send these emails to extract money from your account via your personal details. Do not share your bank details with anyone. SBI never asks for your UPI PIN or Card Details.</h3>
 </div>
 </div>

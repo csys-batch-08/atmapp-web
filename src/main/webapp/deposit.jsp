@@ -12,8 +12,6 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<div id="bgBlur"></div>
 <title>Deposit</title>
 <style>
 * {
@@ -105,6 +103,7 @@ body {
 </style>
 </head>
 <body>
+<div id="bgBlur"></div>
 	<c:if test="${user == null}">
 		<c:redirect url="index.jsp"></c:redirect>
 	</c:if>

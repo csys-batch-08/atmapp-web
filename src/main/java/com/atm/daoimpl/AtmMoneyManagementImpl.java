@@ -19,6 +19,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	
 	String commitString = "commit";
 //Deposit money:
+	/**
+	 * this method is used to insert atmMoneyManagement details into table:
+	 */
 	public int depositAtmMoney(AtmMoneyManagementModel atmMoneyManagement) throws SQLException{
 		
 		String depositAtmMoneyQuery = "insert into atm_money_management(money_deposited,money_balance,agent_name) values(?,?,?)";
@@ -49,6 +52,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	}
 	
 	//History Agent:
+	/**
+	 * this method is used to fetch Agent History:
+	 */
 	public List<AtmMoneyManagementModel> showRefillHistory() throws SQLException {
 		List<AtmMoneyManagementModel> atmMoneyManagementModels = new ArrayList<>();
 		Connection con = null;
@@ -83,6 +89,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	}
 	
 	//previous balance:
+	/**
+	 * this method is used to fetch previous balance of atm:
+	 */
 	public Long atmPreviousBalance() throws SQLException {
 		Connection con = null;
 		Statement statement = null;
@@ -115,6 +124,9 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	}
 	
 	//update balance:
+	/**
+	 * this method is used to update balance in atmMoneymanagement table:
+	 */
 	public int updateNewAtmBalance(AtmMoneyManagementModel atmMoneyManagement) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;

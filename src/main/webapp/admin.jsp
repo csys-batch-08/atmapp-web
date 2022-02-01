@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.atm.controller.* "%>
-<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
 <link rel="icon" type="" href="Assets/sbi-logo-33234.png">
 
@@ -12,11 +14,12 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <div id="bgBlur"></div>
 <c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>
-	</c:if>
+</c:if>
 <title>Welcome ${admin}</title>
 <style>
 * {
@@ -33,12 +36,14 @@ a {
 body {
 	overflow-x: hidden;
 }
+
 #adminlab {
 	font-size: 50px;
 	position: absolute;
 	left: 500px;
 	color: #FF8C00;
 }
+
 #adminregus {
 	text-decoration: none;
 	font-size: 50px;
@@ -49,6 +54,7 @@ body {
 	border-color: white;
 	left: 0px;
 }
+
 #adminuserdet {
 	text-decoration: none;
 	font-size: 50px;
@@ -58,6 +64,7 @@ body {
 	background-color: rgba(255, 255, 255, 0.5);
 	left: 0px;
 }
+
 #adminremuser {
 	text-decoration: none;
 	font-size: 50px;
@@ -68,6 +75,7 @@ body {
 	border-color: white;
 	left: 0px;
 }
+
 #logoutatag {
 	text-decoration: none;
 	font-size: 50px;
@@ -78,16 +86,8 @@ body {
 	top: 40px;
 	border-radius: 10px;
 }
-#removedusers {
-	text-decoration: none;
-	font-size: 50px;
-	position: absolute;
-	top: 280px;
-	border-radius: 5px;
-	background-color: rgba(255, 255, 255, 0.5);
-	border-color: white;
-	right: 0px;
-}
+
+
 #logindetails {
 	text-decoration: none;
 	font-size: 50px;
@@ -98,17 +98,20 @@ body {
 	border-color: white;
 	right: 0px;
 }
+
 #timehead {
 	position: relative;
 	color: #F5DF4D;
 	top: -100px;
 }
+
 body {
-	background-image:
-		url("https://techcrunch.com/wp-content/uploads/2018/09/GettyImages-465790437.jpg?w=430&h=230&crop=1");
+background-image :url("Assets/AdminAtmImages-465790437.jpg");
+	
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 #bgBlur {
 	position: absolute;
 	background-color: rgba(11, 11, 11, 0.6);
@@ -144,16 +147,13 @@ a:hover {
 	<a href="register.jsp" id="adminregus">Register New User</a>
 	<br>
 	<br>
-	<a href="removeAccount.jsp" id="adminremuser">Remove User</a>
+	<a href="removeAccount.jsp" id="adminremuser">Make User InActive</a>
 	<br>
 	<br>
-	<a href="userDetailsAdminGetUser.jsp" id="adminuserdet">User
+	<a href="userDetailsMainPage.jsp" id="adminuserdet">User
 		Details</a>
 	<a href="logOutAdmin.jsp" id="logoutatag" class="btn btn-danger"
 		class="left">LogOut</a>
-	<br>
-	<a href="Removeduserlistservlet" id="removedusers" class="left">Removed
-		Users List</a>
 	<br>
 	<a href="logindetailsservlet" id="logindetails" class="left">Login
 		Details</a>

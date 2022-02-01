@@ -57,7 +57,7 @@ public class DepositController extends HttpServlet {
 							// Insert data in Deposit table:
 							transActionsModel.setUserAccnoLong(acc);
 							transActionsModel.setTransActionAmount(eamount);
-							transActionsModel.setTransActionType("deposit");
+							transActionsModel.setTransActionType("CREDIT");
 							transActionsImpl.insertTransAction(transActionsModel);
 							session.setAttribute("depsuccamount", eamount);
 							session.setAttribute("depsuccbal", newbal);

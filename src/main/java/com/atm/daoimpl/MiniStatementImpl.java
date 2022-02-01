@@ -15,6 +15,9 @@ import com.atm.util.ConnectionUtil;
 
 public class MiniStatementImpl implements MiniStatementDao {
 	// Get MiniStatement:
+	/**
+	 * this method is used to fetch users last 10 transactions:
+	 */
 	public List<TransActionsModel> fetchMiniStatement(Long accno) throws SQLException {
 		List<TransActionsModel> miniStatement = new ArrayList<>(); 
 		Connection connection = null;
@@ -36,7 +39,7 @@ public class MiniStatementImpl implements MiniStatementDao {
 			 }else{
 			transtype = rSet.getString(4); 
 			 }
-				miniStatement.add(new TransActionsModel(rSet.getInt(2),(rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter),transtype));
+				miniStatement.add(new TransActionsModel(rSet.getInt("transaction_amount"),(rSet.getTimestamp("transaction_at")).toLocalDateTime().format(dateTimeFormatter),transtype));
 			}
 		} catch (Exception e) {
 			Logger.printStackTrace(e);

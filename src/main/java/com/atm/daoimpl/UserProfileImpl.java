@@ -18,7 +18,10 @@ import com.atm.util.ConnectionUtil;
 public class UserProfileImpl implements UserprofileDao {
 
 	private String commitString = "commit";
-	// Get Balance:
+	// Get User Balance:
+	/**
+	 * this method is used to fetch balance for the given UserName:
+	 */
 	public int getUserBalance(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
@@ -51,6 +54,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// update balance:
+	/**
+	 * this method is used to update the user balance for given userName:
+	 */
 	public int insertUserBalance(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
@@ -80,6 +86,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get Account number:
+	/**
+	 * this method is used to fetch Account Number for the given User Name:
+	 */
 	public Long getAccountNo(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		Long resLong = -1l;
@@ -113,6 +122,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get user details:
+	/**
+	 * this method is used to fetch user Detail for given user name:
+	 */
 	public List<UserProfileModel> fetchUserDetails(UserProfileModel userprofilepojo) throws SQLException {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		List<UserProfileModel> userProfileModels = new ArrayList<>();
@@ -127,7 +139,7 @@ public class UserProfileImpl implements UserprofileDao {
 			statement.setString(1, userprofilepojo.getUserName());
 			 rs = statement.executeQuery();
 			if(rs.next()) {
-				userProfileModels.add(new UserProfileModel(rs.getInt(1), rs.getString(2), rs.getLong(3), rs.getInt(4), rs.getLong(5), rs.getInt(6), rs.getTimestamp(7).toLocalDateTime().format(dateTimeFormatter)));
+				userProfileModels.add(new UserProfileModel(rs.getInt("id"), rs.getString("username"), rs.getLong("user_acc_no"), rs.getInt("balance"), rs.getLong("mob_no"), rs.getInt("user_pin"), rs.getTimestamp("acc_created_at").toLocalDateTime().format(dateTimeFormatter)));
 			}
 		} catch (Exception e) {
 			Logger.printStackTrace(e);
@@ -147,6 +159,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// insert user profile details:
+	/**
+	 * this method is used to insert user profile details:
+	 */
 	public int insertUserProfile(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
@@ -177,7 +192,12 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get user details All:
-	public ResultSet fetchUserDetails() throws SQLException {
+	/**
+	 * this method is used to fetch All User Details:
+	 */
+	public List<UserProfileModel> fetchUserDetails() throws SQLException {
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		List<UserProfileModel> userProfileModels = new ArrayList<>();
 		Connection con = null;
 		Statement statement = null; 
 		ResultSet rs = null;
@@ -187,6 +207,9 @@ public class UserProfileImpl implements UserprofileDao {
 			String query = "select id,username,user_acc_no,balance,mob_no,user_pin,acc_created_at  from userprofile";
 			statement = con.createStatement();
 			 rs = statement.executeQuery(query);
+			 while(rs.next()) {
+				 userProfileModels.add(new UserProfileModel(rs.getInt("id"), rs.getString("username"), rs.getLong("user_acc_no"), rs.getInt("balance"), rs.getLong("mob_no"), rs.getInt("user_pin"), rs.getTimestamp("acc_created_at").toLocalDateTime().format(dateTimeFormatter)));
+			 }
 		} catch (Exception e) {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
@@ -200,10 +223,13 @@ public class UserProfileImpl implements UserprofileDao {
 				}
 		}
 
-		return rs;
+		return userProfileModels;
 	}
 
 	// remove account:
+	/**
+	 * this method is used to remove User Profile Details for given account number and id:
+	 */
 	public int removeUserProfile(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -233,6 +259,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get max account:
+	/**
+	 * this method is used to fetch maximum account no:
+	 */
 	public long getUserMaximumAccountNo() throws SQLException {
 		Connection con = null;
 		long accno = -1l;
@@ -260,6 +289,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get max pin:
+	/**
+	 * this method is used to fetch maximum user pin:
+	 */
 	public int getUserMaximumPin() throws SQLException {
 		int pin = -1;
 		Connection con = null;
@@ -287,6 +319,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 
 	// get user_pin:
+	/**
+	 * this method is used to fetch user pin for given user name:
+	 */
 	public int getUserPin(String username) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -298,7 +333,7 @@ public class UserProfileImpl implements UserprofileDao {
 
 			ResultSet rs = statement.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1);
+				return rs.getInt("user_pin");
 			}
 		} catch (Exception e) {
 			Logger.printStackTrace(e);
@@ -316,6 +351,10 @@ public class UserProfileImpl implements UserprofileDao {
 		
 	}
 
+	//Money Transfer:
+	/**
+	 * this method is used to fetch balance for moneytransfer:
+	 */
 	public int moneyTransfer(UserProfileModel userprofilepojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
@@ -329,7 +368,7 @@ public class UserProfileImpl implements UserprofileDao {
 			ResultSet rSet = statement.executeQuery();
 
 			if (rSet.next()) {
-				res = rSet.getInt(1);
+				res = rSet.getInt("balance");
 			}
 		} catch (Exception e) {
 			Logger.printStackTrace(e);
@@ -349,6 +388,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 	
 	//update User Pin:
+	/**
+	 * this method is used to update User Pin for given username:
+	 */
 	public int updateUserPin(UserProfileModel userProfileModel) throws SQLException {
 		Connection con = null;
 		PreparedStatement pStatement = null;
@@ -378,6 +420,9 @@ public class UserProfileImpl implements UserprofileDao {
 	}
 	
 	//check usermobile no exist:
+	/**
+	 * this method is used to check whether mobile no exist or not:
+	 */
 	public boolean userMobileNoExistCheck(UserProfileModel userProfileModel)throws SQLException {
 		Connection con = null;
 		PreparedStatement pStatement = null;

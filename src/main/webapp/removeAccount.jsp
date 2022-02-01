@@ -35,7 +35,9 @@ label {
 	color: white;
 	padding: 10px;
 }
-
+legend{
+color : white;
+}
 input {
 	position: absolute;
 	left: 90px;
@@ -99,6 +101,13 @@ button:hover{
 	box-shadow: 0 0 20px blue;
 	transition-duration: 0.2s;
 }
+a{
+text-decoration: none;
+font-size: 30px;
+position: absolute;
+right: 20px;
+top :20px;
+}
 </style>
 </head>
 <body>
@@ -115,5 +124,6 @@ button:hover{
 			<button type="submit" class="btn btn-primary">Remove</button>
 		</form>
 	</fieldset>
+	<a href="admin.jsp" class="btn btn-danger">Home</a>
 </body>
 </html>

@@ -30,7 +30,7 @@ public class AtmMoneyManagementController extends HttpServlet {
 //entered amount should be greater than 2000 and less than 50000:
 			if (eamount >= 2000 && eamount <= 50000) {
 				// previous balance should be less than 2000:
-				if (prevbal <= 2000) {
+				if (prevbal <= 30000) {
 					AtmMoneyManagementModel atmMoneyManagement = new AtmMoneyManagementModel(eamount + prevbal, agent);
 						//insert record in table:
 						atmMoneyManagementimpl.depositAtmMoney(atmMoneyManagement);
