@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import com.atm.dao.AtmMoneyManagementDao;
+import com.atm.logger.Logger;
 import com.atm.models.AtmMoneyManagementModel;
 import com.atm.util.ConnectionUtil;
 
@@ -34,7 +35,8 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 					 res = statement.executeUpdate();
 					statement.executeUpdate(query1);
 				} catch (Exception e) {
-					e.getMessage();
+					Logger.printStackTrace(e);
+					Logger.runTimeException(e.getMessage());
 				}finally {
 					if(statement != null) {
 					statement.close();
@@ -51,21 +53,25 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 		List<AtmMoneyManagementModel> atmMoneyManagementModels = new ArrayList<>();
 		Connection con = null;
 		Statement statement = null;
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+		ResultSet res = null;
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		try {
 			con = ConnectionUtil.getConnection();
 			String showRefillHistoryQuery = "select id,money_deposited,money_balance,deposited_at,agent_name from atm_money_management order by id desc";
 			statement = con.createStatement();
-			ResultSet res = statement.executeQuery(showRefillHistoryQuery);
+			 res = statement.executeQuery(showRefillHistoryQuery);
 					while(res.next()) {
-						atmMoneyManagementModels.add(new AtmMoneyManagementModel(res.getInt(1),res.getLong(2),res.getLong(3),(res.getTimestamp(4)).toLocalDateTime().format(dateTimeFormatter),res.getString(5)));
+						atmMoneyManagementModels.add(new AtmMoneyManagementModel(res.getInt("id"),res.getLong("money_deposited"),res.getLong("money_balance"),(res.getTimestamp("deposited_at")).toLocalDateTime().format(dateTimeFormatter),res.getString("agent_name")));
 					}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 			statement.close();
-			
+			}
+			if(res != null) {
+				res.close();
 			}
 			if(con != null) {
 				con.close();
@@ -80,20 +86,24 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 	public Long atmPreviousBalance() throws SQLException {
 		Connection con = null;
 		Statement statement = null;
+		ResultSet res = null;
 		try {
 			con = ConnectionUtil.getConnection();
 			String atmPreviousBalanceQuery = "select money_balance from atm_money_management where id in (select max(id) from atm_money_management)";
 			 statement = con.createStatement();
-			ResultSet res = statement.executeQuery(atmPreviousBalanceQuery);
+			 res = statement.executeQuery(atmPreviousBalanceQuery);
 					while(res.next()) {
-						return res.getLong(1);
+						return res.getLong("money_balance");
 					}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
-			statement.close();
-			
+			statement.close();			
+			}
+			if(res != null) {
+				res.close();
 			}
 			if(con != null) {
 				con.close();
@@ -119,7 +129,8 @@ public class AtmMoneyManagementImpl implements AtmMoneyManagementDao{
 					res = statement.executeUpdate();
 					statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 			statement.close();

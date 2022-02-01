@@ -19,7 +19,7 @@ public class EnterPinBalController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 		HttpSession session = req.getSession();
 		String invalidPinLockString = "invalidpinlock";

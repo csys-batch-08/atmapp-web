@@ -1,48 +1,61 @@
 package com.atm.daoimpl;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import com.atm.logger.Logger;
 import com.atm.models.UsernamePasswordModel;
 import com.atm.util.ConnectionUtil;
 
 public class UsernamePasswordImpl implements com.atm.dao.UsernamePasswordDao {
 	Scanner sc = new Scanner(System.in);
-String commitString = "commit";
+	String commitString = "commit";
+
 	// Get Role:
+	/**
+	 * this method is used to fetch role for the given UserName Password:
+	 */
 	public String fetchRole(UsernamePasswordModel usernamepasspojo) throws SQLException {
 
 		String role = null;
 		Connection con = null;
-		PreparedStatement statement = null; 
+		PreparedStatement statement = null;
+		ResultSet rs = null;
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "select role from usernamepassword where username in ? and password in ?";
-			 statement = con.prepareStatement(query);
+			String query = "select role from usernamepassword where username = ? and password = ?";
+			statement = con.prepareStatement(query);
 			statement.setString(1, usernamepasspojo.getUserName());
 			statement.setString(2, usernamepasspojo.getPassword());
-			ResultSet rs = statement.executeQuery();
-			if(rs.next()) {
-				role = rs.getString(1);
+			rs = statement.executeQuery();
+			if (rs.next()) {
+				role = rs.getString("role");
 			}
-		} catch (Exception e) {
-			e.getMessage();
-		}finally {
-			if(statement != null) {
+		} catch (SQLException e) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+		} finally {
+			if (statement != null) {
 				statement.close();
-				}
-				if(con != null) {
-					con.close();
-				}
 			}
+			if (rs != null) {
+				rs.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
 		return role;
 	}
 
-	
 	// password change:
+	/**
+	 * this method is used to change the login password of users for given username
+	 * and password:
+	 */
 	public int userPinChange(UsernamePasswordModel usernamepasspojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -57,19 +70,23 @@ String commitString = "commit";
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
-		}finally {
-			if(statement != null) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+		} finally {
+			if (statement != null) {
 				statement.close();
-				}
-				if(con != null) {
-					con.close();
-				}
 			}
+			if (con != null) {
+				con.close();
+			}
+		}
 		return res;
 	}
 
 	// insert User name password:
+	/**
+	 * this method is used to insert new username password UserDetails:
+	 */
 	public int insertUsernamePasswords(UsernamePasswordModel usernamepasspojo) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -85,19 +102,23 @@ String commitString = "commit";
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
-		}finally {
-			if(statement != null) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+		} finally {
+			if (statement != null) {
 				statement.close();
-				}
-				if(con != null) {
-					con.close();
-				}
 			}
+			if (con != null) {
+				con.close();
+			}
+		}
 		return res;
 	}
 
 	// remove account:
+	/**
+	 * this method is used to remove account for the given username:
+	 */
 	public int removeUser(UsernamePasswordModel usernamepasspojo) throws SQLException {
 		Connection con = null;
 		int res = -1;
@@ -111,15 +132,16 @@ String commitString = "commit";
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
-		}finally {
-			if(statement != null) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+		} finally {
+			if (statement != null) {
 				statement.close();
-				}
-				if(con != null) {
-					con.close();
-				}
 			}
+			if (con != null) {
+				con.close();
+			}
+		}
 		return res;
 	}
 }

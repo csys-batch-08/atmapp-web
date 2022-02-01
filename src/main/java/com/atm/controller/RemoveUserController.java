@@ -27,7 +27,7 @@ public class RemoveUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		LoginDetailsImpl loginDetailsimpl = new LoginDetailsImpl();
 		TransActionsImpl transActionsImpl = new TransActionsImpl();
 		UserProfileImpl userprofileimpl = new UserProfileImpl();

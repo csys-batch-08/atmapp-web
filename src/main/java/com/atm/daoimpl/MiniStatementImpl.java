@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.atm.dao.MiniStatementDao;
+import com.atm.logger.Logger;
 import com.atm.models.TransActionsModel;
 import com.atm.util.ConnectionUtil;
 
@@ -18,14 +19,15 @@ public class MiniStatementImpl implements MiniStatementDao {
 		List<TransActionsModel> miniStatement = new ArrayList<>(); 
 		Connection connection = null;
 		PreparedStatement statement = null;
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+		ResultSet rSet = null;
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		try {
 			connection = ConnectionUtil.getConnection();
 			String query = "select user_acc_no,transaction_amount,transaction_at,transaction_type,money_transfer from transactions where user_acc_no in ? order by transaction_at desc fetch first 10 rows only";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, accno);
 			
-			ResultSet rSet = statement.executeQuery();
+			 rSet = statement.executeQuery();
 			while(rSet.next()) {
 				
 				String transtype = null;
@@ -37,11 +39,15 @@ public class MiniStatementImpl implements MiniStatementDao {
 				miniStatement.add(new TransActionsModel(rSet.getInt(2),(rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter),transtype));
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
 				}
+			if(rSet != null) {
+				rSet.close();
+			}
 				if(connection != null) {
 					connection.close();
 				}

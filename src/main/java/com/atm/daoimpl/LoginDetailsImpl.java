@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import com.atm.dao.LoginDetailsDao;
+import com.atm.logger.Logger;
 import com.atm.models.LoginDetailsModel;
 import com.atm.util.ConnectionUtil;
 
@@ -31,7 +32,8 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -60,7 +62,8 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -78,25 +81,29 @@ public class LoginDetailsImpl implements LoginDetailsDao {
 	public List<LoginDetailsModel> fetchLoginDetails()throws SQLException {
 		Connection con = null;
 		Statement statement = null;
+		ResultSet rSet = null;
 		List<LoginDetailsModel> loginDetailsModels = new ArrayList<>();
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		try {
 			con = ConnectionUtil.getConnection();
 		String query = "select id,username,logged_at,role from login order by logged_at desc";
 		statement = con.createStatement();
-		ResultSet rSet = statement.executeQuery(query);
+		 rSet = statement.executeQuery(query);
 		
 		while(rSet.next()) {
 			loginDetailsModels.add(new LoginDetailsModel(rSet.getInt(1), rSet.getString(2), (rSet.getTimestamp(3)).toLocalDateTime().format(dateTimeFormatter), rSet.getString(4)));
 		}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		
 	}finally {
 		if(statement != null) {
-			statement.close();
-			
+			statement.close();			
 			}
+		if(rSet != null) {
+			rSet.close();
+		}
 			if(con != null) {
 				con.close();
 			}

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+import com.atm.logger.Logger;
 import com.atm.models.InvalidPinLockModel;
 import com.atm.util.ConnectionUtil;
 
@@ -26,11 +26,11 @@ public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws
 		 res = statement.executeUpdate();
 		statement.executeUpdate(commitString);
 	} catch (Exception e) {
-		e.getMessage();
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
 	}finally {
 		if(statement != null) {
-		statement.close();
-		
+		statement.close();	
 		}
 		if(con != null) {
 			con.close();
@@ -43,21 +43,25 @@ public int insertInavalidPinLock(InvalidPinLockModel invalidPinLockModel) throws
 public boolean invalidPinLockStatus(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
 	PreparedStatement statement = null;
+	ResultSet rSet = null;
 	try {
 		con = ConnectionUtil.getConnection();
-		String query = "select * from invalidpinlock where username in ?";
+		String query = "select id from invalidpinlock where username in ?";
 		statement = con.prepareStatement(query);
 		statement.setString(1, invalidPinLockModel.getUserName());
-		ResultSet rSet = statement.executeQuery();
+		rSet = statement.executeQuery();
 		if(rSet.next()) {
 			return true;
 		}
 	} catch (Exception e) {
-		e.getMessage();
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
 	}finally {
 		if(statement != null) {
-		statement.close();
-		
+		statement.close();	
+		}
+		if(rSet != null) {
+			rSet.close();
 		}
 		if(con != null) {
 			con.close();
@@ -80,7 +84,8 @@ public int deleteInvalidPinLock(InvalidPinLockModel invalidPinLockModel) throws 
 		 res = statement.executeUpdate();
 		statement.executeUpdate(commitString);
 	} catch (Exception e) {
-		e.getMessage();
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
 	}finally {
 		if(statement != null) {
 		statement.close();
@@ -100,6 +105,7 @@ public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 	Connection con = null;
 	PreparedStatement statement = null;
 	int date = 0;
+	ResultSet rSet1 = null;
 	try {
 		con = ConnectionUtil.getConnection();
 		//calculate days:
@@ -108,7 +114,7 @@ public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 		statement = con.prepareStatement(datequery);
 				statement.setString(1, invalidPinLockModel.getUserName());
 				
-				ResultSet rSet1 = statement.executeQuery();
+				 rSet1 = statement.executeQuery();
 				while(rSet1.next()) {
 					String ret = rSet1.getString(1);
 					if(ret.matches(regexTimeString)) {
@@ -118,11 +124,14 @@ public int getCurrentDate(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 					}
 				}
 }catch (Exception e) {
-	e.getMessage();
+	Logger.printStackTrace(e);
+	Logger.runTimeException(e.getMessage());
 }finally {
 	if(statement != null) {
-	statement.close();
-	
+	statement.close();	
+	}
+	if(rSet1 != null) {
+		rSet1.close();
 	}
 	if(con != null) {
 		con.close();
@@ -136,6 +145,7 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 	Connection con = null;
 	int hours = 0;
 	PreparedStatement statement = null;
+	ResultSet rSet2 = null;
 	try {
 		con = ConnectionUtil.getConnection();
 		//calculate hours:
@@ -144,7 +154,7 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 		statement = con.prepareStatement(hoursqueryString);
 				statement.setString(1, invalidPinLockModel.getUserName());
 				
-				ResultSet rSet2 = statement.executeQuery();
+				 rSet2 = statement.executeQuery();
 				while(rSet2.next()) {
 					String ret = rSet2.getString(1);
 					if(ret.matches(regexTimeString)) {
@@ -155,12 +165,15 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 					}
 				}
 	}catch (Exception e) {
-		e.getMessage();
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
 	}finally {
 		if(statement != null) {
-			statement.close();
-			
+			statement.close();			
 			}
+		if(rSet2 != null) {
+			rSet2.close();
+		}
 			if(con != null) {
 				con.close();
 			}
@@ -173,6 +186,7 @@ public int getCurrentHour(InvalidPinLockModel invalidPinLockModel) throws SQLExc
 public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws SQLException {
 	Connection con = null;
 	PreparedStatement statement = null;
+	ResultSet rSet = null;
 	try {
 		con = ConnectionUtil.getConnection();
 		//calculate minutes:
@@ -181,7 +195,7 @@ public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws 
 		int hours = getCurrentHour(invalidPinLockModel);
 		statement = con.prepareStatement(query);
 		statement.setString(1, invalidPinLockModel.getUserName());
-		ResultSet rSet = statement.executeQuery();
+		rSet = statement.executeQuery();
 		while(rSet.next()) {
 			String ret = rSet.getString(1);
 			if(date < 1) {
@@ -199,12 +213,15 @@ public int accountLockReleaseAt(InvalidPinLockModel invalidPinLockModel) throws 
 		}
 		}
 	} catch (Exception e) {
-		e.getMessage();
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
 	}finally {
 		if(statement != null) {
-			statement.close();
-			
+			statement.close();		
 			}
+		if(rSet != null) {
+			rSet.close();
+		}
 			if(con != null) {
 				con.close();
 			}

@@ -22,7 +22,7 @@ public class LoginValidationController extends HttpServlet {
 private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		String invalidPinLockString = "invalidpinlock";
 		boolean flag = false;
 		try {

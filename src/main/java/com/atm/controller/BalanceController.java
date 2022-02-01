@@ -20,7 +20,7 @@ public class BalanceController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 @Override
-protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	try {
 	HttpSession session = req.getSession();
 	String user = session.getAttribute("user").toString();

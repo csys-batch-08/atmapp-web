@@ -6,10 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.atm.dao.UserprofileDao;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
 import com.atm.util.ConnectionUtil;
 
@@ -21,21 +23,26 @@ public class UserProfileImpl implements UserprofileDao {
 		Connection con = null;
 		int res = -1;
 		PreparedStatement statement = null;
+		ResultSet rSet = null;
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "select balance from userprofile where username in ?";
 			statement = con.prepareStatement(query);
 			statement.setString(1, userprofilepojo.getUserName());
-			ResultSet rSet = statement.executeQuery();
+			 rSet = statement.executeQuery();
 			while (rSet.next()) {
 				res = rSet.getInt(1);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
 				}
+			if(rSet != null) {
+				rSet.close();
+			}
 				if(con != null) {
 					con.close();
 				}
@@ -58,7 +65,8 @@ public class UserProfileImpl implements UserprofileDao {
 			 res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -76,20 +84,25 @@ public class UserProfileImpl implements UserprofileDao {
 		Connection con = null;
 		Long resLong = -1l;
 		PreparedStatement statement = null;
+		ResultSet rs  = null;
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "select user_acc_no from userprofile where username in ?";
 			statement = con.prepareStatement(query);
 			statement.setString(1, userprofilepojo.getUserName());
-			ResultSet rs = statement.executeQuery();
+			rs = statement.executeQuery();
 			while (rs.next()) {
 				resLong = rs.getLong(1);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
+				}
+			if(rs != null) {
+					rs.close();
 				}
 				if(con != null) {
 					con.close();
@@ -101,25 +114,31 @@ public class UserProfileImpl implements UserprofileDao {
 
 	// get user details:
 	public List<UserProfileModel> fetchUserDetails(UserProfileModel userprofilepojo) throws SQLException {
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		List<UserProfileModel> userProfileModels = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement statement = null;
+		ResultSet rs = null;
 		
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "select id,username,user_acc_no,balance,mob_no,user_pin,acc_created_at from userprofile where username in ?";
 			statement = con.prepareStatement(query);
 			statement.setString(1, userprofilepojo.getUserName());
-			ResultSet rs = statement.executeQuery();
+			 rs = statement.executeQuery();
 			if(rs.next()) {
-				userProfileModels.add(new UserProfileModel(rs.getInt(1), rs.getString(2), rs.getLong(3), rs.getInt(4), rs.getLong(5), rs.getInt(6), rs.getString(7)));
+				userProfileModels.add(new UserProfileModel(rs.getInt(1), rs.getString(2), rs.getLong(3), rs.getInt(4), rs.getLong(5), rs.getInt(6), rs.getTimestamp(7).toLocalDateTime().format(dateTimeFormatter)));
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
 				}
+			if(rs != null) {
+				rs.close();
+			}
 				if(con != null) {
 					con.close();
 				}
@@ -144,7 +163,8 @@ public class UserProfileImpl implements UserprofileDao {
 			res = statement.executeUpdate();
 			 statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -168,11 +188,13 @@ public class UserProfileImpl implements UserprofileDao {
 			statement = con.createStatement();
 			 rs = statement.executeQuery(query);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
 				}
+			
 				if(con != null) {
 					con.close();
 				}
@@ -196,7 +218,8 @@ public class UserProfileImpl implements UserprofileDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -223,7 +246,8 @@ public class UserProfileImpl implements UserprofileDao {
 				accno = rs.getLong(1);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -249,7 +273,8 @@ public class UserProfileImpl implements UserprofileDao {
 				pin = rs.getInt(1);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -276,7 +301,8 @@ public class UserProfileImpl implements UserprofileDao {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -306,7 +332,8 @@ public class UserProfileImpl implements UserprofileDao {
 				res = rSet.getInt(1);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -335,7 +362,8 @@ public class UserProfileImpl implements UserprofileDao {
 			res= pStatement.executeUpdate();
 			pStatement.executeUpdate(commitString);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(pStatement != null) {
 				pStatement.close();
@@ -363,7 +391,8 @@ public class UserProfileImpl implements UserprofileDao {
 				return true;
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(pStatement != null) {
 				pStatement.close();

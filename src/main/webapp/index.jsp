@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+  <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,11 +158,11 @@ line-height: 5px;
     display: inline-block;
     padding-left: 100%;
     padding-top:15px;
-    animation: marquee 25s linear infinite;
+    animation: marquee 30s linear infinite;
 }
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
-    100% { transform: translate(-60%, 0); }
+    100% { transform: translate(-70%, 0); }
 }
 </style>
 </head>

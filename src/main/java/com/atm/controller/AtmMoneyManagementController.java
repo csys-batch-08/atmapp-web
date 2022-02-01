@@ -19,7 +19,7 @@ public class AtmMoneyManagementController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 		Long eamount = Long.parseLong(req.getParameter("depagentamount"));
 		AtmMoneyManagementImpl atmMoneyManagementimpl = new AtmMoneyManagementImpl();

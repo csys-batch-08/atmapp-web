@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.atm.dao.RemovedUsersDao;
+import com.atm.logger.Logger;
 import com.atm.models.RemovedUsersModel;
 import com.atm.util.ConnectionUtil;
 
@@ -29,7 +30,8 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 			res = statement.executeUpdate();
 			statement.executeUpdate(query1);
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
@@ -48,21 +50,26 @@ public class RemovedUsersImpl implements RemovedUsersDao {
 		List<RemovedUsersModel> removedUsersModels = new ArrayList<>();
 		Connection con = null;
 		Statement statement = null;
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+		ResultSet resultSet = null;
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		try {
 			con = ConnectionUtil.getConnection();
 			String query = "select id,user_acc_no,username,last_balance,mob_no,user_pin,acc_removed_at from removedusers order by id desc";
 			statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
+			 resultSet = statement.executeQuery(query);
 			while(resultSet.next()) {
 				removedUsersModels.add(new RemovedUsersModel(resultSet.getInt(1), resultSet.getLong(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getLong(5), resultSet.getInt(6), (resultSet.getTimestamp(7)).toLocalDateTime().format(dateTimeFormatter)));
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 			if(statement != null) {
 				statement.close();
 				}
+			if(resultSet != null) {
+				resultSet.close();
+			}
 				if(con != null) {
 					con.close();
 				}

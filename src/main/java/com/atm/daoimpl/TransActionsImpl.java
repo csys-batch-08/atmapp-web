@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.atm.dao.TransActionsDao;
+import com.atm.logger.Logger;
 import com.atm.models.TransActionsModel;
 
 import com.atm.util.ConnectionUtil;
@@ -30,7 +31,8 @@ public class TransActionsImpl implements TransActionsDao{
 				res = statement.executeUpdate();
 				statement.executeUpdate(query1);
 			} catch (Exception e) {
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}finally {
 				if(statement != null) {
 					statement.close();
@@ -56,7 +58,8 @@ public class TransActionsImpl implements TransActionsDao{
 				 res = statement.executeUpdate();
 				statement.executeUpdate(query1);
 			} catch (Exception e) {
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}finally {
 				if(statement != null) {
 					statement.close();
@@ -73,12 +76,13 @@ public class TransActionsImpl implements TransActionsDao{
 			String sysdString = null;
 	        String finaldateString = null;
 	        Statement statement = null;
+	        ResultSet rSet  = null;
 			try {
 				con = ConnectionUtil.getConnection();
 				 String sysdatequery = "select current_timestamp from dual";  
 			        statement
 			        = con.createStatement();
-			        ResultSet rSet = statement.executeQuery(sysdatequery);
+			         rSet = statement.executeQuery(sysdatequery);
 			        while(rSet.next()) {
 			        	sysdString = rSet.getString(1);
 			        	
@@ -91,11 +95,15 @@ public class TransActionsImpl implements TransActionsDao{
 			        finaldateString = dayString + "-" +monthString + "-" + yearString;
 			        }
 			} catch (Exception e) {
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}finally {
 				if(statement != null) {
 					statement.close();
 					}
+				if(rSet != null) {
+					rSet.close();
+				}
 					if(con != null) {
 						con.close();
 					}
@@ -109,6 +117,7 @@ public class TransActionsImpl implements TransActionsDao{
 			int total = -1;
 			PreparedStatement preparedStatement = null;
 			 String finaldateString = withdrawCurrentTimeStamp() + "%"; 
+			 ResultSet rSet2 = null;
 			try {
 				con = ConnectionUtil.getConnection();
 
@@ -116,18 +125,22 @@ public class TransActionsImpl implements TransActionsDao{
 					preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, finaldateString);
 					preparedStatement.setLong(2,  transActionsModel.getUserAccnoLong());
-					ResultSet rSet2 = preparedStatement.executeQuery();
+					 rSet2 = preparedStatement.executeQuery();
 					total = -1;
 					while(rSet2.next()) {
 			        	total = rSet2.getInt(1);
 			        	return total;
 			        }
 			} catch (Exception e) {
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}finally {
 				if(preparedStatement != null) {
 					preparedStatement.close();
 					}
+				if(rSet2 != null) {
+					rSet2.close();
+				}
 					if(con != null) {
 						con.close();
 					}
@@ -139,12 +152,13 @@ public class TransActionsImpl implements TransActionsDao{
 			Connection con = null;
 			String finaldateString = null;
 			Statement statement = null;
+			 ResultSet rSet = null;
 			try {
 				con = ConnectionUtil.getConnection();
 				 String sysdatequery = "select current_timestamp from dual";
 			        String sysdString = null;
 			        statement  = con.createStatement();
-			        ResultSet rSet = statement.executeQuery(sysdatequery);
+			         rSet = statement.executeQuery(sysdatequery);
 			        while(rSet.next()) {
 			        	sysdString = rSet.getString(1);			        	
 			        }
@@ -156,11 +170,15 @@ public class TransActionsImpl implements TransActionsDao{
 			         finaldateString = dayString + "-" +monthString + "-" + yearString;
 			        }
 			} catch (Exception e) {
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}finally {
 				if(statement != null) {
 					statement.close();
 					}
+				if(rSet != null) {
+					rSet.close();
+				}
 					if(con != null) {
 						con.close();
 					}
@@ -176,23 +194,28 @@ public class TransActionsImpl implements TransActionsDao{
 					PreparedStatement preparedStatement = null;
 					int total = -1;
 					 String finaldateString = depositCurrentTimeStamp() + "%";
+						ResultSet rSet2 = null;
 					try {
 						con = ConnectionUtil.getConnection();			        
 						String query = "select sum(abs(transaction_amount)) from transactions where transaction_at like ? and user_acc_no in ? and transaction_type = 'deposit'";
 						preparedStatement = con.prepareStatement(query);	
 						preparedStatement.setString(1, finaldateString);
 						preparedStatement.setLong(2,  transActionsModel.getUserAccnoLong());
-						ResultSet rSet2 = preparedStatement.executeQuery();
+						 rSet2 = preparedStatement.executeQuery();
 						if(rSet2.next()) {
 				        	total = rSet2.getInt(1);
 				        	return total;
 				        }
 					} catch (Exception e) {
-						e.getMessage();
+						Logger.printStackTrace(e);
+						Logger.runTimeException(e.getMessage());
 					}finally {
 						if(preparedStatement != null) {
 							preparedStatement.close();
 							}
+						if(rSet2 != null) {
+							rSet2.close();
+						}
 							if(con != null) {
 								con.close();
 							}
