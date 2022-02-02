@@ -5,28 +5,10 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/lowBalance.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">
-h1{
-font-size:60px;
-position : absolute;
-color:yellow;
-top:200px;
-left:450px;
-}
-
-#timehead{
-position:absolute;
-color:balck;
-top:0px;
-left:0px;
-}
-body{
-background-color: blue;
-}
-</style>
 </head>
 <body>
 

@@ -9,7 +9,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <link rel="stylesheet" type="" href="assets/css/enterPinDeposit.css">
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>

@@ -5,43 +5,11 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/userDetailAdmin.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 
 <meta charset="ISO-8859-1">
 <title>User Details</title>
-<style>
-a{
-text-decoration: none;
-font-size: 30px;
-position: absolute;
-right: 20px;
-top :20px;
-color: red;
-}
-#userdetailfield {
-	width: 700px;
-}
-
-h1 {
-	color: yellow;
-	font-size: 50px;
-}
-
-legend {
-	font-size: 30px;
-	color: white;
-}
-
-#headinval {
-	position: absolute;
-	font-size: 80px;
-	left: 400px;
-	top: 200px;
-}
-body{
-background-color: #2F4F4F;
-}
-</style>
 </head>
 <body>
 	<c:if test="${admin == null}">

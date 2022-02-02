@@ -5,65 +5,15 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="" href="assets/css/moneyTransfersuccess.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 <div id="bgBlur"></div>
 <title>Money Transfer Success!!</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-h1{
-position : absolute;
-font-size:50px;
-top:180px;
-left : 150px;
-
-}
-label{
-position : absolute;
-color:yellow;
-font-size:60px;
-top:280px;
-left:400px;
-}
-button{
-width:80px;
-height:50px;
-background-color:red;
-position : absolute;
-right: 0px;
-border-radius:10px;
-}
-#timehead{
-position : absolute;
-top : 0px;
-left : 0px;
-color: #D2386C;
-}
-body{
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-#succhead{
-color:white;
-}
-</style>
 </head>
 <body>
 <c:if test="${user == null}">

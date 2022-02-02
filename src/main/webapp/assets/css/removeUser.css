@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+h1{
+color : #F5DF4D;
+position : absolute;
+top: 200px;
+left : 280px;
+font-size: 70px;
+}
+body{
+background-color: navy;
+}

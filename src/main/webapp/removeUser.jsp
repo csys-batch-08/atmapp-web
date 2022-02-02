@@ -5,21 +5,10 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/removeUser.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
 <title>User Removed Successfully</title>
-<style>
-h1{
-color : #F5DF4D;
-position : absolute;
-top: 200px;
-left : 280px;
-font-size: 70px;
-}
-body{
-background-color: navy;
-}
-</style>
 </head>
 <body>
 <c:if test="${admin == null}">

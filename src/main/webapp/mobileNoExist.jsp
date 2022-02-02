@@ -5,27 +5,10 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/mobileNoExist.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">
-h1{
-color:yellow;
-position : absolute;
-top : 200px;
-left :370px;
-font-size :60px;
-}
-
-#timehead{
-position: absolute;
-top: 0px;
-left : 0px;
-}
-body{
-background-color: navy;
-}
-</style>
 </head>
 <body>
 

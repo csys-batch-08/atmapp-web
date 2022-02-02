@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/welcomePage.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <c:if test="${user == null}">
@@ -17,48 +18,6 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 <link rel="stylesheet" href="welcomeuser.css">
-<style>
-#invalpin {
-	color: #F5DF4D;
-	position: absolute;
-	font-size: 80px;
-	top: 300px;
-	left: 500px;
-	font-weight: bolder;
-}
-
-a {
-	display: inline-block;
-	box-sizing: border-box;
-	cursor: pointer;
-	transition: transform 0.7s;
-}
-
-a:hover {
-	transform: translateY(-10px);
-}
-  .marquee {
-    width: 100%;
-line-height: 50px;
-	font-size:40px;
-	color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-.marquee p {
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee 10s linear infinite;
-}
-@keyframes marquee {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(-70%, 0); }
-}
-#timehead{
-color : #F5DF4D;
-}
-</style>
 </head>
 <body>
 	<c:if test="${invalidhomepin != null}">

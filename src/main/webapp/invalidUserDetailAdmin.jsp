@@ -5,21 +5,10 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/invalidUserDetailAdmin.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
-h1{
-color:yellow;
-font-size:80px;
-position:absolute;
-top:200px;
-left:360px;
-}
-body{
-background-color: navy;
-}
-</style>
 </head>
 <body>
 <c:if test="${admin == null}">

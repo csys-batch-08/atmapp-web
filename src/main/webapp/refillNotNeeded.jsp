@@ -5,45 +5,11 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="" href="assets/css/refillNotNeeded.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <div id="bgBlur"></div>
 <title>Insert title here</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-body{
-
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-h1{
-color:#FFA500;
-position: absolute;
-top:200px;
-left:460px;
-font-size:60px;
-}
-h2{
-color:#CD212A;
-position: absolute;
-top:320px;
-left:390px;
-font-size:60px;
-	}
-</style>
 </head>
 <body>
 <c:if test="${agent == null}">

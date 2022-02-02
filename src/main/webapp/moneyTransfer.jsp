@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="" href="assets/css/moneyTransfer.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <link
@@ -15,94 +16,6 @@
   />
 <div id="bgBlur"></div>
 <title>Money Transfer</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-fieldset {
-	width: 500px;
-	border-color: black;
-	position: absolute;
-	top: 90px;
-	left: 400px;
-	height: 400px;
-	padding:20px;
-}
-
-legend {
-	color: #FDAC53;
-	font-size: 40px;
-}
-
-label {
-	font-size: 30px;
-	color:white;
-}
-
-input {
-	position: absolute;
-	left: 240px;
-	background-color: rgba(255,255,255,0.7);
-	height: 40px;
-	font-size: 217x;
-	font-weight: bolder;
-}
-
-#homebt {
-	position: relative;
-	position : absolute;
-	right : 0px;
-	background-color: red;
-	width: 130px;
-	height: 50px;
-	border-radius: 10px;
-}
-
-#formbt {
-	position: relative;
-	background-color: #0072B5;
-	top: 30px;
-	width: 100px;
-	height: 40px;
-	left: 170px;
-}
-body{
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-input:hover{
-	box-shadow: 0 0 20px white;
-	transition-duration: 0.2s;
-}
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-#moneytransfname{
-position: relative;
-
-}
-#moneytransfaccno{
-position: relative;
-}
-#moneytransfamount{
-position: relative;
-}
-button:hover{
-	box-shadow: 0 0 20px white;
-	transition-duration: 0.2s;
-}
-#timehead{
-position: absolute;
-color: #F5DF4D;
-}
-</style>
 </head>
 <body>
 	<c:if test="${user == null}">

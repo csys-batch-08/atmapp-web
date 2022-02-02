@@ -109,7 +109,7 @@ position : absolute;
 
 <script>
 let th = document.getElementById("timehead");
-let time = 3000;
+let time = 30;
 let i;
 window.addEventListener('load', () =>{
 	

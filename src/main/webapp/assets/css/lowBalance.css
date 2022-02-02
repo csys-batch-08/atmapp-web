@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+h1{
+font-size:60px;
+position : absolute;
+color:yellow;
+top:200px;
+left:450px;
+}
+
+#timehead{
+position:absolute;
+color:balck;
+top:0px;
+left:0px;
+}
+body{
+background-color: blue;
+}

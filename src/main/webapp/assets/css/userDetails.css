@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+
+#userdetailfield {
+	width: 700px;
+}
+
+h1 {
+	color: #F5DF4D;
+	font-size: 50px;
+}
+
+legend {
+	font-size: 30px;
+	color:white;
+} 	
+body{
+background-color: #2F4F4F;
+}
+a {
+	text-decoration: none;
+	font-size: 30px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	color: red;
+}

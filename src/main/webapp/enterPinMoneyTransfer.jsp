@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/enterPinMoneyTransfer.css">
 <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -13,63 +14,6 @@
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <title>Enter Pin</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-h1 {
-	position: absolute;
-	color: #BC243C;
-	font-size: 90px;
-	left: 500px;
-	top:100px;
-}
-
-form {
-	position: absolute;
-	top: 300px;
-	left: 500px;
-}
-input {
-	height: 90px;
-	width: 300px;
-	background-color: rgba(255,255,255,0.7);
-	font-size: 60px;
-	position : relative;
-	left : 50px;
-} 
-#timehead{
-position : relative;
-left : 0px;
-color : black;
-font-size:40px;
-}
-body{
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-#withpinid:hover{
-	box-shadow: 0 0 20px white;
-	transition-duration: 0.2s;
-}
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.5);
-	height: 625px;
-	width: 1366px;
-} 
-#timehead{
-position : absolute;
-left : 0px;
-color : #EFC050;
-font-size:40px;
-top: 0px;
-}
-</style>
 </head>
 <body>
 	<c:if test="${user == null}">

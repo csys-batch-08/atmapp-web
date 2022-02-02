@@ -7,8 +7,9 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="" href="Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="" href="assets/css/register.css">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -17,131 +18,9 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	integrity="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <div id="bgBlur"></div>
 <title>Register User</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#homeTag{
-text-decoration: none;
-font-size: 30px;
-position: absolute;
-float: right;
-top :0px;
-}
-form {
-	border: 3px solid #f1f1f1;
-	padding: 10px;
-	width: 500px;
-}
-
-.form-control {
-	width: 340px;
-}
-
-#fieldreg {
-	position: absolute;
-	width: 400px;
-	top: 50px;
-	border-color: blue;
-	left: 450px;
-	padding: 20px;
-}
-
-input {
-	width: 250px;
-	height: 30px;
-	position: relative;
-	margin-left: 110px;
-}
-
-legend {
-	font-size: 30px;
-	color: blue;
-}
-
-#reglab {
-	font-size: 20px;
-	position: relative;
-	top: -270px;
-	left: 180px;
-	color: red;
-	visibility: hidden;
-}
-
-label {
-	font-size: 20px;
-	color: white;
-}
-
-body {
-	background-image:
-		url("https://scontent.fmaa12-2.fna.fbcdn.net/v/t31.18172-8/22051279_1623705757680216_2725610580980024577_o.jpg?_nc_cat=111&ccb=1-5&_nc_sid=9267fe&_nc_ohc=rQNE9RPtZRwAX-mhcc2&_nc_ht=scontent.fmaa12-2.fna&oh=00_AT8DZmZcWuSx5EuS6yKVIyni07maX40Fdj558GuUd-6Ayg&oe=61FBF9C7");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-legend {
-	color: white;
-}
-
-#regbt {
-	position: absolute;
-	top: 460px;
-	left: 180px;
-	width: 140px;
-	height: 40px;
-	border-radius: 5px;
-}
-
-#regbt:hover {
-	background-color: black;
-	color: white;
-}
-
-#resbt {
-	position: absolute;
-	top: 460px;
-	left: 330px;
-	width: 140px;
-	height: 40px;
-	border-radius: 5px;
-}
-
-#resbt:hover {
-	background-color: black;
-	color: white;
-}
-
-#bgBlur {
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-
-input:hover {
-	box-shadow: 0 0 20px blue;
-	transition-duration: 0.2s;
-}
-
-button:hover {
-	box-shadow: 0 0 20px blue;
-	transition-duration: 0.2s;
-}
-
-body {
-	background-color: grey;
-	position: fixed;
-}
-</style>
 </head>
 <body>
-	<c:if test="${admin == null}">
-		<c:redirect url="index.jsp"></c:redirect>
-	</c:if>
+	
 	<div class="container mt-1">
 		<fieldset id="fieldreg">
 			<legend>Register User</legend>

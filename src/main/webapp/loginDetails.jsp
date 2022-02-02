@@ -7,7 +7,8 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="" href="Assets/sbi-logo-33234.png">
+<link rel="icon" type="" href="assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/loginDetails.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -18,77 +19,6 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>Login Details!!</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-td {
-	color: yellow;
-	font-weight: bolder;
-	text-align: center;
-}
-
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 20px;
-	`
-}
-
-table {
-	align: center;
-	margin-top: 100px;
-}
-
-th {
-	color: white;
-	font-weight: bolder;
-	font-size: 30px;
-	text-align: center;
-}
-
-td:hover {
-	background-color: black;
-	color: yellow;
-}
-
-td {
-	font-size: 20px;
-}
-
-body {
-	background-color: black;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-#timehead {
-	color: red;
-}
-
-a {
-	text-decoration: none;
-	font-size: 30px;
-	position: absolute;
-	right: 20px;
-	top: 20px;
-}
-tr:hover {
-	background-color: black;
-	color: yellow;
-}
-
-#loginDetailsCaption {
-	position: absolute;
-	top: 0px;
-	left: 550px;
-	color: white;
-	font-size: 40px;
-}
-</style>
 </head>
 <body>
 	<c:if test="${admin == null}">
