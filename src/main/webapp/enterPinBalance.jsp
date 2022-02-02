@@ -5,68 +5,23 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/enterPinBalance.css">
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <title>Enter Pin</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-h1 {
-	position: absolute;
-	color: yellow;
-	font-size: 90px;
-	left: 480px;
-}
-
-form {
-	position: absolute;
-	top: 300px;
-	left: 500px;
-}
-
-input {
-	height: 90px;
-	width: 300px;
-	background-color: rgba(255,255,255,0.7);
-	font-size: 60px;
-	position : relative;
-	left : 50px;
-} 
-#timehead{
-position : relative;
-left : 0px;
-color : black;
-font-size:40px;
-}
-body{
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-#withpinid:hover{
-	box-shadow: 0 0 20px white;
-	transition-duration: 0.2s;
-}
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.5);
-	height: 625px;
-	width: 1366px;
-} 
-</style>
 </head>
 <body>
 <c:if test="${user == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
-	<h1>Enter Pin</h1>
+	<h1 class="animate__animated animate__bounceInDown">Enter Pin</h1>
 	<form action="enterpinbalserv">
-		<input type="password" name="balpin" id="withpinid" pattern = "[0-9]{4}" title = "enter your pin 0-9 in length of four" required autofocus>
+		<input type="password" name="balpin" id="withpinid" pattern = "[0-9]{4}" title = "enter your pin 0-9 in length of four" class="animate__animated animate__heartBeat" required autofocus>
 
 	</form>
 <h1 id = "timehead">00:00</h1>

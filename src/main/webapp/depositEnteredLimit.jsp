@@ -5,38 +5,11 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/depositEnteredLimit.css">
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <title>Deposit Limit</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#bgBlur {
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-body {
-	background-image:
-		url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-#amountexceed{
-position:absolute;
-top:230px;
-left:220px;
-color:yellow;
-font-size:80px;
-}
-</style>
-
 </head>
 <body>
 <c:if test="${user == null}">

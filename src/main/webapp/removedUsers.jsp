@@ -42,10 +42,10 @@ th {
 	text-align: center;
 }
 
-tr:hover {
-	background-color: black;
-	color: yellow;
-}
+	tr:hover {
+		background-color: black;
+		color: yellow;
+	}
 
 td {
 	font-size: 20px;
@@ -82,7 +82,7 @@ color: red;
 		<div id="minidiv">
 			<table class="table table-bordered table-sm">
 	<caption id = "removedUsersCaption">Inactive Users</caption>
-	<thead>
+	<thead class="table-dark">
 		<tr>
 			<th>Id</th>
 			<th>UserAccount Number</th>

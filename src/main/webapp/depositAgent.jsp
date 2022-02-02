@@ -5,67 +5,11 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/depositAgent.css">
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <title>Deposit Agent</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-h1{
-position : absolute;
-font-size :40px;
-left:550px;
-color:#F5DF4D;
-}
-fieldset{
-position : absolute;
-top:250px;
-left:400px;
-width:550px;
-height:150px;
-padding: 10px;
-}
-legend{
-font-size:30px;
-color:#FF6347;
-}
-label{
-font-size:25px;
-color: white;
-}
-input{
-position : absolute;
-left:280px;
-width:250px;
-height:30px;
-}
-button{
-position : absolute;
-left:480px;
-top:80px;
-}
-body{
-
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-#timehead{
-color:white;
-}
-</style>
 </head>
 <body>
 <c:if test="${agent == null}">

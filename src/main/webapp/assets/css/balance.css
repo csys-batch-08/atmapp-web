@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#headbal {
+	position: absolute;
+	left: 530px;
+	font-size: 50px;
+	color: #D2386C;
+}
+
+#headbal1 {
+	font-size: 80px;
+	position: absolute;
+	top: 280px;
+	left: 280px;
+	color: white;
+}
+
+#hrbal {
+	position: relative;
+	top: 180px;
+}
+
+#ballab {
+	color: yellow;
+	position: relative;
+	top: 260px;
+	left: 850px;
+	font-size: 70px;
+}
+
+button {
+	position: relative;
+	background-color: red;
+	height: 50px;
+	width: 140px;
+	float: right;
+	top: -100px;
+	border-radius: 10px;
+}
+
+#timehead {
+	position: absolute;
+	top: 0px;
+}
+
+body {
+	background-image:
+		url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+}
+
+#bgBlur {
+	position: absolute;
+	background-color: rgba(11, 11, 11, 0.7);
+	height: 625px;
+	width: 1366px;
+}
+#timehead{
+position: absolute;
+color : #F5DF4D;
+}

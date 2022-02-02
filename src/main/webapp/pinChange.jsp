@@ -34,8 +34,11 @@ fieldset {
 	width: 300px;
 	left: 500px;
 	height:350px;
-	padding : 20px;
-		
+	padding : 20px;	
+}
+#timehead{
+position: absolute;
+color:#F5DF4D;
 }
 #subbt{
 position:absolute;

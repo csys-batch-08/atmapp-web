@@ -9,6 +9,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <head>
 <link rel="icon" type="" href="Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
+<title>Withdraw</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -16,7 +17,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <div id="bgBlur"></div>
-<title>Withdraw</title>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
@@ -31,7 +32,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	position: absolute;
 	left: 530px;
 	font-size: 45px;
-	color: orange;
+	color: #D2386C;
 }
 
 #labwith {
@@ -90,7 +91,7 @@ body {
 
 #bgBlur {
 	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
+	background-color: rgba(11, 11, 11, 0.7);
 	height: 625px;
 	width: 1366px;
 }
@@ -119,7 +120,7 @@ body {
 	<c:if test="${user == null}">
 		<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
-	<h1 id="headwith">Welcome&ensp; ${user}</h1>
+	<h1 id="headwith">Welcome ${user}</h1>
 	<label id="labwith" class="animate__animated animate__fadeInDown">Enter
 		Amount To Withdraw</label>
 	<form action="enterPinWithdraw.jsp" id="formwith" autocomplete="off">

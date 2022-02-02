@@ -5,29 +5,10 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/agentHistory.css">
 <meta charset="ISO-8859-1">
 <title>Agent History</title>
-<style>
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 20px;
-}
-td{
-font-size:30px;
-}
-th{
-color:#F5DF4D;
-font-size:30px;
-}
-body{
-background-color: #0072B5;
-}
-#agentCaption{
-font-size:40px;
-}
-</style>
 </head>
 
 	<body>

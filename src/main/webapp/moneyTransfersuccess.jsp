@@ -7,6 +7,10 @@
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <div id="bgBlur"></div>
 <title>Money Transfer Success!!</title>
 <style>
@@ -18,14 +22,15 @@
 }
 h1{
 position : absolute;
-font-size:60px;
-top:50px;
+font-size:50px;
+top:180px;
+left : 150px;
 
 }
 label{
 position : absolute;
 color:yellow;
-font-size:80px;
+font-size:60px;
 top:280px;
 left:400px;
 }
@@ -41,6 +46,7 @@ border-radius:10px;
 position : absolute;
 top : 0px;
 left : 0px;
+color: #D2386C;
 }
 body{
 background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
@@ -64,8 +70,8 @@ color:white;
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 
-<h1 id = "succhead">You Have Successfully Transfered ${moneytransfamount} to ${moneytransfname}</h1>
-<label>Your Balance is ${userbalint}</label>
+<h1 id = "succhead" class="animate__animated animate__bounce">You Have Successfully Transfered ${moneytransfamount} to ${moneytransfname}</h1>
+<label class="animate__animated animate__bounce">Your Balance is ${userbalint}</label>
 <form action = "welcomePage.jsp">
 <button type = "submit">Home</button>
 </form>
@@ -74,7 +80,7 @@ color:white;
 
 <script>
 let th = document.getElementById("timehead");
-let time = 10;
+let time = 8;
 let i;
 window.addEventListener('load', () =>{
 	
@@ -90,7 +96,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("logOut.jsp");
+			window.location.assign("welcomePage.jsp");
 		}
 	},1000);
 	

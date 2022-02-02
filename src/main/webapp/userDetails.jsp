@@ -6,6 +6,7 @@
 <html lang = "en">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+
 <meta charset="ISO-8859-1">
 <title>User Details</title>
 <style>
@@ -24,6 +25,14 @@ legend {
 } 	
 body{
 background-color: #2F4F4F;
+}
+a {
+	text-decoration: none;
+	font-size: 30px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	color: red;
 }
 </style>
 </head>
@@ -44,6 +53,7 @@ background-color: #2F4F4F;
 	</fieldset>
 	</c:forEach>
 <h1 id = "timehead">00:00</h1>
+<a href="welcomePage.jsp" class="btn btn-danger">Home</a>
 </body>
 
 <script>
@@ -64,7 +74,7 @@ window.addEventListener('load', () =>{
 			}
 		}else{
 			clearInterval(i);
-			window.location.assign("logOut.jsp");
+			window.location.assign("welcomePage.jsp");
 		}
 	},1000);
 	

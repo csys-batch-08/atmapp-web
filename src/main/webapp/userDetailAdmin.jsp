@@ -56,6 +56,7 @@ background-color: #2F4F4F;
 		<h1>User Account No : ${userProfile.userAccountNo}</h1><br>
 		<h1>Balance : ${userProfile.balance}</h1><br>
 		<h1>Mobile No : ${userProfile.mobileNo}</h1><br>
+		<h1>User Pin : ${userProfile.userPin}</h1><br/>
 		<h1>Account Opened DateTime :<br/> ${userProfile.accountCreatedTime} </h1>
 		<br>
 	</fieldset>

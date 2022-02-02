@@ -9,6 +9,10 @@
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <title>Withdraw Success</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
 *{
 	margin: 0;
@@ -20,7 +24,7 @@
 	font-size: 45px;
 	position: absolute;
 	top: 180px;
-	left: 190px;
+	left: 240px;
 	color : white;
 	font-weight:bolder;
 }
@@ -44,6 +48,17 @@ background-size: cover;
 	height: 625px;
 	width: 1366px;
 } 
+#timehead{
+color: #EFC050;
+position: absolute;
+}
+a{
+text-decoration: none;
+font-size: 30px;
+position: absolute;
+right: 20px;
+top :20px;
+}
 </style>
 </head>
 <body>
@@ -51,18 +66,19 @@ background-size: cover;
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 	
-	<label id="withsucclab">You have successfully withdraw amount
+	<label id="withsucclab" class="animate__animated animate__flash">You have successfully withdraw amount
 		${withamount}</label>
-	<h1 id="succhead">
+	<h1 id="succhead" class="animate__animated animate__flash">
 		BALANCE:${withbal}</h1>
 	
 <h1 id = "timehead">00:00</h1>
+<a href="welcomePage.jsp" class="btn btn-danger">Home</a>
 </body>
 
 <script>
 
 let th = document.getElementById("timehead");
-let time = 4;
+let time = 10;
 let i;
 window.addEventListener('load', () =>{
 	

@@ -69,7 +69,11 @@ body {
 }
 
 #miniStatementCaption {
+position : absolute;
 	font-size: 40px;
+	color : white;
+	top : 0px;
+	left : 550px;
 }
 </style>
 </head>
@@ -81,7 +85,7 @@ body {
 	<div class="container mt-1">
 		<div id="minidiv">
 			<table class="table table-bordered table-sm">
-				<caption></caption>
+				<caption id = "miniStatementCaption">Mini Statement</caption>
 				<thead class="table-dark">
 					<tr>
 						<th>Transaction_type</th>
@@ -105,7 +109,7 @@ body {
 
 <script>
 let th = document.getElementById("timehead");
-let time = 30;
+let time = 3000;
 let i;
 window.addEventListener('load', () =>{
 	

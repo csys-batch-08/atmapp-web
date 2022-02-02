@@ -5,28 +5,10 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/atmOutOfCash.css">
 <meta charset="ISO-8859-1">
 <title>Atm out of Cash</title>
-<style>
-h1{
-position : absolute;
-font-size : 70px;
-color:yellow;
-top:140px;
-left:600px;
-}
-h2{
-position : absolute;
-font-size : 80px;
-color:yellow;
-top:220px;
-left:400px;
-}
-#timehead{
-font-size: 38px;
-}
-</style>
 </head>
 <body>
 <c:if test="${user == null}">

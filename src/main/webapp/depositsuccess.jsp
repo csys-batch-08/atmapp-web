@@ -5,46 +5,15 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-<link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+<link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/depositsuccess.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="ISO-8859-1">
 <div id="bgBlur">
-<title>Deposit Success</title>
-<style>
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
-}
-#withsucclab {
-	font-size: 45px;
-	position: absolute;
-	top: 180px;
-	left: 190px;
-	color : white;
-	font-weight:bolder;
-}
-
-#succhead {
-	font-size: 60px;
-	color: yellow;
-	position: absolute;
-	top: 300px;
-	left: 480px;
-}
-body{
-background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
-
- #bgBlur{
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.7);
-	height: 625px;
-	width: 1366px;
-} 
-</style>
+	<title>Deposit Success</title>
 </head>
 <body>
 	
@@ -53,17 +22,18 @@ background-size: cover;
 	</c:if>
 	
 	
-	<label id="withsucclab">You have successfully Deposited amount ${depsuccamount}</label>
-	<h1 id="succhead"> BALANCE : ${depsuccbal}</h1>
+	<label id="withsucclab" class="animate__animated animate__flash">You have successfully Deposited amount ${depsuccamount}</label>
+	<h1 id="succhead" class="animate__animated animate__flash"> BALANCE : ${depsuccbal}</h1>
 
 
 <h1 id = "timehead">00:00</h1>
+<a href="welcomePage.jsp" class="btn btn-danger">Home</a>
 </body>
 
 <script>
 
 let th = document.getElementById("timehead");
-let time = 4;
+let time = 7;
 let i;
 window.addEventListener('load', () =>{
 	

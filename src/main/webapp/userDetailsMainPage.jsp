@@ -50,7 +50,7 @@ a{
 position: absolute;
 	top: 110px;
 	border-radius: 10px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.7);
 	border-color: white;
 	left:500px;
 }
@@ -58,7 +58,7 @@ position: absolute;
 position: absolute;
 	top: 250px;
 	border-radius: 10px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.7);
 	border-color: white;
 	left:350px;
 }
@@ -66,7 +66,7 @@ position: absolute;
 position: absolute;
 	top: 380px;
 	border-radius: 10px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.7);
 	border-color: white;
 	left:480px;
 }

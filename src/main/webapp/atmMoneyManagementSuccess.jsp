@@ -7,43 +7,10 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="" href="Assets/sbi-logo-33234.png">
+<link rel="icon" type="" href="assets/images/sbi-logo-33234.png">
+<link rel="stylesheet" type="" href="assets/css/atmMoneyManagementSuccess.css">
 <meta charset="ISO-8859-1">
 <title>Money Deposited!!</title>
-<style>
-h1 {
-	font-size: 50px;
-	color: yellow;
-	position: absolute;
-	top: 200px;
-	left: 150px;
-}
-
-#timehead {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	color: black;
-}
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#bgBlur {
-	position: absolute;
-	background-color: rgba(11, 11, 11, 0.6);
-	height: 625px;
-	width: 1366px;
-}
-body {
-	background-image:
-		url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-</style>
 </head>
 <body>
 <div id="bgBlur"></div>

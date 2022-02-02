@@ -6,6 +6,10 @@
 <html lang = "en">
 <head>
 <link rel = "icon" type = "" href = "Assets/sbi-logo-33234.png">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <meta charset="ISO-8859-1">
 <div id="bgBlur"></div>
 <title>Enter Pin</title>
@@ -18,9 +22,10 @@
 }
 h1 {
 	position: absolute;
-	color: #F5DF4D;
+	color: #BC243C;
 	font-size: 90px;
-	left: 480px;
+	left: 500px;
+	top:100px;
 }
 
 form {
@@ -37,10 +42,11 @@ input {
 	left : 50px;
 } 
 #timehead{
-position : relative;
+position : absolute;
 left : 0px;
-color : black;
+color : #EFC050;
 font-size:40px;
+top: 0px;
 }
 body{
 background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/sbi-atm-card-1584194515.jpg");
@@ -53,7 +59,7 @@ background-size: cover;
 }
  #bgBlur{
 	position: absolute;
-	background-color: rgba(11, 11, 11, 0.5);
+	background-color: rgba(11, 11, 11, 0.7);
 	height: 625px;
 	width: 1366px;
 } 
@@ -65,9 +71,9 @@ background-size: cover;
 	</c:if>
 	<%int amount = Integer.parseInt(request.getParameter("inpwith"));
 	session.setAttribute("withamount", amount);%>
-	<h1>Enter Pin</h1>
+	<h1 class="animate__animated animate__bounceInDown">Enter Pin</h1>
 	<form action="Enterpinservlet">
-		<input type="password" name="withpin" id="withpinid" pattern="[0-9]{4}" title = "enter your pin 0-9 in length of four" required autofocus>
+		<input type="password" name="withpin" id="withpinid" pattern="[0-9]{4}" title = "enter your pin 0-9 in length of four" class="animate__animated animate__heartBeat" required autofocus>
 
 	</form>
 <h1 id = "timehead">00:00</h1>
@@ -75,7 +81,7 @@ background-size: cover;
 
 <script>
 let th = document.getElementById("timehead");
-let time = 2000;
+let time = 20;
 let i;
 window.addEventListener('load', () =>{
 	
@@ -96,8 +102,5 @@ window.addEventListener('load', () =>{
 	},1000);
 	
 });
-
-
-
 </script>
 </html>

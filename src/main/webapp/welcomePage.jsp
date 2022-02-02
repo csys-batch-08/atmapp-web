@@ -78,7 +78,7 @@ color : #F5DF4D;
 		Transfer</a>
 	<a href="enterPinMiniStatement.jsp" id="ministatement" class="atag">Mini
 		Statement</a>
-	<a href="pinChange.jsp" id="pinchange" class="atag">Pin Change</a>
+	<a href="pinChangeEnterPin.jsp" id="pinchange" class="atag">Pin Change</a>
 	<a href="logOut.jsp" id="logout" class="atag">Logout</a>
 	<h1 id="timehead">00:00</h1>
 	</div>

@@ -9,6 +9,10 @@
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <div id="bgBlur"></div>
 <title>Money Transfer</title>
 <style>
@@ -29,7 +33,7 @@ fieldset {
 }
 
 legend {
-	color: #F5DF4D;
+	color: #FDAC53;
 	font-size: 40px;
 }
 
@@ -94,7 +98,10 @@ button:hover{
 	box-shadow: 0 0 20px white;
 	transition-duration: 0.2s;
 }
-
+#timehead{
+position: absolute;
+color: #F5DF4D;
+}
 </style>
 </head>
 <body>
@@ -102,7 +109,7 @@ button:hover{
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 
-	<fieldset>
+	<fieldset class="animate__animated animate__flash">
 		<legend>Money Transfer</legend>
 		<form action="moneytransferserv" method="post">
 			<label>Enter UserName : </label><br> <input type="text" id = "moneytransfname"
