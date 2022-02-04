@@ -17,7 +17,66 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+@charset "ISO-8859-1";
 
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+td {
+	color: yellow;
+	font-weight: bolder;
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 20px;
+}
+
+table {
+	align: center;
+	margin-top: 100px;
+}
+
+th {
+	color: white;
+	font-weight: bolder;
+	font-size: 30px;
+	text-align: center;
+}
+
+tr:hover {
+	background-color: black;
+	color: yellow;
+}
+
+td {
+	font-size: 20px;
+}
+
+body {
+	background-color: #363945;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#timehead {
+	color: red;
+}
+
+a {
+	text-decoration: none;
+	font-size: 30px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+</style>
 </head>
 <body>
 	<c:if test="${admin == null}">

@@ -1,5 +1,10 @@
 @charset "ISO-8859-1";
 
+
+.atag{
+text-decoration: none;	
+}
+
 #userdetailfield {
 	width: 700px;
 }

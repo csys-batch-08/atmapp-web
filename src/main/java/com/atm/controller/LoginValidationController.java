@@ -72,7 +72,7 @@ private static final long serialVersionUID = 1L;
 					logindetailsimpl.insertLoginDetails(loginmodel);
 					flag = true;
 					session.setAttribute("admin", userName);
-					response.sendRedirect("admin.jsp");
+					response.sendRedirect("adminMain.jsp");
 				}else if(role.equals("agent")) {
 					LoginDetailsModel loginmodel = new LoginDetailsModel(userName, role);
 					logindetailsimpl.insertLoginDetails(loginmodel);

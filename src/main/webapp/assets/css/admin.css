@@ -103,6 +103,7 @@ a {
 	transition: transform 0.7s;
 }
 
+
 a:hover {
 	transform: translateX(10px);
 	box-shadow: 0 0 20px white;

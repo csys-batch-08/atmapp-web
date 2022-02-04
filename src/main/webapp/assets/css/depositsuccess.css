@@ -43,3 +43,7 @@ body {
 	height: 625px;
 	width: 1366px;
 }
+#timehead{
+	position: absolute;
+	color: #F5DF4D;	
+}

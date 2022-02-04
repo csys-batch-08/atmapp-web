@@ -20,7 +20,9 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <title>Register User</title>
 </head>
 <body>
-	
+	<c:if test="${admin == null}">
+		<c:redirect url="index.jsp"></c:redirect>
+	</c:if>
 	<div class="container mt-1">
 		<fieldset id="fieldreg">
 			<legend>Register User</legend>
@@ -31,7 +33,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 					type="text" name="userreg" placeholder="Abcd9" class="form-control"
 					pattern="[A-Z][a-zA-Z]{3,20}"
 					title="Start with A-Z and use A-Z or a-z or 0-9 minimum 3 character maximum 20 character"
-					id="userid" required> <label class="form-label">Enter
+					id="userid" required autofocus="autofocus"> <label class="form-label">Enter
 					Password : </label><br> <input type="password" class="form-control"
 					name="passreg" placeholder="abcd@89"
 					pattern="[A-Za-z0-9!@#$%^&*_+=-~`/|\]{6,20}" minlength="6"
@@ -60,24 +62,22 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	</div>
 	<a href="admin.jsp" class="btn btn-danger" id = "homeTag">Home</a>
 </body>
-<script>
-	let pass1 = document.getElementById("passid");
-	let pass2 = document.getElementById("cnfpassid");
-	let reglab = document.getElementById("reglab");
-	function cnfpass() {
-		if (pass1.value != pass2.value) {
-			pass1.style.borderBlockColor = "red";
-			pass2.style.borderBlockColor = "red";
-			reglab.style.visibility = "visible";
-			return false;
-		}
-		return true;
-	}
+<script src="assets/js/register.js">
+	
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
 
-	//hide password must be same label:
-	function invalabfn() {
-		let invallab = document.getElementById("reglab");
-		invallab.style.visibility = "hidden";
-	}
+</script>
+<script type="text/javascript">
+if(localStorage.getItem("sweetAlertLocal") != null){
+	swal({
+		  title: "User " + localStorage.getItem("sweetAlertLocal"),
+		  text: "Registered Successfully!!",
+		  icon: "success",
+		  button: "ok",
+		});
+	localStorage.removeItem("sweetAlertLocal");
+}
+
 </script>
 </html>

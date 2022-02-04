@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.atm.models.UsernamePasswordModel;
 import com.atm.daoimpl.UserProfileImpl;
 import com.atm.daoimpl.UsernamePasswordImpl;
 import com.atm.exception.MobileNoAlreadyRegException;
 import com.atm.exception.UserNameAlreadyExistException;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
-
+import com.atm.models.UsernamePasswordModel;
 
 @WebServlet("/registersucc")
 public class RegisterController extends HttpServlet {
@@ -86,9 +86,9 @@ public class RegisterController extends HttpServlet {
 			resp.sendRedirect(e.getMessage());
 		} catch (MobileNoAlreadyRegException e1) {
 			resp.sendRedirect(e1.getMessage());
-		}
-		catch (Exception e) {
-			e.getMessage();
+		} catch (Exception e) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 	}
 }

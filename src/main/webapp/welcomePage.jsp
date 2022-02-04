@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="" href="assets/css/welcomePage.css">
 <link rel = "icon" type = "" href = "assets/images/sbi-logo-33234.png">
 <meta charset="ISO-8859-1">
-<div id="bgBlur"></div>
+<div id="bgBlur" onmousemove="invalidPinDisable()"></div>
 <c:if test="${user == null}">
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
@@ -21,7 +21,8 @@
 </head>
 <body>
 	<c:if test="${invalidhomepin != null}">
-	<h1 id="invalpin">Invalid Pin</h1>
+	<h1 id="invalpin" class="animate__animated animate__bounceInDown">Invalid Pin</h1>
+	<c:remove var="invalidhomepin" scope="session"/>
 	</c:if>
 	<div class="marquee">
 	<p><strong>STATE BANK OF INDIA</strong></p>
@@ -41,32 +42,16 @@
 	<a href="logOut.jsp" id="logout" class="atag">Logout</a>
 	<h1 id="timehead">00:00</h1>
 	</div>
+	
 </body>
 
-<script>
-localStorage.removeItem("invalmax");
-let th = document.getElementById("timehead");
-let time = 30;
-let i;
-window.addEventListener('load', () =>{
-	
-	 i= setInterval(() => {
-		if(time > 0){
-			if(time >= 10){
-			
-		th.innerHTML = "00 : " + time--;
-		
-			}else{
-				th.style.color = "red";
-				th.innerHTML = "00 : 0" + time--;
-			}
-		}else{
-			clearInterval(i);
-			window.location.assign("logOut.jsp");
-		}
-	},1000);
-	
-});
+<script src="assets/js/welcomePage.js">
 
+</script>
+<script type="text/javascript">
+if(sessionStorage.getItem("invalidhomepin") != null){
+	console.log("hi dude");
+sessionStorage.removeItem("invalidhomepin");
+}
 </script>
 </html>

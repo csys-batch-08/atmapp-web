@@ -33,8 +33,8 @@ background-size: cover;
 }
 #timehead{
 position : absolute;
-left:0dpx;
+float: left;
 top:0px;
 color:black;
-font-size : 20px;
+font-size : 40px;
 }

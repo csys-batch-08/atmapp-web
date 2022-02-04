@@ -16,37 +16,18 @@
 	<c:redirect url="index.jsp"></c:redirect>
 	</c:if>
 	
-	<h1 id = "reghead">
-		User ${reguser} Registered Successfully!!
-	</h1>
+	<input type="text" value='<c:out value="${reguser}"></c:out>' id = "regUserId" >
 <label id = "timehead">00:00</label>
 </body>
+<script src="assets/js/timeoutAdminRedirect.js">
+
+</script>
 <script>
-
-let th = document.getElementById("timehead");
-let time = 5;
-let i;
 window.addEventListener('load', () =>{
-	
-	 i= setInterval(() => {
-		if(time > 0){
-			if(time >= 10){
-				
-				th.style.color = "#98FB98";
-		th.innerHTML = "00 : " + time--;
-		
-			}else{
-				th.style.color = "red";
-				th.innerHTML = "00 : 0" + time--;
-			}
-		}else{
-			clearInterval(i);
-			window.location.assign("admin.jsp");
-		}
-	},1000);
-	
+	let userName =  document.getElementById("regUserId").value;
+	console.log(userName);
+localStorage.setItem('sweetAlertLocal', userName);
+window.location.assign("register.jsp");
 });
-
-
 </script>
 </html>

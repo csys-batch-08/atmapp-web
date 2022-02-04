@@ -38,8 +38,9 @@ input {
 #homebt {
 	position: relative;
 	position : absolute;
-	right : 0px;
-	background-color: red;
+	right : 20px;
+	top:30px;
+	background-color: #D2386C;
 	width: 130px;
 	height: 50px;
 	border-radius: 10px;

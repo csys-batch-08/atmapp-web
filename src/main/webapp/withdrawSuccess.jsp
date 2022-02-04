@@ -29,31 +29,7 @@
 <a href="welcomePage.jsp" class="btn btn-danger">Home</a>
 </body>
 
-<script>
-
-let th = document.getElementById("timehead");
-let time = 10;
-let i;
-window.addEventListener('load', () =>{
-	
-	 i= setInterval(() => {
-		if(time > 0){
-			if(time >= 10){
-				
-		th.innerHTML = "00 : " + time--;
-		
-			}else{
-				th.style.color = "red";
-				th.innerHTML = "00 : 0" + time--;
-			}
-		}else{
-			clearInterval(i);
-			window.location.assign("welcomePage.jsp");
-		}
-	},1000);
-	
-});
-
+<script src="assets/js/timeoutWelcomePageRedirect.js">
 
 </script>
 </html>

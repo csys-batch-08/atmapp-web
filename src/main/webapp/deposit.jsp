@@ -8,6 +8,7 @@
 <link rel="icon" type="" href="assets/images/sbi-logo-33234.png">
 <link rel="stylesheet" type="" href="assets/css/deposit.css">
 <meta charset="ISO-8859-1">
+<title>Deposit</title>
  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -17,7 +18,11 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>Deposit</title>
+<style type="text/css">
+input{
+	font-size: 60px;
+	}
+	</style>
 </head>
 <body>
 <div id="bgBlur"></div>
@@ -40,28 +45,7 @@
 	<h1 id="timehead">00:00</h1>
 </body>
 
-<script>
-let th = document.getElementById("timehead");
-let time = 20;
-let i;
-window.addEventListener('load', () =>{
-	
-	 i= setInterval(() => {
-		if(time > 0){
-			if(time >= 10){
-				
-		th.innerHTML = "00 : " + time--;
-		
-			}else{
-				th.style.color = "red";
-				th.innerHTML = "00 : 0" + time--;
-			}
-		}else{
-			clearInterval(i);
-			window.location.assign("logOut.jsp");
-		}
-	},1000);
-	
-});
+<script src="assets/js/timeoutIndexRedirect.js">
+
 </script>
 </html>
