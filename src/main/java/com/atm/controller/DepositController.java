@@ -14,6 +14,7 @@ import com.atm.exception.DepositLimitExceedException;
 
 import com.atm.models.TransActionsModel;
 import com.atm.models.UserProfileModel;
+import com.atm.service.DepositService;
 
 @WebServlet("/depserv")
 public class DepositController extends HttpServlet {
@@ -21,69 +22,40 @@ public class DepositController extends HttpServlet {
 
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		try {
-			UserProfileImpl userprofileimpl = new UserProfileImpl();
-			TransActionsModel transActionsModel = new TransActionsModel();
-			TransActionsImpl transActionsImpl = new TransActionsImpl();
-			HttpSession session = req.getSession();
-			String uname = session.getAttribute("user").toString();
-			int eamount = (int) session.getAttribute("depamount");
-			UserProfileModel userprofilemodelaccno = new UserProfileModel(uname);
-			Long accno;
-			// get acc no:
-			accno = userprofileimpl.getAccountNo(userprofilemodelaccno);
-			transActionsModel.setUserAccnoLong(accno);
-			// check withdraw limit:
-			int depositSum = transActionsImpl.checkDepositLimit(transActionsModel);
-			int depositCheck = 0;
-			// amount should be less than 20000:
-			if (eamount <= 20000) {
-				// deposit sum should be less than 20000:
-				depositCheck = eamount + depositSum;
-				if (depositCheck <= 20000) {
-					UserProfileModel userprofilemodel = new UserProfileModel(uname);
-					// get user balance:
-					if (userprofileimpl.getUserBalance(userprofilemodel) >= 0) {
-						int bal = userprofileimpl.getUserBalance(userprofilemodel);
-						// Amount greater than 0 and less than 20000:
-						if (eamount > 0 && eamount < 20000) {
-							int newbal = bal + eamount;
-							UserProfileModel userprofilemodel2 = new UserProfileModel(uname, newbal);
-							// update New Balance:
-							userprofileimpl.insertUserBalance(userprofilemodel2);
-							// Get User Account Number:
-							UserProfileModel userprofilemodel3 = new UserProfileModel(uname);
-							Long acc = userprofileimpl.getAccountNo(userprofilemodel3);
-							// Insert data in Deposit table:
-							transActionsModel.setUserAccnoLong(acc);
-							transActionsModel.setTransActionAmount(eamount);
-							transActionsModel.setTransActionType("CREDIT");
-							transActionsImpl.insertTransAction(transActionsModel);
-							session.setAttribute("depsuccamount", eamount);
-							session.setAttribute("depsuccbal", newbal);
-							res.sendRedirect("depositsuccess.jsp");
-						} else {
-							throw new DepositLimitExceedException();
-						}
-					} else {
-						res.sendRedirect("invalidUser.jsp");
-					}
-				} else {
-					int remainingDeposit = (20000 - depositSum);
-					if (remainingDeposit > 0) {
-						session.setAttribute("remainingDeposit", remainingDeposit);
-						res.sendRedirect("depositAmountRemaining.jsp");
-					} else {
-						res.sendRedirect("depositLimitExceed.jsp");
-					}
-				}
-			} else {
-				res.sendRedirect("depositEnteredLimit.jsp");
-			}
-		} catch (DepositLimitExceedException e) {
-			res.sendRedirect(e.getMessage());
-		} catch (Exception e) {
-			e.getMessage();
-		}
+		HttpSession session = req.getSession();
+		String uname = session.getAttribute("user").toString();
+		int eamount = (int) session.getAttribute("depamount");
+		
+String status = DepositService.depositeMoney(uname, eamount);
+
+if(status.equals("DepositLimitExceedException")){
+throw new DepositLimitExceedException();
+}
+
+if(status.equals("invalidUser")){
+res.sendRedirect("invalidUser.jsp");
+}
+
+if(status.equals("depositAmountRemaining")){
+
+if(status.equals("depositAmountRemaining")){
+session.setAttribute("remainingDeposit", remainingDeposit);
+		res.sendRedirect("depositAmountRemaining.jsp");
+}else if(status.equals("depositLimitExceed")){
+res.sendRedirect("depositLimitExceed.jsp");
+}
+}
+
+if(status.equals("depositEnteredLimit")){
+throw new DepositLimitExceedException();
+}
+
+if(status.equals("depositeSucess")){
+session.setAttribute("depsuccamount", eamount);
+						session.setAttribute("depsuccbal", newbal);
+						res.sendRedirect("depositsuccess.jsp");
+}
+
+
 	}
 }

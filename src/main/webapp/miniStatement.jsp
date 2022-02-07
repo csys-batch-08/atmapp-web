@@ -125,7 +125,7 @@ label {
 					<c:forEach items="${ministatementjspobj}" var="miniStatement">
 						<tr>
 							<td>${miniStatement.transActionType}</td>
-							<td>${miniStatement.transActionAmount}</td>
+							<td>${miniStatement.transActionAmount} RS</td>
 							<td>${miniStatement.transActionAt}</td>
 						</tr>
 					</c:forEach>

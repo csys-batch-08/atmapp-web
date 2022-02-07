@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<title>Welcome ${admin}</title>
+<link rel="icon" type="" href="assets/images/sbi-logo-33234.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -145,6 +147,9 @@ top: 100px;
 </style>
 </head>
 <body>
+<c:if test="${admin == null}">
+	<c:redirect url="index.jsp"></c:redirect>
+</c:if>
 <jsp:include page="navBar.jsp"/>
 	<div>
 		<img src="https://www.onlinesbi.com/sbijava/images/banner36.jpg"

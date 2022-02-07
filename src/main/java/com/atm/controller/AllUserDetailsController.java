@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.atm.daoimpl.UserProfileImpl;
 import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
+import com.atm.service.AllUserDetailsService;
 
 @WebServlet("/allUserDetailsServlet")
 public class AllUserDetailsController extends HttpServlet{
@@ -24,14 +25,14 @@ public class AllUserDetailsController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-UserProfileImpl userProfileImpl = new UserProfileImpl();
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+
 try {
-	List<UserProfileModel> userProfileModels = userProfileImpl.fetchUserDetails();
-	req.setAttribute("allUserDetailsList", userProfileModels);
+
+	req.setAttribute("allUserDetailsList", AllUserDetailsService.fetchUserDetails());
 	RequestDispatcher requestDispatcher = req.getRequestDispatcher("allUserDetails.jsp");
 	requestDispatcher.forward(req, resp);
-} catch (SQLException e) {
+} catch (IOException e) {
 	Logger.printStackTrace(e);
 	Logger.runTimeException(e.getMessage());
 } 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.atm.daoimpl.UserProfileImpl;
 import com.atm.models.UserProfileModel;
+import com.atm.service.BalanceService;
 
 
 
@@ -24,10 +25,8 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	try {
 	HttpSession session = req.getSession();
 	String user = session.getAttribute("user").toString();
-	UserProfileImpl userProfiledao = new UserProfileImpl();
-	UserProfileModel userprofilepojo = new UserProfileModel(user);
-		int balance = userProfiledao.getUserBalance(userprofilepojo);
-		req.setAttribute("balanceInt", balance);
+	
+		req.setAttribute("balanceInt", BalanceService.getUserBalance(user));
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("balance.jsp");
 		requestDispatcher.forward(req, resp);
 	} catch (Exception e) {

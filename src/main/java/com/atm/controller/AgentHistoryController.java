@@ -1,7 +1,6 @@
 package com.atm.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.atm.daoimpl.AtmMoneyManagementImpl;
-import com.atm.models.AtmMoneyManagementModel;
+import com.atm.service.AgentHistoryService;
 
 
 
@@ -21,9 +19,7 @@ public class AgentHistoryController extends HttpServlet{
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 	try {
-	AtmMoneyManagementImpl atmMoneyManagementimpl = new AtmMoneyManagementImpl();
-				List<AtmMoneyManagementModel> atmMoneyManagementModels = atmMoneyManagementimpl.showRefillHistory();
-				req.setAttribute("agenthistoryobj", atmMoneyManagementModels);
+				req.setAttribute("agenthistoryobj", AgentHistoryService.showRefillHistory());
 				RequestDispatcher requestDispatcher = req.getRequestDispatcher("agentHistory.jsp");
 				requestDispatcher.forward(req, resp);
 			} catch (Exception e) {			
