@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +168,7 @@ top: 100px;
 <div id = "registerUserDiv">
 <img alt="registerUserImage" src="https://www.onlinesbi.com/sbijava/images/banner3.jpg" id = "registerUserId">
 <h1 id = "registerUserHead">Register User :</h1>
-<a href="register.jsp" class="badge badge-pill badge-primary" id = "registerId">Register</a>
+<a href="registerRe.jsp" class="badge badge-pill badge-primary" id = "registerId">Register</a>
 </div>
 </div>
 
@@ -180,7 +181,7 @@ top: 100px;
 <a href="allUserDetailsServlet" class="btn btn-danger" id = "allUserId">All User Details</a>
 </div>
 <div>
-<a href="Removeduserlistservlet" class="btn btn-danger" id = "userDetailId">User Details By UserName</a>
+<a href="userDetailsAdminGetUser.jsp" class="btn btn-danger" id = "userDetailId">User Details By UserName</a>
 </div>
 <div>
 <a href="Removeduserlistservlet" class="btn btn-danger" id = "inactiveUserId">Inactive Users List</a>
