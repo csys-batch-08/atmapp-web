@@ -1,6 +1,7 @@
 package com.atm.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.atm.daoimpl.UserProfileImpl;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
 
 
@@ -18,7 +20,7 @@ public class PinChangeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		int pinChanged = -1;
 		try {
 		UserProfileImpl userProfileImpl = new UserProfileImpl();		
@@ -27,14 +29,16 @@ public class PinChangeController extends HttpServlet {
 		String user = session.getAttribute("user").toString();
 			UserProfileModel userProfileModel = new UserProfileModel(pin,user);
 			pinChanged = userProfileImpl.updateUserPin(userProfileModel);
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		if (pinChanged > 0) {
-			resp.sendRedirect("pinChangeSuccess.jsp");
-		} else {
-			resp.getWriter().println("Something went wrong try again!!!");
-		}
+			if (pinChanged > 0) {
+				resp.sendRedirect("pinChangeSuccess.jsp");
+			} else {
+				resp.getWriter().println("Something went wrong try again!!!");
+			}
+		} catch (SQLException | NumberFormatException | IOException e) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+		} 
+		
 	}
 
 }

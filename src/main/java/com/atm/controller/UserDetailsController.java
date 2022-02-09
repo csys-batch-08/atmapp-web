@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.atm.daoimpl.UserProfileImpl;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
 
 
@@ -31,8 +32,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		req.setAttribute("userprofilelistobjuser", userProfileModels);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("userDetails.jsp");
 		requestDispatcher.forward(req, resp);		
-	} catch (SQLException e) {
-		e.getMessage();
+	} catch (SQLException | IOException e) {
+	Logger.printStackTrace(e);
+	Logger.runTimeException(e.getMessage());
 	}
 }
 }

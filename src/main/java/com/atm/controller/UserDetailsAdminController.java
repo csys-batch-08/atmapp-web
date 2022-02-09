@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.atm.daoimpl.UserProfileImpl;
 import com.atm.exception.InvalidUsernameAdminException;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
 
 
@@ -35,10 +36,15 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		req.setAttribute("userdetailslistobj", userProfileModels);
 		RequestDispatcher rsDispatcher = req.getRequestDispatcher("userDetailAdmin.jsp");
 		rsDispatcher.forward(req, resp);
-	} catch (SQLException e) {
+	} catch (SQLException | IOException e) {
 		e.getMessage();
 	}catch(InvalidUsernameAdminException e){
-		resp.sendRedirect(e.getMessage());
+		try {
+			resp.sendRedirect(e.getMessage());
+		} catch (IOException e2) {
+	Logger.printStackTrace(e2);
+	Logger.runTimeException(e2.getMessage());
+		}
 		}
 }
 }

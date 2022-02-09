@@ -25,14 +25,14 @@ public class AllUserDetailsController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
 try {
 
 	req.setAttribute("allUserDetailsList", AllUserDetailsService.fetchUserDetails());
 	RequestDispatcher requestDispatcher = req.getRequestDispatcher("allUserDetails.jsp");
 	requestDispatcher.forward(req, resp);
-} catch (IOException e) {
+} catch (IOException | ServletException e) {
 	Logger.printStackTrace(e);
 	Logger.runTimeException(e.getMessage());
 } 

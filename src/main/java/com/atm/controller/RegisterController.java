@@ -23,11 +23,12 @@ public class RegisterController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
 		Long accno = 0l;
 		int userpin = 0;
-		try {
+		
 			if (userprofileimpl.getUserMaximumAccountNo() > 0 && userprofileimpl.getUserMaximumPin() > 0) {
 				accno = userprofileimpl.getUserMaximumAccountNo() + 1;
 				userpin = userprofileimpl.getUserMaximumPin() + 1;
@@ -36,9 +37,7 @@ public class RegisterController extends HttpServlet {
 				userpin = 1234;
 			}
 
-		} catch (Exception e1) {
-			e1.getMessage();
-		}
+		
 		String username = req.getParameter("userreg");
 		String password = req.getParameter("passreg");
 		String role = req.getParameter("rolereg");
@@ -47,12 +46,10 @@ public class RegisterController extends HttpServlet {
 		userProfileModel.setMobileNo(mobno);
 		UserProfileImpl userProfileImpl2 = new UserProfileImpl();
 		boolean flag = false;
-		try {
+		
 			flag = userProfileImpl2.userMobileNoExistCheck(userProfileModel);
-		} catch (Exception e1) {
-			e1.getMessage();
-		}
-		try {
+		
+		
 			if (!flag) {
 				UsernamePasswordModel usernamepassmodel = new UsernamePasswordModel(username, password, role);
 				int ins = userimpl.insertUsernamePasswords(usernamepassmodel);
@@ -82,11 +79,7 @@ public class RegisterController extends HttpServlet {
 			} else {
 				throw new MobileNoAlreadyRegException();
 			}
-		} catch (UserNameAlreadyExistException e) {
-			resp.sendRedirect(e.getMessage());
-		} catch (MobileNoAlreadyRegException e1) {
-			resp.sendRedirect(e1.getMessage());
-		} catch (Exception e) {
+		}catch (Exception e) {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 		}

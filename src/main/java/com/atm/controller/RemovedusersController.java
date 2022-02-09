@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.atm.daoimpl.RemovedUsersImpl;
+import com.atm.logger.Logger;
 import com.atm.models.RemovedUsersModel;
 
 
@@ -27,8 +28,11 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		req.setAttribute("removeduserslist", removedUsersModels);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("removedUsers.jsp");
 		requestDispatcher.forward(req, resp);
-	} catch (SQLException e) {
-		e.getMessage();
+	} catch (SQLException | IOException e) {
+	
+	Logger.printStackTrace(e);
+	Logger.runTimeException(e.getMessage());
+		
 	}
 }
 }

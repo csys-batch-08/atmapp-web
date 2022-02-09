@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.atm.daoimpl.UserProfileImpl;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
 
 @WebServlet("/userNameExistCheckServlet")
@@ -30,13 +31,13 @@ protected void doPost(HttpServletRequest req, HttpServletResponse res) throws Se
 		long user;
 	
 			user = userProfileImpl.getAccountNo(userProfileModel);
-		 System.out.println(user);
 		if(user!=-1) {
 			res.getWriter().print("Username Already Registered");
 		}
 		
-}catch (SQLException e) {
-	e.printStackTrace();
+}catch (SQLException | IOException e) {
+	Logger.printStackTrace(e);
+	Logger.runTimeException(e.getMessage());
 }
 }
 }
