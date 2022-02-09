@@ -120,7 +120,7 @@ tr:hover {
 			</table>
 		</div>
 	</div>
-	<a href="admin.jsp" class="btn btn-danger">Home</a>
+	<a href="adminMain.jsp" class="btn btn-danger">Home</a>
 </body>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>

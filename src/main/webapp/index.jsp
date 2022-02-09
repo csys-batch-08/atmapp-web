@@ -50,7 +50,7 @@
 	
 
 <div id = "logintxt" class = "animate__animated animate__fadeInLeft">
-<h3>Be aware of fraudulent emails offering free gifts and rewards. Scammers send these emails to extract money from your account via your personal details. Do not share your bank details with anyone. SBI never asks for your UPI PIN or Card Details.</h3>
+<h3 id = "logintLeftText">Be aware of fraudulent emails offering free gifts and rewards. Scammers send these emails to extract money from your account via your personal details. Do not share your bank details with anyone. SBI never asks for your UPI PIN or Card Details.</h3>
 </div>
 </div>
 </body>

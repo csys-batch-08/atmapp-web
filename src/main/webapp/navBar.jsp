@@ -38,13 +38,14 @@ top: 20px;
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item"><a class="nav-link" href="register.jsp">Register <span
+				<li class="nav-item"><a class="nav-link" href="registerRe.jsp">Register <span
 						class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="#userDetailsDiv">User Details</a></li>
 			
 				<li class="nav-item"><a class="nav-link" href="#removeUserDiv">Make User Inactive
 						</a></li>
 				<li class="nav-item"><a class="nav-link" href="logindetailsservlet">Login Details</a></li>
+				<li class="nav-item"><a class="nav-link" href="logOutAdmin.jsp">LogOut</a></li>
 			</ul>
 			<div class="social-part">
 				<i class="fa fa-facebook" aria-hidden="true"></i> <i

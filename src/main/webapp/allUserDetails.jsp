@@ -112,6 +112,6 @@ a {
 
 		</div>
 	</div>
-	<a href="admin.jsp" class="btn btn-danger">Home</a>
+	<a href="adminMain.jsp" class="btn btn-danger">Home</a>
 </body>
 </html>

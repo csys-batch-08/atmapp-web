@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<!-- Font Awesome -->
+
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
 	rel="stylesheet" />
@@ -14,10 +14,11 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 	rel="stylesheet" />
-<!-- MDB -->
+
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
 	rel="stylesheet" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style type="text/css">
 #cardImageId {
 	position: relative;
@@ -60,18 +61,18 @@
 											onsubmit="return cnfpass()">
 
 											<div class="d-flex flex-row align-items-center mb-4">
-												<i class="fas fa-user fa-lg me-3 fa-fw"></i>
+												<em class="fas fa-user fa-lg me-3 fa-fw"></em>
 												<div class="form-outline flex-fill mb-0">
-													<input type="text" id="form3Example1c" class="form-control"
-														name="userreg" pattern="[A-Z][a-zA-Z]{3,20}"
+													<input type="text" class="form-control" name="userreg"
+														onkeyup="userNameCheck()" pattern="[A-Z][a-zA-Z]{3,20}"
 														title="Start with A-Z and use A-Z or a-z or 0-9 minimum 3 character maximum 20 character"
-														required="required" /> <label class="form-label"
-														for="form3Example1c">User Name</label>
+														required="required" id="userRegistration" /> <label
+														class="form-label" for="form3Example1c">User Name</label>
 												</div>
 											</div>
 
 											<div class="d-flex flex-row align-items-center mb-4">
-												<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+												<em class="fas fa-envelope fa-lg me-3 fa-fw"></em>
 												<div class="form-outline flex-fill mb-0">
 													<input type="text" id="form3Example3c" class="form-control"
 														name="mobnoreg" pattern="[6-9][0-9]{9}"
@@ -82,31 +83,29 @@
 											</div>
 
 											<div class="d-flex flex-row align-items-center mb-4">
-												<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+												<em class="fas fa-lock fa-lg me-3 fa-fw"></em>
 												<div class="form-outline flex-fill mb-0">
-													<input type="password" id="form3Example4c"
-														class="form-control" name="passreg"
+													<input type="password" class="form-control" name="passreg"
 														pattern="[A-Za-z0-9!@#$%^&*_+=-~`/|\]{6,20}" minlength="6"
-														onclick="invalabfn()"
 														title="minimum 6 character and special characters allowed"
-														required="required" /> <label class="form-label"
-														for="form3Example4c">Password</label>
+														required="required" id="passid" /> <label
+														class="form-label" for="form3Example4c">Password</label>
 												</div>
 											</div>
 
 											<div class="d-flex flex-row align-items-center mb-4">
-												<i class="fas fa-key fa-lg me-3 fa-fw"></i>
+												<em class="fas fa-key fa-lg me-3 fa-fw"></em>
 												<div class="form-outline flex-fill mb-0">
-													<input type="password" id="form3Example4cd"
-														class="form-control" name="cnfpassreg"
+													<input type="password" class="form-control"
+														name="cnfpassreg"
 														pattern="[A-Za-z0-9!@#$%^&*_+=-~`/|\]{6,20}" minlength="6"
-														onclick="invalabfn()"
 														title="minimum 6 character and special characters allowed"
-														required="required" /> <label class="form-label"
-														for="form3Example4cd">Repeat your password</label>
+														required="required" id="cnfpassid" /> <label
+														class="form-label" for="form3Example4cd">Repeat
+														your password</label>
 												</div>
 											</div>
-											
+
 											<div class="d-flex flex-row align-items-center mb-4">
 												<img alt="" src="assets/images/businessman.png" id="roleImg">
 												<div class="form-outline flex-fill mb-0">
@@ -134,7 +133,7 @@
 										class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 										<img
 											src="https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/lifestyle/card-faces/sbi-card-elite.png"
-											id="cardImageId">
+											alt="sry" id="cardImageId">
 									</div>
 								</div>
 							</div>
@@ -145,10 +144,51 @@
 		</section>
 	</div>
 </body>
-<!-- MDB -->
+
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-<script src="assets/js/register.js">
-	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+	let pass1 = document.getElementById("passid");
+	let pass2 = document.getElementById("cnfpassid");
+	function cnfpass() {
+		if (pass1.value != pass2.value) {
+			console.log(pass1.value);
+			Swal.fire(
+					  'Password Must Be Same!!',
+					  '',
+					  'question'
+					)
+			return false;
+		}
+		return true;
+	}
+</script>
+
+<script>
+	function userNameCheck() {
+
+		let user = document.getElementById("userRegistration").value;
+		$.ajax({
+			type : 'POST',
+			url : 'userNameExistCheckServlet',
+			type : 'POST',
+			data : 'userName=' + user,
+			cache : false,
+			success : function(response) {
+				if (response != "") {
+					Swal.fire({
+						icon : 'error',
+						title : 'Oops...',
+						text : response,
+						footer : 'Try Another UserName'
+					})
+				} else {
+					return true;
+				}
+
+			}
+		});
+	}
 </script>
 </html>

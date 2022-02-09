@@ -115,7 +115,7 @@ top :20px;
 </head>
 <body>
 <div id = "navBar">
-<jsp:include page="adminNavBar.jsp"/>
+
 </div>
 	<c:if test="${admin == null}">
 	<c:redirect url="index.jsp"></c:redirect>
@@ -130,6 +130,6 @@ top :20px;
 			<button type="submit" class="btn btn-primary">Remove</button>
 		</form>
 	</fieldset>
-	<a href="admin.jsp" class="btn btn-danger">Home</a>
+	<a href="adminMain.jsp" class="btn btn-danger">Home</a>
 </body>
 </html>

@@ -26,6 +26,6 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 			</div>
 		</form>
-		<a href="admin.jsp" class="btn btn-danger">Home</a>
+		<a href="adminMain.jsp" class="btn btn-danger">Home</a>
 </body>
 </html>

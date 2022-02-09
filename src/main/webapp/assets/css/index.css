@@ -95,7 +95,6 @@ font-size: 30px;
 position: absolute;
 top :170px;
 text-align:justify;
-
 }
 .form-control
 {
@@ -148,3 +147,4 @@ line-height: 5px;
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-70%, 0); }
 }
+
