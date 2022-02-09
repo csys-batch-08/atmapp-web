@@ -88,6 +88,7 @@ body{
 	background-repeat: no-repeat;
 	background-size: 100%;
 	overflow-x:hidden; 
+	color:white;
 }
 #logintxt{
 width:700px;
@@ -100,9 +101,7 @@ text-align:justify;
 {
   width:330px;
 }
-body{
-color:white;
-}
+
 #logger
 {
 font-size:30px;

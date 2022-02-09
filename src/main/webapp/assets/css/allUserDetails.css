@@ -10,6 +10,7 @@ td {
 	color: yellow;
 	font-weight: bolder;
 	text-align: center;
+	font-size: 20px;
 }
 
 table, th, td {
@@ -35,9 +36,6 @@ tr:hover {
 	color: yellow;
 }
 
-td {
-	font-size: 20px;
-}
 
 body {
 	background-color: #363945;

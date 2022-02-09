@@ -1,13 +1,14 @@
 @charset "ISO-8859-1";
 
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Arial,Helvetica,sans-serif;	
+	font-family: Arial, Helvetica, sans-serif;
 }
-h2{
-   color:#f1f1f1;
+
+h2 {
+	color: #f1f1f1;
 }
 
 fieldset {
@@ -23,28 +24,34 @@ label {
 	color: white;
 	padding: 10px;
 }
-legend{
-color : white;
+
+legend {
+	color: white;
 }
+
 input {
 	position: absolute;
 	left: 90px;
-	width:200px;
-	height:30px;
+	width: 200px;
+	height: 30px;
 }
 
 button {
 	position: absolute;
 	left: 200px;
 	top: 100px;
+	position: relative;
+	left: 10px;
+	width: 90px;
+	height: 40px;
+	top: 50px;
 }
 
-form
-{
-  border:3px solid #f1f1f1;
-  padding:10px;
-  height:260px;
-  width:350px;
+form {
+	border: 3px solid #f1f1f1;
+	padding: 10px;
+	height: 260px;
+	width: 350px;
 }
 
 body {
@@ -53,46 +60,36 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-#bgBlur{
+
+#bgBlur {
 	position: absolute;
 	background-color: rgba(11, 11, 11, 0.6);
 	height: 625px;
 	width: 1366px;
 }
 
-.form-control
-{
-  width:240px;
-}
-
-button {
-	position: relative;
-	left: 10px;
-	width: 90px;
-	height: 40px;
-	top: 50px;
+.form-control {
+	width: 240px;
 }
 
 button:hover {
 	background-color: black;
 	color: white;
+	box-shadow: 0 0 20px blue;
+	transition-duration: 0.2s;
 }
+
 input:hover {
 	background-color: black;
-	color:white;
-}
-input:hover{
+	color: white;
 	box-shadow: 0 0 20px blue;
 	transition-duration: 0.2s;
 }
-button:hover{
-	box-shadow: 0 0 20px blue;
-	transition-duration: 0.2s;
-}
-a{
-text-decoration: none;
-font-size: 30px;
-position: absolute;
-right: 20px;
-top :20px;
+
+a {
+	text-decoration: none;
+	font-size: 30px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
 }

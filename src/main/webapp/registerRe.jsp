@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 
 <head>
 <meta charset="ISO-8859-1">
@@ -18,7 +18,8 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
 	rel="stylesheet" />
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" integrity = ""></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
+	integrity=""></script>
 <style type="text/css">
 #cardImageId {
 	position: relative;
@@ -146,19 +147,16 @@
 </body>
 
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js" integrity = ""></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" integrity = ""></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
+	integrity=""></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" integrity=""></script>
 <script>
 	let pass1 = document.getElementById("passid");
 	let pass2 = document.getElementById("cnfpassid");
 	function cnfpass() {
 		if (pass1.value != pass2.value) {
 			console.log(pass1.value);
-			Swal.fire(
-					  'Password Must Be Same!!',
-					  '',
-					  'question'
-					)
+			Swal.fire('Password Must Be Same!!', '', 'question')
 			return false;
 		}
 		return true;

@@ -48,6 +48,7 @@ button {
 #timehead {
 	position: absolute;
 	top: 0px;
+	color: #F5DF4D;
 }
 
 body {
@@ -63,8 +64,4 @@ body {
 	background-color: rgba(11, 11, 11, 0.7);
 	height: 625px;
 	width: 1366px;
-}
-#timehead{
-position: absolute;
-color : #F5DF4D;
 }

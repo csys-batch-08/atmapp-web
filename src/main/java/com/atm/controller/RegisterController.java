@@ -26,7 +26,7 @@ public class RegisterController extends HttpServlet {
 		try {
 		UsernamePasswordImpl userimpl = new UsernamePasswordImpl();
 		UserProfileImpl userprofileimpl = new UserProfileImpl();
-		Long accno = 0l;
+		Long accno;
 		int userpin = 0;
 		
 			if (userprofileimpl.getUserMaximumAccountNo() > 0 && userprofileimpl.getUserMaximumPin() > 0) {
