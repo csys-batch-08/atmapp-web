@@ -31,14 +31,11 @@ input {
 }
 
 #timehead {
-	position: relative;
+	position: absolute;
 	left: 0px;
 	color: black;
 	font-size: 40px;
-	position: absolute;
-	left: 0px;
 	color: #EFC050;
-	font-size: 40px;
 	top: 0px;
 }
 

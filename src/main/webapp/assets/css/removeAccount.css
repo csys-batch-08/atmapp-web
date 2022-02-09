@@ -40,11 +40,8 @@ button {
 	position: absolute;
 	left: 200px;
 	top: 100px;
-	position: relative;
-	left: 10px;
 	width: 90px;
 	height: 40px;
-	top: 50px;
 }
 
 form {

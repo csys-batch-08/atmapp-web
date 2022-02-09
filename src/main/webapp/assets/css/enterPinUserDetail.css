@@ -50,8 +50,6 @@ body {
 }
 
 #timehead {
-	position: relative;
-	left: 0px;
 	color: black;
 	font-size: 40px;
 	position: absolute;
