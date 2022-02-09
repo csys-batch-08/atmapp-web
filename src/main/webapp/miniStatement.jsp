@@ -22,9 +22,9 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	<link rel="style"
 	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	src="https://code.jquery.com/jquery-3.5.1.js" integrity = ""></script>
 <script type="text/javascript"
-	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" integrity = ""></script>
 <style>
 * {
 	margin: 0;

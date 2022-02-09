@@ -18,7 +18,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
 	rel="stylesheet" />
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" integrity = ""></script>
 <style type="text/css">
 #cardImageId {
 	position: relative;
@@ -146,8 +146,8 @@
 </body>
 
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js" integrity = ""></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" integrity = ""></script>
 <script>
 	let pass1 = document.getElementById("passid");
 	let pass2 = document.getElementById("cnfpassid");

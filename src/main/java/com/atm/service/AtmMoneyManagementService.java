@@ -3,6 +3,7 @@ package com.atm.service;
 import java.sql.SQLException;
 
 import com.atm.daoimpl.AtmMoneyManagementImpl;
+import com.atm.logger.Logger;
 import com.atm.models.AtmMoneyManagementModel;
 
 public class AtmMoneyManagementService {
@@ -16,7 +17,8 @@ public class AtmMoneyManagementService {
 		try {
 			return atmMoneyManagementimpl.atmPreviousBalance();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		return -1l;
 	}
@@ -29,7 +31,8 @@ public class AtmMoneyManagementService {
 			AtmMoneyManagementModel atmMoneyManagement = new AtmMoneyManagementModel(eamount + prevbal, agent);
 			atmMoneyManagementimpl.depositAtmMoney(atmMoneyManagement);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 	}
 }

@@ -65,7 +65,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <script src="assets/js/register.js">
 	
 </script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" integrity = "">
 
 </script>
 <script type="text/javascript">

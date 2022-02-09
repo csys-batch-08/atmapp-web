@@ -122,7 +122,7 @@ tr:hover {
 	</div>
 	<a href="adminMain.jsp" class="btn btn-danger">Home</a>
 </body>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity = ""></script>
 <script>
   AOS.init();
 </script>

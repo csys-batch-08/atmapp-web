@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.atm.daoimpl.AtmMoneyManagementImpl;
+import com.atm.logger.Logger;
 import com.atm.models.AtmMoneyManagementModel;
 
 public class AgentHistoryService {
@@ -17,7 +18,8 @@ public class AgentHistoryService {
 		try {
 			atmMoneyManagementModels = atmMoneyManagementimpl.showRefillHistory();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		return atmMoneyManagementModels;
 	}

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.atm.daoimpl.UserProfileImpl;
+import com.atm.logger.Logger;
 import com.atm.models.UserProfileModel;
 
 public class AllUserDetailsService {
@@ -18,7 +19,8 @@ public class AllUserDetailsService {
 	try {
 		userProfileModels = userProfileImpl.fetchUserDetails();
 	} catch (SQLException e) {
-		e.printStackTrace();
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
 	}
 	return userProfileModels;
 	}
